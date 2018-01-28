@@ -1,0 +1,299 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{relsize}
+
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\restr}[2]{\evat{#1}{#2}{}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newtheorem{claim}{Claim}
+%\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{6 December 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH 8301 Homework XI}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8301}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\cbal}{\overline{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\intr}{\mathrm{int}}
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\vect}{\mathrm{Vect}}
+\newcommand{\Top}{\mathrm{Top}}
+\renewcommand{\top}{\Top}
+\newcommand{\hTop}{\mathrm{hTop}}
+\newcommand{\set}{\mathrm{Set}}
+\newcommand{\frp}{\mathop{\large {\mathlarger{*}}}}
+\newcommand{\ondt}{1_{\cdot}}
+\newcommand{\onst}{1_{\star}}
+\newcommand{\bdy}{\partial}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\re}{\mathrm{re}}
+\newcommand{\oX}{\overline{X}}
+\newcommand{\ox}{\overline{x}}
+\newcommand{\tX}{\tilde{X}}
+\newcommand{\tx}{\tilde{x}}
+\newcommand{\hX}{\hat{X}}
+\newcommand{\hx}{\hat{x}}
+\newcommand{\aut}{\mathrm{Aut}}
+\newcommand{\del}{\partial}
+\begin{document}
+\maketitle
+\emph{Collaborators: Sarah Brauner.}
+
+\noindent\textbf{All references to theorems come from Allen Hatcher's \emph{Algebraic Topology} unless otherwise stated.}
+\prob{1}
+We let $\oX$ be path connected, $G$ a group action on $X$, and $p:\oX\to X:=\oX/G$ a covering map
+\prt{1}
+\begin{proposition*}
+	For covering space maps $\oX\to \tX\to X$, $\tX\cong \oX/H$ for some $H<G$. 
+\end{proposition*}
+\begin{proof}
+	We let $\hX\to X$ be the universal cover of $X$ and first restrict our attention to the case $\oX=\hX$. Then, proposition 1.39 implies that $F:=\aut(\hX/X)\cong \pi_1(X,x_0)$. We note that for any $H<F$, we may construct a covering map $\tX:=\hX/H\to X$, which is unique up to based isomorphism by the observation that for $\tX_1:=\hX/H_1$ and $\tX_2:=\hX/H_2$, we then have that $\aut(\hX/\tX_1)=\aut(\hX/\tX_2)$ if and only if $H_1=H_2$. Then, proposition 1.38 shows our special case, as we have shown that covering maps $\hX/H\to X$ are in bijection with subgroups of $F$, and proposition 1.38 associates subgroups of $F$ with covering maps $\oX\to X$. Proposition 1.39 then states that for $\tX=\hX/H$, $\pi_1(\tX,\tx_0)=H$, so indeed our association and that of proposition 1.38 one and the same.\footnote{Well, technically to bridge that gap we also need the fact that for $p:\tX\to X$ a covering map, $p_*:\pi_1(\tX,\tx_0)\to \pi_1(X,x_0)$ is an injection, which is given by proposition 1.31.} 
+	
+	We now consider the case of a general covering map $\oX\to X:=\oX/G$ with intermediate covering maps $\oX\to\tX\to X$. As before, we let $\hX\to X$ be a universal cover with $F:=\aut(\hX/X)\cong \pi_1(X,x_0)$. Then, our previous work shows $\oX=\hX/N$ for some $N<F$ with $N\cong \pi_1(\oX,\ox_0)$. We have by proposition 1.40a that $\oX\to X$ is normal and $G\cong F/N$. Then, as the subgroup poset of $F$ is dual to the covering space poset of $X$ (where $\tX\geq\oX$ iff there exists a covering $\tX\to \oX$)\footnote{We haven't quite justified this, but it is an immediate corollary of proposition 1.38 in conjunction with proposition 1.31.}, we have by our special case that intermediate coverings $\oX\to\tX\to X$ are in bijection with subgroups $\hat{H}$ such that $N<\hat{H}<F$, which are in bijection with subgroups $H<G=F/N$ by the map $\hat{H}\mapsto \hat{H}/N$. As each of the covering spaces $\oX/H\to X$ exist uniquely by the same argument of above, our proof is now complete. 
+\end{proof}
+\prt{2}
+\begin{proposition}
+	$\oX/H_1\cong \oX/H_2$ if and only if $H_1$ and $H_2$ are conjugate
+\end{proposition}
+\begin{proof}
+Proposition 1.38 states that for covering spaces $p_1:\tX_1\to X$ and $p_2:\tX_2\to X$, $\tX_1\cong \tX_2$ if and only if $\pi_1(\tX_1)$ and $\pi_1(\tX_2)$ are conjugate. We showed that $\tX_i=\hX/\pi_1(\tX_i):=H_i$, and it is the case that all covering spaces $\hX/H$ exist. Thus, the proposition follows trivially from part a.
+\end{proof}
+\prt{3}
+\begin{proposition}
+	$\tX:=\oX/H\to X$ is normal if and only if $H\unlhd G$ in which case $\aut(\tX/X)=G/H$. 
+\end{proposition}
+\begin{proof}
+	We have that $\tX=\oX/H=\hX/\hat{H}$ for some $\hat{H}<F$ with $N\unlhd \hat{H}\cong \pi_1(\tX,\tx_0)$ and $H=\hat{H}/N$. We have by proposition 1.39 that $\tX\to X$ is normal if and only if $p_*(\pi_1(\tX,\tx_0)\cong \hat{H}$ is normal in $\pi_1(X,x_0)$. Finally, we note that $H\unlhd G$ if and only if $\hat{H}\unlhd F$. This completes our proof.
+\end{proof}
+\prob{2}
+\begin{proposition*}
+	For any group $G$ and $N\unlhd G$, there exists a normal covering space $\oX\to X$ with $\pi_1(X)\cong G$, $\pi_1(\oX)\cong N$ and $\aut(\oX/X)\cong G/N$.
+\end{proposition*}
+\begin{proof}
+We let $G=\langle g_\alpha \;\mid \;r_\beta \rangle$ with generators $g_\alpha$ indexed over $A$ and relations $r_\beta$ indexed over $B$. We then recall Hatcher's construction of a space $X_G$ with $\pi_1(X_G,x_0)=G$: we let $Y=\left(\bigwedge_{\alpha\in A} S^1\right) \sqcup \left(\bigsqcup_{\beta\in B} D^2\right)$, and define an equivalence relation $\sim$ wich associates the boundary of the copy of $D^2$ indexed by $\beta$ to the copies of $S^1$ associated to the letters in the word $r_\beta$. Then, $X:=Y/\sim$ fulfills the desired property, and the universal cover $\hX$ of $X$ has $\aut(\hX/X)=G$. Our argument for question 1 then ensures the existence of $\oX$ and gives its fundamental group and $\aut(\oX/X)$.
+\end{proof}
+\prob{3}	We let $C_\bullet $ and $D_\bullet$ be chain complexes and $f,g,h:C_\bullet\to D_{\bullet}$ chain maps. If there exists a homotopy map $P:C_n\to D_{n+1}$ such that $P\del+\del P=f-g$, we say $f\sim g$.
+\begin{proposition*}
+	Chain homotopy ($\sim$) is an equivalence relation.
+\end{proposition*}
+
+
+\begin{proof}	
+	\emph{Reflexivity:} We wish to show $f\sim f$. We let $P:C_n\to D_{n+1}$ be the $0$ map. Then, $P\del+\del P=0=f-f$, so $f\sim f$.
+	
+	\emph{Symmetry} We suppose $f\sim g$ and let $P:C_n\to D_n$ be a chain homotopy between them. We let $P'=-P$ and then have that $P'\del+\del P'=-(P\del +\del P)=-(f-g)=g-f$ so $g\sim f$. 
+	
+	\emph{Transitivity} We suppose $f\sim g$ and $g\sim h$. We let $P_i$ be such that $P_1\del+\del P_1=f-g$ and $P_2\del +\del P_2=g-h$. We let $P=P_1+P_2$ and then have that $P\del+\del P=(P_1+P_2)\del+\del (P_1+P_2)=(P_1\del +\del P_1) +(P_2\del +\del P_2) =(f-g)+(g-h)=f-h$ so $f\sim h$.
+\end{proof}
+\prob{4}
+\begin{proposition*}
+We suppose $A\subset X$ with inclusion map $\iota:A\to X$ and that $X$ retracts onto $A$. Then, $\iota_*:H_*(A)\to H_*(X)$ is an injection. 
+\end{proposition*}
+
+\begin{proof} We suppose
+	$X$ retracts onto $A$ via the map $\tau$, i.e. $\tau:X\to A$ is such that $\tau\circ \iota=\id_A$. We recall that $H_*(-)$ is \emph{functorial,} that is, it preserves composition and the identity map. Thus, $\id_{H_*(A)}=H_*(\id_A)=H_*(\tau\circ \iota)=\tau_*\circ \iota_*$. We recall the following category-theoretic fact with obvious proof: if $\phi\in \hom(A,B)$, $\psi\in \hom(B,C)$ and $\psi\circ \phi$ is an isomorphism, then $\phi$ is a monomorphism and $\psi$ is an epimorphism. Hence, $\iota_*$ is an injection, and though we have already completed our proof, we may as well note that $\tau_*$ is surjective. 
+\end{proof}
+\prob{5} \begin{prompt*}
+	Let $A$ be a finitely generated Abelian group. Construct a chain complex $C_\bullet$ such that $H_0(C_\bullet)=A$ but $H_i(C_\bullet)=0$ for $i\neq 0$.
+\end{prompt*}
+\begin{proof}[Response]
+	By the structure theorem for Abelian groups, $A=\bigoplus_{k=1}^n \ZZ/{m_k}$ for some $m_k\geq 0$. We let $N=\langle (0,\hdots,m_k,\hdots,0)\;\mid\; k\in [n] \rangle $, so that $A=\ZZ^n/N$. Then, we claim that the following chain complex fulfils the desired properties: we let \begin{equation}
+		C_i=\begin{cases}
+			N     & i=1              \\
+			\ZZ^n & i=0              \\
+			0     & \text{otherwise}
+		\end{cases}
+	\end{equation}
+Now,  we have that $\del_1$ is injective (the inclusion $N\to \ZZ^n$), so $H_1(C_*)=0/0=0$. $\im \del_1=N$ and $\ker \del_0=\ZZ^n$ as $\im\del_0=0$. Thus, $H_0(C_*)=\ZZ^n/N=A$. For all other $i$, we have that $C_i=0$ so $\del_i$ is the $0$ map and hence $H_i(C_*)=0$. 
+\end{proof}
+
+\end{document}

@@ -1,0 +1,302 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{relsize}
+
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\restr}[2]{\evat{#1}{#2}{}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newtheorem{claim}{Claim}
+%\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{6 November 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH 8301 Homework VIII}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8301}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\cbal}{\overline{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\intr}{\mathrm{int}}
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\vect}{\mathrm{Vect}}
+\newcommand{\Top}{\mathrm{Top}}
+\renewcommand{\top}{\Top}
+\newcommand{\hTop}{\mathrm{hTop}}
+\newcommand{\set}{\mathrm{Set}}
+\newcommand{\frp}{\mathop{\large {\mathlarger{\star}}}}
+\newcommand{\ondt}{1_{\cdot}}
+\newcommand{\onst}{1_{\star}}
+\newcommand{\bdy}{\partial}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\re}{\mathrm{re}}
+\newcommand{\oX}{\overline{X}}
+\begin{document}
+	\maketitle
+	\emph{Collaborators: Esther Bannian, Ryan Coopergard, Sarah Brauner}
+	\prob{1}We let $z_1,\hdots,z_n\in \CC$ be pairwise distinct and let $f(z)=(z-z_1)\hdots(z-z_n)$. We let $Y$ be the hyperelliptic curve associated to $f$. We let $p':Y\to \CC$ be defined by $(z,w)\mapsto z$. We let $X=\CC\setminus \{z_1,\hdots,z_n\}$ and let $\overline{X}:=Y\setminus p^{-1}(\{z_1,\hdots,z_n\})$. We let $p:\overline{X}\to X$ be the restriction of $p'$ to $\oX$.   \prt{1} \begin{proposition}
+		$p$ is a covering map of $X$ relative to the open cover $R_\pm:=\{z\in X\;:\; \pm\re({f(z)})>0\}$ with $I_\pm$ defined analogously, replacing $\re$ with $\im$.
+	\end{proposition}
+\begin{proof}
+	We first note that $\{R_+,R_-,I_+,I_-\}$ is indeed an open cover as removing $p^{-1}(z_i)$ removed all points with $\re(f(z))=\im(f(z))=0$. Then, $p^{-1}(R_+)=\{(z,w)\in \oX\;:\; \frac{-\pi}{4}<\arg(w)<\frac{\pi}{4}\}\sqcup \{(z,w)\in \oX\;:\; \frac{3\pi}{4}<\arg(w)<\frac{5\pi}{4}\}$. Then, restricting to one of the two sets in disjoint union, it is clear that $p$ is bijective as each of $(z,\sqrt{f(z)})$ $(z,-\sqrt{f(z)})$ is in a different component having fixed a branch of the square root function. Furthermore, as the square root function is continuous once a branch is chosen, $z\mapsto (z,\pm\sqrt{z})$ is a continuous inverse to $p$ given compatible choices of component of $p^{-1}(R_+)$ and $\pm$. We give the components of the preimages of the other set of the open cover below; the arguments for $p$ restricting to a homeomorphism are identical.\footnote{For simplicity, my usage of $\arg$ is somewhat fast-and-loose\textemdash it should be totally clear what I mean and trivial to rephrase it totally correctly, but I just thought I should acknowledge that \emph{technically} what I'm doing is not quite well-defined. }
+	\begin{align*}
+		p^{-1}(R_-)&=\{(z,w)\in \oX\;:\; \frac{\pi}{4}<\arg(w)<\frac{3\pi}{4}\}\sqcup \{(z,w)\in \oX\;:\; \frac{5\pi}{4}<\arg(w)<\frac{7\pi}{4}\}\\
+		p^{-1}(I_+)&=\{(z,w)\in \oX\;:\; 0<\arg(w)<\frac{\pi}{2}\}\sqcup \{(z,w)\in \oX\;:\; \pi<\arg(w)<\frac{3\pi}{2}\}\\
+		p^{-1}(I_-)&=\{(z,w)\in \oX\;:\; \frac{\pi}{2}<\arg(w)<\pi\}\sqcup \{(z,w)\in \oX\;:\; \frac{3\pi}{2}<\arg(w)<2\pi\}\\
+	\end{align*}
+\end{proof}
+\prt{2}
+\begin{proposition*}
+	We let $\sigma:\oX\to\oX$ be given by $(z,w)\mapsto (z,-w)$. Then, $\sigma$ is a homeomorphism with the property $p\circ \sigma=p$
+\end{proposition*}
+\begin{proof}
+	Trivial.
+\end{proof}
+\begin{proof}[Okay, fine]
+	We note that $\sigma$ is clearly bijective, as $p^{-1}(z)$ consists of two points $(z,w)$ and $(z,-w)$ where $w=\sqrt{f(z)}$ given some choice of branch of square root function, and $\sigma$ acts on $\oX$ by permuting these. Furthermore, $\sigma^2(z,w)=(z,w)$, so $\sigma$ is idempotent and hence a homeomorphism. The other statement of the proposition comes about as a byproduct of our observation that $\sigma$ permutes elements of $p^{-1}(z)$ for all $z\in X$. 
+\end{proof}
+\prt{3}\begin{proposition*}
+	$\sigma$ and the identity are the only automorphisms of $p$.
+\end{proposition*}
+\begin{proof} We suppose for the sake of contradiction that some third automorphsim $\tau$ exists which is distinct from $\sigma$ and $\id$. 
+	We recall from our previous argument that as $\#p^{-1}(z)=2$ for all $z\in X$, we have that either $\restr{\tau}{\{y\}}=\restr{\sigma}{\{y\}}$ or $\restr{\tau}{\{y\}}=\restr{\id}{\{y\}}$ for each $y\in \oX$. As $\tau$ is distinct from $\sigma$ and $\id$, we must have that both cases are realized for some $y_1,y_2$ in $\oX$ respectively\textemdash in particular, we choose $y_1$ such that $\restr{\tau}{\{y_1\}}=\restr{\id}{\{y_1\}}$. We relabel $R_\pm$ $I_\pm$ to $U_1,U_2,U_3,U_4$ such that $p(y_1)\in U_1$ and $U_i\cap U_{i+1}\neq \emptyset$ where subscripts are taken mod 4. We now break into two cases:
+	
+	\emph{Case 1 ($p(y_2)\in U_1$):} We note that if $\tau(y_2)=\sigma(y_2)$, then $\tau(\sigma(y_2))=y_2$ as otherwise $\tau$ is not a homeomorphism. As such, we may assume that $y_2$ is in the same connected component $W$ of $p^{-1}(U_1)$ as $y_1$. We then let $\gamma:I\to W$ be a path between $y_1$ and $y_2$. Then, $\tau\circ \gamma$ is the composition of continuous functions and hence continuous. However, $\tau\circ\gamma(0)$ and $\tau\circ \gamma (1)$ are in different connected components of the target $p^{-1}(U_1)$ and hence $\tau\circ \gamma$ does not have connected image, contradicting our assumptions and establishing the case.
+	
+	\emph{Case 2: $p(y_2)\notin U_1$} We label the maximal connected components of the sets $p^{-1}(U_i)$ $W_1,\hdots,W_8$, again such that $W_i\cap W_j\neq \emptyset$ and ($W_i=W_j\iff i=j$) where subscripts are taken mod 8. We let $y_1\in W_1$ and let $k$ be such that $y_2\in W_k$. We then let $x_0=y_1$, $x_k=y_2$ and $x_i\in W_i\cap W_{i+1}$ for $0<  i <k$. We let $\gamma_i:I\to W_i$ be a path between $x_{i-1}$ and $x_i$. Then, at least one of the paths $\gamma_i$ falls into the situation of case 1.
+\end{proof}\prt{4}\begin{prompt*}
+For $z_1=0,z_2=2$ and $x_0=1$, compute $p^{-1}(x_0)$. 
+\end{prompt*}
+\begin{proof}[Response]
+We note that $f(x_0)=-1$. Then, $p^{-1}(x_0)=\{(1,i),(1,-i)\}$.
+\end{proof}
+\prt{5}\begin{prompt*}
+	$f$ may be seen as the action of an element of $S_{p^{-1}(x_0)}$. Compute that permutation.
+\end{prompt*}
+\begin{proof}
+	As $f$ is a non-trivial permutation on a two-element set, it must be the unique possibility: that corresponding to $(12)$ in the group isomorphism $S_2\to S_{p^{-1}(x_0)}$.
+\end{proof}
+\prt{6} \begin{prompt*}
+Let $\gamma:I\to X$ based at $x_0$ be given by $t\mapsto e^{2\pi i t}$. Find the two lifts of this path.
+\end{prompt*}
+\begin{proof}[Response]
+	We fix the branch of the square root function which returns values in the upper half-plane and returns postive real values given positive real input. Then, we claim our two lifts are
+	\begin{equation*}
+		L_\pm(t)=\begin{cases}
+\left	(e^{2i\pi t}, \pm\sqrt{f(e^{2i\pi t})}\right) &t<\frac{1}{2}\\
+\left	(e^{2i\pi t}, \mp\sqrt{f(e^{2i\pi t})}\right)&t\geq \frac{1}{2}
+		\end{cases}
+	\end{equation*}
+Where $L_+$ is the path which lifts $\gamma(0)$ to $(1,i)$ and $L_-$ is the path which lifts $\gamma(0)$ to $(1,-i)$. Indeed, to check our answer, we note that having chosen $L_\pm(0)$, we have chosen a pre-image of $R_-$ which our path starts in. Then, when first $\re(f(\gamma(t)))=0$ at $t_0\approx .309$, we see that $f(\gamma(t_0))\approx -2.542i$, so we must have that $L_\pm(t_0)$ is in the component of $p^{-1}(I_-)$ intersecting with the already-determined pre-image component of $R_-$\textemdash that is, the one residing to the same side of $\im(z)=0$ as our lifted basepoint. Then, when next $\im(f(\gamma(t)))=0$ at $t=.5$, we have that $f(\gamma(.5))=3$, so we must have that $L_\pm(.5)$ is in the component of $p^{-1}(R_+)$ intersecting with the previously-determined component of $p^{-1}(I_-)$. Then, for any $t\geq \frac{1}{2}$, we have that $\im(f(z))>1$, so our lifted path must reside in the component of $p^{-1}(I_+)$ which intersects with our previous component of $p^{-1}(R_+)$--indeed, at this point we pass from the upper to the lower half plane or vice versa in the $w$-coordinate, hence the piecewise function given. That we remain in our choice of $p^{-1}(I_+)$ for $t\in(.5,1)$ shows that we remain in that half plane for $t\in (.5,1]$ \end{proof}\begin{remark}
+	After having written that, I feel completely dirty and deeply ashamed.
+\end{remark}
+\prt{7}\begin{prompt*}
+	Compute the permutation $\tilde\sigma\mapsto \gamma_x(1)$ on $p^{-1}(x_0)$
+\end{prompt*}
+\begin{proof}[Response]
+	We see immediately from our formula that $\tilde\sigma:x\mapsto-x$. Hence, $\tilde\sigma$ coincides with $\sigma$ from earlier!
+\end{proof}
+
+	\prob{2} \begin{proposition*}
+		We let $L_1,\hdots,L_n$ be $n>0$ lines through the origin in $\RR^3$ and let $X=\RR^3\setminus \displaystyle\bigcup_{i=1}^nL_i$. Then, for any $*\in X$, $\pi_1(X,*)=F_{N}$, the free group on $N:=2n-1$ elements.
+	\end{proposition*}
+\begin{proof}
+	We note that as $n>0$, $\vec{0}\not \in X\subset \RR^3$. Hence, we may restrict the standard homotopy equivalence projection to the unit sphere $\RR^3\setminus \{\vec{0}\}\to \S^2$ to $X$. We then have that $X$ is homotopic to $X'=\S^2\setminus \left(S^2\displaystyle\bigcup_{i=1}^nL_i\right)$. We note that any line through the origin has precisely two points of norm one, and hence we have that $\#S^2\setminus X'=2n$. We choose some point $z\in \#S^2\setminus X'$ and recall the stereography homeomorphism $S^2\setminus \{z\}\to D^2$. Restricting that homeomorphism to $X'$, we now have that $X'\approxeq \intr D^2\setminus\{z_1,\hdots,z_{2n-1}\}$ where each $z_i,z_j$ are pairwise distinct and identify $X'$ with that space. We note that if $n=1$, $X'$ then deformation-retracts to $S^1$, which has fundamental group $\ZZ=F_{N}$. We then proceed by strong induction for $n>1$. We fix some sufficiently small epsilon so that we may use the finiteness of the $z_i$'s to find some $-1<y_0<1$ such that $d(y_0,\pi_y(z_i)\})>$ where $\pi_y$ is the projection map to the $y$-axis on $D^2$ and there exists some $z_i,z_j$ such that $\pi_y(z_i)<y_0<\pi_y(z_j)$. We then let $U_1=\{(x,y)\in \intr D^2\;:\;y<y_0+\epsilon\}$ and $U_2=\{(x,y)\in \intr D^2\;:\;y>y_0-\epsilon\}$. Then, $\{U_1,U_2\}$ is an open cover of $X'$ with both components path-connected and with simply-connected intersection, so letting $*\in U_1\cap U_2$, we have $\pi_1(X,*)\cong \pi_1(U_1,*)\frp \pi_1(U_2,*)$. We note that our sets $U_i$ are both homeomorphic to $\intr D^2$ with some $0<m_i<N$ points deleted, so by strong induction our claim is proven. 
+\end{proof}
+
+\prob{3} \begin{proposition*}
+	We let $Z=X*Y:=X\times Y\times I/\sim$ where $(x,y,0)\sim (x',y,0)$ and $(x,y,1)\sim(x,y',1)$ for any $x,x'\in X$ and $y,y'\in Y$. Then, $Z$ is simply-connected.
+\end{proposition*}
+\begin{proof} 
+	We begin by considering the case that $Y$ is path-connected. We let $U=\{[(x,y,t)]\in Z\;:\;t<.6\}$ and $V=\{[(x,y,t)]\in Z\;:\;t>.4\}$. We note that as $U\cong \mathrm{cone}(X)\times Y$ and  $V\cong X\times \mathrm{cone}(Y)$, both $U$ and $V$ are path-connected, and as the functor $\pi_1(-,*)$ respects products and cones are simply-connected, we have that $\pi_1(U,*)\cong \pi_1(Y,*)$ and $\pi_1(V,*)\cong \pi_1(X,*)$. We note that the intersection $U\cap V=\{[(x,y,t)]\in Z\;:\;.4<t<.6\}$ is the product of three path connected spaces and deformation-retracts to $X\times Y$. Hence, $\pi_1(U\cap V,*)\cong\pi_1(X,*)\times \pi_1(Y,*)$ and we identify the two groups as such with the maps to $U$ and $V$ by inclusion inducing the projection maps $\rho_V:([\gamma],[\zeta])\mapsto [\gamma]\in \pi_1(V,*)\cong \pi_1(X,*))$ and $\rho_U:([\gamma],[\zeta])\mapsto [\zeta]\in \pi_1(U,*)\cong \pi_1(Y,*))$. Then, by Seifert-von Kampen, we have that $\pi_1(Z,*)=\pi_1(U,*)\frp_{\pi_1(U\cap V,*)} \pi_1(V,*)\cong \pi_1(Y,*)\frp_{\pi_1(X\times Y,*)}\pi_1(X,*)$. We claim that this is indeed the trivial group; indeed, we let $[\zeta]\in \pi_1(Y,*)$. Then, $[\zeta]=\rho_U([\zeta],[1])$, and as $\rho_V([\zeta],[1])=[1]$, we have that in $\pi_1(Z,*)$, $[\zeta]=\rho_U([\zeta],[1])\rho_V([\zeta],[1])^{-1}=[1]$, with a similar statement holding for any $[\gamma]\in \pi_1(X,*)$. Thus, as each of the generators of $\pi_1(Z,*)$ are the identity, we are left with the trivial group.
+	
+	We now move on to the case that $Y$ is not necessarily path-connected. We let $Y=\bigsqcup_{i\in I}Y_i$ over some indexing set $I$ where the subspaces $Y_i$ are the distinct maximally path-connected components of $Y$. We let $U_i\subset Y_i$ be some open contractible\footnote{I don't know how to make this proof work without the assumption some subset exists, but $Y$ would have to be such a deeply pathological space for it not to hold that I don't feel all that guilty about it.} subset of $Y_i$. We then let $V=\left(\bigcup_{i}U_i\right)\times X\times (.9,1]/~$ and let $Z_i=V\cup\left(Y_i\times X\times I\right)/~$.  We note that each of $V,Z_i$ are open under the product topology, that they form an open cover, and they have intersection $V$ which is homeomorphic to $\mathrm{cone}\left(\bigcup_{i}U_i\right)\times X$ and hence path-connected with fundamental group $\pi_1(V,*)\cong \pi_1(X,*)$. Furthermore, we note that each $Z_i$ deformation retracts to $\left(Y_i\times X\times I\right)/~$ as $V$ is contractible by construction, and hence each $Z_i$ falls into the case of the previous paragraph and has trivial fundamental group. Then, Seifert-von Kampen tells us that $\pi_1(Z,*)=\frp_{\pi_1(V,*)}\pi_1(Z_i,*)$ with the product ranging over $I$. As this is isomorphic to a quotient group of the free group of a number of copies of the trivial group, it is trivial, proving our proposition.
+\end{proof}
+
+\end{document}

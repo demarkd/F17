@@ -1,0 +1,411 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{relsize}
+\usepackage{tikz-cd}
+\usepackage{microtype}
+\usepackage{pstricks}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\restr}[2]{\evat{#1}{#2}{}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage[style=alphabetic,doi=false,isbn=false,url=false]{biblatex}
+\usepackage{dirtytalk}
+\bibliography{8301} 
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{response*}{Response}
+\newtheorem*{claim*}{Claim}
+\newtheorem{claim}{Claim}
+%\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{18 December 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage[disable]{todonotes}
+\title{MATH 8301 Take-home Exam}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8301}
+\cfoot{\thepage}
+
+\usepackage{etoolbox}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\cbal}{\overline{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\intr}{\mathrm{int}}
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\vect}{\mathrm{Vect}}
+\newcommand{\Top}{\mathrm{Top}}
+\renewcommand{\top}{\Top}
+\newcommand{\hTop}{\mathrm{hTop}}
+\newcommand{\set}{\mathrm{Set}}
+\newcommand{\frp}{\mathop{\large {\mathlarger{*}}}}
+\newcommand{\ondt}{1_{\cdot}}
+\newcommand{\onst}{1_{\star}}
+\newcommand{\bdy}{\partial}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\re}{\mathrm{re}}
+\newcommand{\oX}{\overline{X}}
+\newcommand{\ox}{\overline{x}}
+\newcommand{\tX}{\tilde{X}}
+\newcommand{\tx}{\tilde{x}}
+\newcommand{\tH}{\tilde{H}}
+\newcommand{\hX}{\hat{X}}
+\newcommand{\hx}{\hat{x}}
+\newcommand{\aut}{\mathrm{Aut}}
+\newcommand{\del}{\partial}
+\newcommand{\idl}[1]{\left\langle #1 \right \rangle}
+\newcommand{\mo}{M\"obius~}
+\newcommand{\RRP}{\RR P}
+\newcommand{\bB}{\overline{B}}
+\tikzset{
+	labl/.style={anchor=south, rotate=90, inner sep=.5mm}
+}
+\begin{document}
+\maketitle
+\prob{1}\prt{1} $X$ is a (connected, locally path-connected, semilocally simply connected) space which has for any $x_0\in X$, $\pi_1(X,x_0)=S_3$.
+\begin{prop*}
+	There are six based isomorphism classes and four [non-based] isomorphism classes of covering spaces for $X$. 
+\end{prop*}
+\begin{proof}
+	By \cite[Theorem 1.38]{at}, we have that there is a bijection between based isomorphism classes of covering spaces for $X$ and subgroups of $S_3$ and a bijection between baseless isomorphism classes of covers and conjugacy classes of subgroups. We note that by Lagrange's theorem, the possible sizes of proper subgroups are $2$ and $3$ and any such subgroup must be cyclic as it is of prime order. Each of the transpositions $(ij)$ generates a unique two element subgroup (accounting for three), and the three-cycle $(123)$ generates a three-element cyclic subgroup containing all elements of order 3. These four subgroups form an irredunant list of all cyclic subgroups of $S_3$ and hence are all of the proper subgroups. We note that $(ij)(jk)(ij)=(ik)$, showing that the three two-element subgroups are a single orbit under conjugation, while the three-element subgroup is the unique subgroup of its order and is hence fixed under conjugation. This establishes that there are four proper subgroups and two conjugacy classes of proper subgroups of $S_3$; including the trivial subgroups $\{(1)\}$ (corresponding to the identity cover) and $S_3$ (corresponding to the universal cover) then completes the list. 
+\end{proof}
+\prt{2}
+\begin{prop*}
+	Of these, only the covering space corresponding to $\idl{(123)}$, the identity cover and the universal cover are normal. 
+\end{prop*}
+\begin{proof}
+By \cite[Proposition 1.39]{at}, a covering space $p:\tX\to X$ is normal if and only if $p_*:\pi_1(\tX,\tx_0)to \pi_1(X,x_0)$ has normal image. As Theorem 1.38 associates covering spaces to subgroups by $p_*(\pi_1(\tX,\tx_0))$, we have that a covering space is normal if and only if the subgroup representing it in part a is normal in $S_3$. As the two-element subgroups share a conjugacy class they are not normal, leaving $\idl{(123)},\idl{(1)}$ and $S_3$ as the only normal subgroups of $S_3$. \end{proof}
+\prob{2}
+We let $M$ be the \mo strip $[0,1]^2/\sim$ where $(0,s)\sim (1,1-s)$ for each $s\in [0,1]$.
+\begin{prop*}
+	\begin{enumerate}[label=\textit{(i)}]
+		\item $\pi_1(M,x_0)\cong \ZZ$.
+		\item $\pi_1(\del M,x_0)\cong \ZZ$. 
+	\end{enumerate}
+\end{prop*}
+\begin{proof}
+	\begin{enumerate}[label=\textit{(i)}]
+	\item	Note that the subspace $A= [0,1]\times\{1/2\}$ is homeomorphic to $S^1$ (as its preimage under the quotient map $q:[0,1]^2\to M$ is homeomorphic to $[0,1]$ and $q$ simply glues $0$ and $1$). We l\tikzset{
+		labl/.style={anchor=south, rotate=90, inner sep=.5mm}
+	}et $\hat{A}=q^{-1}(A)$ and construct a deformation retract $H:([0,1]^2)\times [0,1]\to [0,1]^2$ deforming $[0,1]^2$ onto $A$; we shall then show that $H_r(0,s)\sim H_r(1,1-s)$ for all $r,s$, thus inducing a well-defined deformation retract $\tilde{H}:M\times [0,1]\to M$ deforming $M$ onto $A$.
+	
+	We let $$H_r(t,s)=(t,(1-r)s+\frac{r}{2}).$$
+	As $[0,1]^2$ is concave, we have that $H_r(t,s)\in [0,1]^2$, and as each coordinate function of $H$ is a polynomial, we have that $H$ is continuous. We also see that $\restr{H_r}{\hat{A}}=\id_{\hat{A}}$ as $H_r(t,1/2)=(t,(1-r)/2+r/2)=(t,1/2)$. Thus, $H$ is indeed a deformation retract onto $\hat{A}$. Finally, we note \begin{align*}H_r(1,1-s)&=\left(1,(1-r)(1-s)+\frac{r}{2}\right)\\&=\left(1,1-r-s+sr+\frac{r}{2}\right)
+	\\&=\left(1,1-(s(1-r)+\frac{r}{2})\right)\sim H_r(0,s)\end{align*}
+	\end{enumerate}
+We thus have a deformation retract $\tilde{H}$ of $M$ onto $A$. Thus, $\pi_1(M,x_0)=\pi_1(A,a_0)\cong\ZZ$ for some $a_0\in A$. 
+
+\item We note that $q^{-1}(\del M)=I\sqcup \hat{I}$ where $I\cong \hat{I}\cong [0,1]$. Then, restricting $\sim$ to $q^{-1})(\del M)$, we have that (for endpoints $0,1\in I$ and $\hat{0},\hat{1}\in \del I$), $0\sim \hat{1}$ and $1\sim \hat{0}$. Thus, $q(I\sqcup \hat{I})=\del M\cong S^1$, so $\pi_1(\del M,x_0)\cong \ZZ$.
+\end{proof}
+\prt{2}
+\begin{prop*}
+	The map $i_*:\pi_1(\del M,x_0)\to \pi_1(M,x_0)$ is (when each is identified with $\ZZ$) the multiplication-by-two map $n\mapsto 2n$. 
+\end{prop*}
+\begin{proof}
+	We consider the restriction $\restr{H_1}{\del M}$ and note that it is two-to-one; as $H_1$ is a homotopy equivalence, we have that $(H_1\circ i)_*=i_*$. Furthermore, identifying $I$ with $[0,1/2]$ and $\hat{I}$ with $[1/2,1]$ so that $\del M$ is identified with $[0,1]/(0\sim 1)$, we have that $H_1([0,1/2])=A$, which generates $\pi_1(M,x_0)$ and $H_1(t)=H_1(t+1/2\mod 1)$. Thus, viewing $A$ as a loop, we have that $(H_1\circ i)_*(\gamma)=2A$ where $\gamma$ is a loop in $\pi_1(\del M,x_0)$. As $(H_1\circ i)_*=i_*$ maps a generator of $ \pi_1(\del M,x_0)\cong \ZZ$ to twice a generator of $\pi_1(M,x_0)\cong \ZZ$, we have that $i_*$ is indeed the multiplication-by-two map.
+\end{proof}
+\prt{3}
+\begin{prop*}
+	There is no retraction $r:M\to \del M$.
+\end{prop*}
+
+\begin{proof}~\begin{quote}
+		Before functoriality, people lived in caves. \newline\indent -Brian Conrad
+	\end{quote}
+	We suppose for the sake of contradiction such a retraction $r$ exists. Then $r\circ i=\id_{\del M}$ so $(r\circ i)_*=r_*\circ i_*=\id_{\pi_1(\del M,x_0)}$. We let $\gamma$ generate $\pi_1(\del M,x_0)$, as in the previous part. Then, $(r\circ i)_*(\gamma)=r_*(2A)=2r_*(A)=\gamma$, but this is an absurdity as there is no element $\beta$ of $\pi_1(\del M,x_0)=\idl{\gamma}\cong \ZZ$ such that $2\beta=\gamma$; thus no such $r_*(A)$ can exist.
+\end{proof}
+\prob{3}
+\prt{1}
+\begin{prop*}
+	If $X$ is an $n$-manifold, then for any $x\in X$ \begin{equation*}
+		H_k(X,X\setminus \{x\})\cong\begin{cases}
+		0 & k\neq n\\ \ZZ& k=n
+		\end{cases}
+	\end{equation*}
+\end{prop*}
+\begin{proof}
+	We let $B$ be some open neighborhood around $x$ homeomorphic to $D^n$, and let $\bB$ be its closure. We let $U=X\setminus \bB$ and have that its closure $\overline{U}=X\setminus B\subset X\setminus \{x\}$. Thus, we may apply excision and have that $H_k(X,X\setminus \{x\})=H_k\left(X\setminus (X\setminus \bB),(X\setminus \{x\})\setminus (X\setminus \bB)\right)=H_k(\bB,\bB\setminus \{x\})$. We identify $\bB$ with $D^n$ and $x$ with $0\in D^n$. We note that $D^n\setminus 0\simeq S^{n-1}$ via the deformation retraction $y\mapsto \frac{y}{\norm{y}}$, as is standard. Hence, \begin{equation*}H_k(X,X\setminus \{x\})\cong H_k(D^n,S^{n-1})\cong \begin{cases}
+	\ZZ&k=n\\
+	0&k\neq n
+	\end{cases}\end{equation*} with this final system of isomorphisms coming from \cite[Example 2.17]{at}.
+\end{proof}
+\prt{2}
+\begin{prop*}
+	We let $X=\{(x,y,z)\;:\; xy=yz=xz=0\}$. Then, $X$ is not a homology manifold.
+\end{prop*}
+\begin{proof}
+We let $x=(0,0,0)$.	We let $\hX=X\cap D^3$ and note that $\overline{(X\setminus \hX)}\subset X\setminus \{x\}$. We may then use excision to write $H_k(X,X\setminus \{x\})=H_k(\hX,\hX\setminus \{x\})$. We note that $\hX\setminus \{x\}\subset D^3\setminus \{x\}$ and hence we may restrict the deformation retraction $y\mapsto \frac{y}{\norm{y}}$ to $\hX\setminus \{x\}$ to see that $\hX\setminus \{x\}\simeq \hX\cap S^2$, that is, a set consisting of six points. We then have by homotopy invariance as well as \cite[Proposition 2.6]{at} that \begin{equation*}
+	H_k(\hX\setminus \{x\})\cong\begin{cases}
+\ZZ^6&k=0\\
+0&k>0.
+	\end{cases}
+\end{equation*}
+We then apply \cite[Theorem 2.16 and material following]{at} to yield the long exact sequence
+\begin{equation}\begin{tikzcd}[column sep=scriptsize]
+\dots \arrow[r,"\del"]&H_k(\hX\setminus \{x\})\arrow[r,"i_*"]&H_k(\hX)\arrow[r,"j_*"]&H_k(\hX,\hX\setminus \{x\})\arrow[r,"\del"]&H_{k-1}(\hX\setminus \{x\})\arrow[r,"i_*"]&\dots\label{les3b1}
+\end{tikzcd}
+\end{equation}
+We note that $\hX$ is path-connected, and hence $H_0(\hX)\cong\ZZ$.
+Thus, when $k=1$, the end of the sequence \eqref{les3b1} is isomorphic to that of \eqref{les3b2}:
+\begin{equation}\begin{tikzcd}[column sep=scriptsize]
+\dots \arrow[r,"\del"]&0 \arrow[r,"i_*"]&H_1(\hX)\arrow[r,"j_*"]&H_1(\hX,\hX\setminus \{x\})\arrow[r,"\del"]&\ZZ^6\arrow[r,"i_*"]&\ZZ\arrow[r,"j_*"]&H_0(\hX,\hX\setminus \{x\})\arrow[r]&0\label{les3b2}
+\end{tikzcd}
+\end{equation}
+We suppose for the sake of contradiction that $X$ is a homology manifold; then, in particular, $H_1(\hX,\hX\setminus \{x\})$ has rank as a $\ZZ$-module at most 1. We claim that any map $\phi:\ZZ^6\to \ZZ$ has kernel of rank at least 2. Indeed, we let $z_1,\hdots,z_6$ generate $\ZZ^6$ and suppose each of $\phi(z_1),\dots,\phi(z_5)$ is non-zero (if it is the case that there are two $z_i$ such that $\phi(z_i)=0$, then our claim is already shown). Then, $\phi(z_i)z_j-\phi(z_j)z_i\in \ker \phi$ for any $i,j$, and indeed $\phi(z_2)z_1-\phi(z_1)z_2$ and $\phi(z_4)z_3-\phi(z_3)z_4$ generate a rank two subgroup of the kernel. Thus we have by exactness that $\im (\del:H_1(\hX,\hX\setminus \{x\})\to \ZZ^6)$ has rank at least two, contradicting our assumption that $H_1(\hX,\hX\setminus \{x\})$ has rank at most one.
+\end{proof}\prt{3}
+\begin{prop*}
+	We let $CX=X\times I/X\times \{0\}$ be the cone on $X$ with cone point $c=[X\times \{0\}]$. Then, $$H_k(CX,CX\setminus \{c\})\cong \tH_{k-1}(X).$$ for all $k$.
+\end{prop*}
+\begin{proof}
+	We let $q:X\times I\to CX$ be the quotient map and note that for all $x\in CX\setminus \{c\}$, $q^{-1}(x)$ is a singleton set. Thus, $CX\setminus \{c\}\cong X\times (0,1]$, which has a deformation retract to $X\times \{1\}$ via the homotopy $H:(X\times (0,1])\times I\to X\times (0,1]$ given by $H_s((x,t))=(x,(1-s)t+s)$. Thus, $CX\setminus \{c\}\simeq X$. We note as well that $CX$ is contractible via the homotopy $J:CX\times I\to CX$ given by $J_s([x,t])=[x,(1-s)t]$. Hence, $CX\simeq *$, the one-point space. We then apply the long exact sequence modified from \cite[Theorem 2.16 and material following]{at} as given in lecture on Friday, 8 December 2017 to yield
+	\begin{equation}\begin{tikzcd}[column sep=scriptsize]
+	\dots \arrow[r,"\del"]&\tH_k(CX\setminus \{c\}) \arrow[r,"i_*"]&\tH_k(CX)\arrow[r,"j_*"]&H_k(CX,CX\setminus \{c\})\arrow[r,"\del"]&\tH_{k-1}(CX\setminus \{c\})\arrow[r,"i_*"]&\tH_{k-1}(CX)\arrow[r,"j_*"]&\dots\label{les3c1}
+	\end{tikzcd}
+	\end{equation}
+	In particular, applying the homotopy equivalences of the first paragraph and recalling that $\tH_k(*)=0$ for all $k$, we have that the sequence of \eqref{les3c1} breaks into short exact sequences
+	\begin{equation}
+		\begin{tikzcd}[]
+		\tH_k(CX)\arrow[r,"j_*"]\arrow[d,"\sim" labl, leftrightarrow]&H_k(CX,CX\setminus \{c\})\arrow[r,"\del"]\arrow[d,"\sim" labl, leftrightarrow]&\tH_{k-1}(CX\setminus \{c\})\arrow[r,"i_*"]\arrow[d,"=" labl, leftrightarrow]&\tH_{k-1}(CX)\arrow[d,"\sim" labl, leftrightarrow]\label{les3c2}\\
+		0\arrow[r]&H_k(CX,CX\setminus \{c\})\arrow[r]&\tH_{k-1}(X)\arrow[r]&0
+		\end{tikzcd}
+	\end{equation}
+	As any exact sequence $0\to A\to B\to 0$ must have $A\cong B$, we have completed our proof.
+\end{proof}
+\prt{4}
+\begin{prop}
+$C(S^1\vee S^1)$ is not a homology manifold.
+\end{prop}
+\begin{proof}
+	By the previous part and the definition of homology manifold, it suffices to show that there exists some $k$ such that $\tH_k(S^1\vee S^1)\centernot\cong 0,\ZZ$. We let $X=S^1$ with coordinates inherited from the unit circle of the complex plane $\CC$, and let $A\subset X$ be the subset $\{1,-1\}$. Then $X/A\cong S^1\vee S^1$. We claim $A$ is a neighborhood deformation retract of $S^1$. We let $U=\{e^{i(k\pi +r)}\;:\; k\in {0,1},\,r\in (-.1,.1) \}\subset X$. Then, as the disjoint union of two open subsets of $X$, we have that $U$ is an open neighborhood of $X$, and we have that $U\simeq A$ by letting $\tH$ be the contraction of $(-.1,1)\subset R$ to $0$, and letting $H$ be the composite of this and the exponential map (shifted by $i\pi$ when necessary). Thus, we have by \cite[Theorem 2.13]{at} the long exact sequence \eqref{les3d1}
+	\begin{equation}\begin{tikzcd}[column sep=scriptsize]
+	\label{les3d1} \dots \arrow[r,"\del"]&\tH_k(A)\arrow[r,"i_*"]&\tH_k(X)\arrow[r,"j_*"]&\tH_k(X/A) \arrow[r,"\del"]&\tH_{k-1}(A)\arrow[r,"i_*"]&\dots
+	\end{tikzcd}
+	\end{equation}
+	We note that as $A$ is a discrete two-point space \begin{equation*}
+		\tH_k(A)\cong=\begin{cases}
+		\ZZ&k=0\\
+		0&k>0.
+		\end{cases}
+	\end{equation*}
+	We recall as well that $\tH_1(X)=\ZZ$ and $\tH_0(X)=0$.  
+	We then have the exact sequences \eqref{les3d2}:\begin{equation}
+	\begin{tikzcd}[]
+	\tH_1(A)\arrow[r,"i_*"]\arrow[d,"\sim" labl, leftrightarrow]&\tH_1(X)\arrow[r,"j_*"]\arrow[d,"\sim" labl, leftrightarrow]&\tH_{1}(X/A)\arrow[r,"\del"]\arrow[d,"\sim" labl, leftrightarrow]&\tH_{0}(A)\arrow[d,"\sim" labl, leftrightarrow]\arrow[r,"i_*"]&\tH_0(X)\arrow[d,"\sim" labl, leftrightarrow]\label{les3d2}\\
+	0\arrow[r]&\ZZ\arrow[r]&\tH_{1}(S^1\vee S^1)\arrow[r]&\ZZ\arrow[r]&0
+	\end{tikzcd}
+	\end{equation}
+	We claim that any short exact sequence $0\to A\to B \to \ZZ\to 0$ splits; indeed, as the map $\alpha:B\to \ZZ$ is surjective, $\alpha^{-1}(1)$ is nonempty and therefore contains some element $a$. As $\ZZ$ is the free $\ZZ$-module on one generator, there exists a map $\ZZ\to B$ such that $1\mapsto a$. Thus, for any such sequence, we have necessarily that $B\cong A\oplus \ZZ$. We conclude that $\tH_1(S^1\vee S^1)\cong \ZZ\oplus \ZZ\notin \{0,\ZZ\}$ and thus $C(S^1\vee S^1)$ is not a homology manifold.
+\end{proof}\prob{4} We let $\zeta=e^{i\pi/n}$ be a primative $2n$th root of unity, and let $z_k=\zeta^k$. We let $P_n$ be the convex hull of the $z_k$s, and define the equivalence relation $$tz_k+(1-t)z_{k+1}\sim (1-t)z_{k+n}+tz_{k+n+1}.$$ We completely break the spirit of the question and answer it in the reverse order of parts. 
+\prt{2}
+\begin{prop}
+	\begin{equation*}P_n/\sim\cong\begin{cases}
+	(T^2)^{\#m} &n=2m\\
+	(T^2)^{\#m} &n=2m+1
+	\end{cases}\end{equation*}
+\end{prop}
+\begin{proof}
+We label by $s_i$ the side between $z_{i-1}$ and $z_i$. We then have that for each $k$, $s_k$ is identified with $s_{k+n}^{-1}$, as $z_{k+1}$ is immediately counterclockwise to $z_k$, while $z_{k+n}$ is immediately clockwise to $z_{k+n+1}$. Hence, the word giving the identification scheme on $P_n$ is given by the word $w=a_1a_2\hdots a_n a_1^{-1}a_2^{-1}\dots a_n^{-1}$. We note that as there is no symbol appearing twice in the same orientation in $w$, and thus $P_n/\sim$ is orientable. We let $v_1$ denote the vertex at the head of $a_1$ (i.e. $z_1$) and note that as it sits at the tail of $a_2$ via the subword of $w$ $a_1a_2$, $v_1$ is as well the tail of $z_2$. Then, by the subword $a_2^{-1}a_{3}^{-1}$, we have that $v_1$ is the head of $a_3$ (i.e. $z_3$). Iterating this process inductively,\footnote{or, if my use of induction is too sloppy for your tastes, by symmetry} we have that $z_{2k+1}\sim z_{2j+1}$ for all $0\leq j,k\leq n-1$. Similarly,\footnote{by the exact same argument or by the same symmetry argument\textemdash it is immediately clear from definitions that $P_n$ is invariant under the rotation subgroup of the dihedral group $D_{2n}$.} we have that $z_{2k}\sim z_{2j}$ for all $0\leq j,k\leq n-1$. In the case that $n=2m$, we have that $z_1\sim z_{2m-1}$, which is the tail of $a_m$. This is identified with the tail of $a_1$ (i.e. $z_0$) by the subword $a_m^{-1}a_1$, so indeed the \say{odd vertex} $z_1$ and the \say{even vertex} $z_0$ are one and the same. Then, $P_N/\sim$ has $n=2m$ edges $a_1,\dots,a_n$, one vertex and one face, so it has Euler characteristic $\chi(P_{2m}/\sim)=2-2m$. As $P_{2m}/\sim$ has been observed to be orientable, we have by the classification theorem that $P_{2m}\cong (T^2)^{\#m}$. 
+
+On the other hand, if $n=2m+1$, we have that $z_1\sim z_3\sim \hdots \sim z_{4m+1}$ and $z_2\sim z_4\sim \hdots \sim z_{4m+2}$, yielding no such luck in uniting the vertices. However, if we make cuts $c_0,\hdots, c_{2m}$ with $c_i$ between each $z_{2i-1}$ and $z_{2i+1}$, we yield the polygon $c_0,\hdots,c_{2m}$ and the triangles $a_2a_3c_{1}^{-1}$, \textellipsis $a_{2m}a_{2m+1}c_m^{-1}$, $a_1^{-1}a_2^{-1}c_{m+1}^{-1},\hdots,a_{2m-1}^{-1}a_{2m}^{-1}c_{2m}^{-1}$ and $a_{2m+1}^{-1}a_1c_0^{-1}$. Then, gluing along the $a$'s yields the polygon $c_0^{-1}c_1^{-1}\dots c_{2m}^{-1}$. Now, gluing along the $c_0$ edges yields the situation of the case $n=2m$, with $c_1,\hdots,c_{2m}c_1^{-1}\dots c_{2m}^{-1}\cong P_{2m}/\sim$. 
+\end{proof}
+
+\prt{1}\begin{corollary*}
+	$\pi_1(P_{2m}/\sim)=\pi_1(P_{2m+1}/\sim)=F{x_1,\hdots,x_{2m}}/\idl{x_1x_2x_1^{-1}x_2^{-1}x_3x_4x_3^{-1}x_4^{-1}\dots x_{2m-1}x_{2m}x_{2m-1}^{-1}x_{2m}^{-1}}$
+\end{corollary*}
+\begin{proof}
+	Follows immediately from the previous (i.e. next) part and from \cite[\S4.5.3]{ma}.
+\end{proof}
+\prob{5}
+\begin{prompt*}
+	Exhibit a connected compact manifold $X$ without boundary satisfying:\begin{itemize}
+		\item $\pi_1(X)\neq 0$. \item There is no connected covering space $p:Y\to X$ with odd degree $>1$.
+	\end{itemize}
+\end{prompt*}
+\begin{response*}
+	$\RR P^2$ is such a manifold.
+\end{response*}
+\begin{proof}
+	As shown in \cite[\S4.5.2]{ma}, $\pi_1(\RR P^2,x_0)\cong\ZZ/2\neq 0$ for any $x_0\in \RR P^2$, thus satisfying the first bullet point. Further, by \cite[Proposition 1.32]{at}, we have that the degree of any covering space $p:Y\to X$ is the index of the subgroup $p_*(\pi_1(Y,y_0)\subset \pi_1(X,x_0))$. As $\pi_1(\RR P^2,x_0)=\ZZ/2$ which is of cardinality two and the index of any subgroup of any finite group divides the order of the group, we have that there are no subgroups of $\pi_1(\RRP^2,x_0)$ of odd index $>1$ and hence no covering spaces for $\RRP^2 $ of odd degree $>1$.
+\end{proof}
+\printbibliography
+\end{document}

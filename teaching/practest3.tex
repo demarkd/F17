@@ -1,0 +1,262 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align*}
+	#1
+	\end{align*}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+%\newtheorem*{theorem*}{Theorem}[section]
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+\newtheorem*{claim*}{Claim}
+\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+
+%FINAL
+\newcommand{\due}{30 November 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{Practice Test for Midterm III}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Practice Test I}
+\chead{\due}
+\lhead{MATH 1271-012\&016}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+\input ArtNouvc.fd
+\newcommand*\initfamily{\usefont{U}{ArtNouvc}{xl}{n}}
+\newcommand{\ms}{\text{ m/s}}
+\newcommand{\mss}{\text{ m/s}^2}
+\newcommand{\ml}{\text{ m}}
+\newcommand{\msa}{\text{ m}^2}
+\newcommand{\st}{\text{ s}}
+\newcommand{\yt}{\text{ y}}
+\newcommand{\rad}{\text{ rad}}
+\newcommand{\rads}{\text{ rad/s}}
+\newcommand{\radss}{\text{ rad/s}^2}
+\newcommand{\nf}{\text{ N}}
+\newcommand{\kgm}{\text{ kg}}
+\newcommand{\je}{\text{ J}}
+\newcommand{\mje}{\text{ MJ}}
+\newcommand{\kje}{\text{ kJ}}
+\newcommand{\Wp}{\text{ W}}
+\newcommand{\Wpms}{\text{ W/m}^2}
+\newcommand{\kWp}{\text{ kW}}
+\newcommand{\kWpms}{\text{ kW/m}^2}
+\newcommand{\kgmt}{\kgm/\text{m}^3}
+\newcommand{\nm}{\times 10^{-6}\ml}
+\newcommand{\nfm}{\text{ Nm}}
+\newcommand{\kgms}{\kgm\ms}
+\newcommand{\kgmm}{\text{ kgm}^2}
+\newcommand{\hr}{\text{ hr}}
+\newcommand{\co}{\text{ C}}
+\newcommand{\mco}{\,\mu\text{C}}
+\newcommand{\mst}{\,\mu\text{s}}
+\newcommand{\ct}{\Delta t}
+\newcommand{\pt}{\Delta \tau}
+\newcommand{\sti}{\Delta s}
+\newcommand{\dst}{\Delta d}
+\newcommand{\dx}{\Delta x}
+\newcommand{\ns}{\text{ ns}}
+\newcommand{\yrs}{\text{ y}}
+\newcommand{\im}{\text{ i}}
+\begin{document}
+	\maketitle
+	\emph{Note: this is more problems than will be on the test, but it should give you a pretty good idea of what to expect in terms of difficulty.}
+\prob{1} The graph of a function $g(x)$ is below. Find $f(2), f'(2), h(2),$ and $h'(2)$ if $$f(x) = \int_0^x g(t)\ dt \text{ and }
+h(x) = \int_0^{x^2} g(t)\ dt.$$
+\begin{center}
+	\includegraphics[scale = .5]{Graph1.png}
+\end{center}\vspace{6cm}
+\prob{2}Determine a definite integral which has value given by the below limit. Do not evaluate either the limit or the integral.
+\prt{1} $$\lim_{n\to \infty}\sum_{i=1}^n \frac{4}{n}\cos(1+i\frac{4}{n})$$\newpage
+\prt{2}  $$\lim_{n\to \infty}\sum_{i=1}^n \frac{3}{n}e^{3+i\frac{6}{n}}\sin(1+i\frac{3}{n})$$
+\vspace{3.5cm}\prob{3} Let $g(x)=\int_0^xf(x)\d x$.
+What conditions must $f$ fulfill in order to yield the conclusion from the first part of the fundamental theorem? What is that conclusion?
+\vspace{6cm}
+\prob{4} Use the \textbf{\emph{limit}} definition of an integral and/or evaluation \say{in terms of areas} to evaluate the following integral without taking an anti-derivative. $$\int_0^5 2x^2-x+1\d x$$\newpage\prob{4}
+Evaluate the following integrals:
+\prt{1}
+$\displaystyle{\int_2^{e^5-1} \frac{1-x}{1-x^2}\d x}$\vspace{3cm}
+\prt{2}
+$\displaystyle{\int \frac{5+x^2}{1+x^2}\d x}$\vspace{3cm}
+\prt{3}
+$\displaystyle{\int_1^2 \frac{t^2-4}{2t}\d t}$\vspace{3cm}
+
+\prob{6} 600 gallons of water are stored in a cylindric tank with an inverted-dome bottom. A small hole breaks open at the very bottom at $t=0\st$ and grows wider as more water flows through so that the rate at which water flows through the hole is given by $r(t)=3+.5t$ in gallons. How long will it take before the last of the water leaks out of the tank?\newpage
+\prob{7} Evaluate the following integrals
+
+\prt{1}
+$\displaystyle{\int\frac{\sin(\ln \theta)}{\theta}\d \theta}$\vspace{4cm}
+\prt{2}$\displaystyle{\int_0^{\pi/3}\left(\frac{(1+\tan t)^{3/2}}{\cos t}\right)^2 \d t}$\vspace{4cm}
+\prt{3}$\displaystyle{\int_{-\pi}^{2017} \frac{\sin^2x\sec^2 x}{\tan^2x}\d x}$\vspace{4cm}
+\prt{4}
+$\displaystyle{\int_{0}^a x\sqrt{a-x^2}\d x}$\vspace{4cm}
+\end{document}

@@ -1,0 +1,270 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+%\newtheorem*{theorem*}{Theorem}[section]
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{11 September 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH 8301 Homework II}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8301}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\begin{document}
+\maketitle
+\section*{Notation}
+\begin{itemize}
+	\item We let the topology of a topological space $X$ be denoted $\Tt(X)$ unless this is insufficient in context to avoid confusion.
+\item We let the cardinality of a set or topological space (interpreted as a set) $X$ be denoted $\abs{X}$.
+\end{itemize}
+\prob{1}
+\begin{proposition*}
+	The image of a [(i) connected/ (ii) path-connected] space under a continuous map is [connected/ path-connected].
+\end{proposition*}
+\begin{proof}
+	\begin{enumerate}[label=(\roman*)]
+		\item We show the contrapositive: if the image $Z=\psi(X)$ is disconnected where $X$ is a topological space and $\psi:X\to Z$ is a continuous (de facto surjective) map, then $X$ is disconnected. We let $Z=U\sqcup V$ where $\emptyset \neq U,V\in \Tt(Z)$. Then, as $\psi$ is continuous, $\psi^{-1}(U),\psi^{-1}(V)\in \Tt(X)$, and as $\psi^{-1}(U)\cap \psi^{-1}(V)=\psi^{-1}(U\cap V)=\psi^{-1}(\emptyset)=\emptyset$, we have that $X=\psi^{-1}(U)\sqcup \psi^{-1}(V)$ and is hence disconnected.
+		\item We suppose topological space $X$ is path-connected, with continuous map $\psi: X\to Z=\psi(X)$. We let $y,z\in Z$ be arbitrary and let $w,x\in X$ be chosen such that $\psi(w)=y$, $\psi(x)=z$. Then, there exists a continuous map $\alpha:[0,1]\to X$ with $\alpha(0)=w$, $\alpha(1)=x$ by assumption, and as a composition of continuous maps is itself continuous, we have that $\beta=\psi\circ \alpha:[0,1]\to Y$ is continuous with $\beta(0)=\psi(w)=y$ and $\beta(1)=\psi(x)=z$. As $y,z$ were chosen arbitrarily, this completes our proof.
+	\end{enumerate}
+\end{proof}
+\prob{2} \begin{proposition*}
+	For $M$ a $d$-manifold and $W\subset M$ open under $\Tt(M)$, $W$ is a $d$-manifold.
+\end{proposition*}
+\begin{proof}
+	We consider $W$ under the subspace topology.
+	\begin{lemma*}
+		$\Tt(W)$ coincides with $\Tt(M)$, i.e. $\Tt(W)=\setc{U\in\Tt(M)}{U\subseteq W}$.
+	\end{lemma*}
+\begin{subproof}
+	$(\supseteq)$ We note that for any $U\subseteq W$ open in $M$, $U\cap W=U$. Hence, $U\in \Tt(W)$.\\
+	$(\subseteq)$ We let $U\in \Tt(W)$ be arbitrary. Then, there exists some $V\in \Tt(M)$ such that $U=V\cap W$. As finite intersections of open sets are open, we then have that $U\in \Tt(M)$. 
+\end{subproof}
+\textbf{\emph{Second-countability:}} As $M$ is second-countable, there exists some basis $\{U_i\}_{i\in \NN}$ for $\Tt(M)$. Then, as $\Tt(W)\subset \Tt(M)$, we have that for all $V\in \Tt(W)$, we have that for some indexing set $J$, $V=\bigcup_{j\in J}U_{i_j}$. Then, $V=W\cap V=W\cap \left(\bigcup_{j\in J}U_{i_j}\right)=\bigcup_{j\in J}(W\cap U_{i_j})$. Hence, $\{W\cap U_i\}_{i\in \NN}$ is a countable basis for $\Tt(W)$.
+
+\textbf{\emph{Hausdorff:}} We let $x,y\in W$. Then, as $M$ is Hausdorff, there exists some $(U\ni x),(V\ni y)\in \Tt(M)$ such that  $U\cap V=\emptyset$. Then, $(U\cap W\ni x),(V\cap W\ni y)\in \Tt(W)$ and $(U\cap W)\cap (V\cap W)=\emptyset$.
+
+\textbf{\emph{Locally homeomorphic to $\RR^d$:}} We let $x\in W$ and have that there exists $(U\ni x)\in \Tt(M)$ and homeomorphism $\phi:U\to V\subset \RR^d$ where $V$ is open. Then, as $U\cap W$ is an open set in $\Tt(M)$, by bicontinuity we have that $\phi^{-1}(U\cap W)\in \Tt(\RR^d)$, and the bijectivity and bicontinuity of $\evat{\phi}{U\cap W}{}$ are respectively inherited from bijectivity of $\phi$ and obvious from the lemma.
+\end{proof}
+\prob{3}
+\begin{proposition*}
+	For $M_1,M_2$ $d$-manifolds, $M=M_1\sqcup M_2$ is a $d$-manifold.
+\end{proposition*}
+\begin{proof}
+	We let $\phi_i:M_i\to M$ be the canonical injection for $i=1,2$. Then, $\Tt(M)$ is the finest topology for which $\phi_i$ is continuous.
+	
+	\textbf{\emph{Second-countability.}} We let $\{U_i\}_{i\in \NN}$ and $\{V_i\}_{i\in \NN}$ be bases for $\Tt(M_1)$ and $\Tt(M_2)$ respectively. We claim that $\{\phi_1(U_i)\}_{i\in I}\cup\{\phi_2(V_i)\}_{i\in I}$ is then a basis for $\Tt(M)$. Indeed, let $W\in \Tt(M)$ be arbitrary. Then, $W=\phi_1(\phi_1^{-1}(W))\sqcup\phi_2(\phi_2^{-1}(W)) $, and $\phi_1^{-1}(W)=\bigcup_{j\in J_1} U_{i_j}$ and $\phi_2^{-1}(W)=\bigcup_{k\in J_2} V_{i_k}$ for some indexing sets $J_1,J_2$. Applying $\phi_i$ to each equality, we have $\phi_1(\phi_1^{-1}(W))=\bigcup_{j\in J_1} \phi_1(U_{i_j})$ and $\phi_2(\phi_2^{-1}(W))=\bigcup_{k\in J_2} \phi_2(V_{i_k})$, so $W=\left(\bigcup_{j\in J_1} \phi_1(U_{i_j})\right)\sqcup\left(\bigcup_{k\in J_2} \phi_2(V_{i_k})\right)$. As the union of two countable sets is countable, $M$ is then second-countable.
+	
+	\textbf{\emph{Hausdorff:}} We let $x,y\in M$ be arbitrary. If we have that $x,y\in M_i$ for one of $i=1,2$, then $\phi^{-1}_i(x),\phi_i^{-1}(y)$ are separated by disjoint open sets $U,V$, so $x,y$ are separated by open sets $\phi_1(U),\phi_2(V)$ (which are open as $\Tt(M)$ is the \emph{finest} topology on which $\phi_i$ is continuous.). If $x\in M_1$, $y\in M_2$ or vice-versa, we have that $M_1,M_2$ are open in $\Tt(M)$ and hence $x,y$ are separated by disjoint open sets.
+	
+	\textbf{\emph{Locally homeomorphic to $\RR^d$:}} We let $x\in M_i\subset M$. Then, there is some open set $(U\ni \phi^{-1}(x))\subseteq M_i$ such that $U$ is homeomorphic to some open $V\subset \RR^d$ via homeomorphism $\alpha:U\to V$. As $\phi_i$ is a continuous injection and $\Tt(M)$ is the finest topology such that all $\phi_i$ are continuous, we then have that $\phi_i(U)$ is open in $M$, and $\phi_i$ is a homeomorphism from $M_i$ to $M_i\subset M$. Hence, $\alpha\circ \tilde{\phi_i^{-1}}:\phi(U)\to V$ is a homeomorphism where $\tilde{\phi_i^{-1}}$ is taken to be the local inverse to $\phi_i$ on its image.
+\end{proof}
+\prob{4}
+\prt{1}
+\begin{proposition*}
+	All $0$-manifolds carry the discrete topology.
+\end{proposition*}
+\begin{proof}
+	We let $M$ be a $0$-manifold. Then, for any $x\in M$, there exists a homeomorphism $\psi_x:U(x)\to V\subset \RR^0=\{0\}$ where $U(x)$ is an open neighborhood of $x$ in $X$. However, as $\abs{\RR^0}=1$ and $V$ is a nonempty subset of $\RR^0$, we have that $\abs{V}=1$, and as $\psi$ is a bijection by definition, we have that $\abs{U(x)}=1$, i.e. $U(x)=\{x\}$. Hence, for any $x\in M$, $\{x\}\in \Tt(M)$, so $\Tt(M)$ is necessarily the discrete topology on $M$.
+\end{proof}
+\prt{2}\begin{proposition*}
+	Any nonempty, connected $0$-manifold is a single point.
+\end{proposition*}
+\begin{proof} We let $M$ be a nonempty connected $0$-manifold.
+	 As $M$ is nonempty, we have that there is some element $x\in M$. We note that by part a), any set $U\subset M$ is open as all subsets are open under the discrete topology. Hence, $M=\{x\}\sqcup (M\setminus \{x\})$ is a presentation of $M$ as the disjoint union of two open sets. As $M$ is assumed to be connected and $\{x\}$ is assumed to be nonempty, we have that $M\setminus \{x\}=\emptyset$, so $\abs{M}=1$.
+\end{proof}
+ \prt{3} \begin{proposition*}
+ Let $M$ be a compact $0$-manifold. Then, $\abs{M}<\infty$.
+ \end{proposition*}
+\begin{proof}
+	We let $M=\{x_\alpha \;:\; \alpha\in A\}$ be a $0$-manifold where $A$ is some indexing set and $x_\alpha=x_\beta\iff \alpha=\beta$. Then, $\{x_\alpha\}$ is open for any $\alpha$ as $\Tt(M)$ is necessarily the discrete topology. Hence, $C=\{\{x_\alpha\}\;:\: \alpha\in A\}$ is an open cover of $M$, and as $x$ is contained in precisely one element of $C$ for all $x\in M$, we have that $C$ has no proper subcover. As $M$ is assumed to be compact, this implies that $\abs{C}<\infty$, and as $C$ is in obvious bijection with $A$ which is in turn in obvious bijection with $M$, this completes our proof.
+\end{proof}
+\prt{4}
+For this exercise, we take $m\in \NN$ to be the set $m=\{\{\emptyset\},1,2,\hdots,m-1\}$, and $0\in \NN$ to be the set $0=\emptyset$.
+ \begin{proposition*}
+	Let $\card:\{\text{homeomorphism classes of compact 0-manifolds}\}\to \NN$\footnote{As $\NN$ is the set which is often constructed as in the note before the proposition and is in canonical bijection with $\ZZ_{\geq 0}$, we let it stand in the place of $\ZZ_{\geq 0}$. Our argument does not change in any meaningful way by this substitution.} be defined by $\card([M])=m\iff M$ is in bijection with $m$ as sets where $M$ is an equivalence class representative of $[M]$. Then $\card$ is well-defined and itself a bijection.
+\end{proposition*}
+\begin{proof}
+	We first define a function $\bar{\card}:\{\text{compact 0-manifolds}\}\to \ZZ_{\geq 0}$ by the exact definition we gave before for $\card$, with the exception that here for all $M$, $M$ is in a singleton equivalence class. By part c), we have that for all such $M$, $M$ is finite as a set, i.e. in bijection with some element of $\NN$. Furthermore, we have for any $m\neq n\in \NN$, we have that either $m\subset n$ or $n\subset m$ and hence $m$ and $n$ are not in bijection. As bijection induces an equivalence relation on sets, we have that $\bar{\card}$ is defined on all compact $0$-manifolds, and well-defined. Furthermore, as all sets are open under the discrete topology, any map from a space under the discrete topology to any other topological space is continuous. Thus, if $M\approx m \approx M'$ where $M$, $M'$ are compact 0-manifolds and $m\in \NN$, the composition of bijections $M\to m \to M'$ is itself a bijection and bicontinuous as both $M,M'$ are under the discrete topology. Hence, the homeomorphism classes of $\{\text{compact 0-manifolds}\}$ are precisely $\bar{\card}^{-1}(m)$ where $m$ ranges over $\NN$. Finally, we show that each of these homeomorphism classes are non-empty: we note that the empty manifold $\emptyset$ is 1) vacuously a $0$-manifold and 2) in bijection with $\emptyset=0\in \NN$. For $0<m\in \NN$, we note that $\bigsqcup_{i=1}^m \RR^0$, that is the disjoint union of $m$ distinct copies of $\RR^0$, is of cardinality $m$ and hence in bijection with $m\in \NN$. Thus, by construction $\card$ is itself a bijection and our proof is complete.
+\end{proof}
+\end{document}

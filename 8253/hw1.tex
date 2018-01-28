@@ -1,0 +1,369 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\spm}{Spm}
+\DeclareMathOperator{\rad}{rad}
+\newcommand{\mor}{\mathrm{Mor}}
+\newcommand{\obj}{\mathrm{Obj}~}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\afr}{\mathfrak{a}}
+\newcommand{\bfr}{\mathfrak{b}}
+\newcommand{\cfr}{\mathfrak{c}}
+\newcommand{\dfr}{\mathfrak{d}}
+\newcommand{\efr}{\mathfrak{e}}
+\newcommand{\ffr}{\mathfrak{f}}
+\newcommand{\gfr}{\mathfrak{g}}
+\newcommand{\hfr}{\mathfrak{h}}
+\newcommand{\ifr}{\mathfrak{i}}
+\newcommand{\jfr}{\mathfrak{j}}
+\newcommand{\kfr}{\mathfrak{k}}
+\newcommand{\lfr}{\mathfrak{l}}
+\newcommand{\mfr}{\mathfrak{m}}
+\newcommand{\nfr}{\mathfrak{n}}
+\newcommand{\ofr}{\mathfrak{o}}
+\newcommand{\pfr}{\mathfrak{p}}
+\newcommand{\qfr}{\mathfrak{q}}
+\newcommand{\rfr}{\mathfrak{r}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\tfr}{\mathfrak{t}}
+\newcommand{\ufr}{\mathfrak{u}}
+\newcommand{\vfr}{\mathfrak{v}}
+\newcommand{\wfr}{\mathfrak{w}}
+\newcommand{\xfr}{\mathfrak{x}}
+\newcommand{\yfr}{\mathfrak{y}}
+\newcommand{\zfr}{\mathfrak{z}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ccal}{\mathcal{C}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{27 September 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH 8253 Homework I}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8253}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\idl}[1]{\langle #1 \rangle}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id}}
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\addbibresource{algeo.bib}
+
+\begin{document}
+\maketitle
+\section*{Notation}
+\begin{itemize}
+\item For $S\subset A$ where $A$ is a ring, we let the ideal generated by $S$ be denoted $\langle S \rangle$ (at least until we encounter some other notational standard for $\langle\cdot \rangle$ which conflicts).
+\item For $S$ a set, we let $\Pcal(S)$ denote the power set of $S$.
+\end{itemize}
+\prob{1}
+\begin{proposition*}
+	Categories $\Ccal$ and $\Dcal$ are equivalent if and only if there exists some functor $F:\Ccal\to\Dcal$ for which $F:\mor_\Ccal(c_1,c_2)\to\mor_\Dcal(F(c_1),F(c_2))$ is a bijection for any $c_1,c_2\in \obj\Ccal$ and for any $d\in \obj\Dcal$, there is an isomorphism $(\phi_d:d\to F(c))\in \mor_\Dcal(d,F(c))$ for some $c\in \obj\Ccal$. 
+\end{proposition*}
+\begin{proof}
+($\impliedby$) We suppose such a functor exists. We construct an \say{inverse functor} $G:\Dcal\to \Ccal$ as such: for any $d$ in $\Dcal$, we have that there exists an isomorphism $\phi_d:d\to F(c_d)$ where $c_d\in \Ccal$. We choose such an isomorphism (the identity morphism when $d$ is in the image of $F$). We let $G(d)=c_d$. For $h\in \mor_\Dcal(d,d')$, we have that $g=\phi_{d'}\circ h\circ\phi_d^{-1}\in \mor_\Dcal(F(c_d),F(c_{d'}))$. As $F$ is bijective on morphisms, we have that there exists a unique $F^{-1}(g)\in \mor_\Ccal(c_d,c_{d'})$. We let $G(h)=F^{-1}(g)$.
+
+We now show that $GF:\Ccal\to \Ccal$ is naturally equivalent to the identity functor $\id_{\Ccal}$ on $\Ccal$.
+ For $c\in \Ccal$, we have that $GF(c)=c$ as $\phi_{F(c)}$ was chosen to be the identity morphism.
+  Hence, we may let $m_c\in \mor_\Ccal(c,-)$ be the identity morphism on $c$, $\id_c$ (note that, trivially, $m_c$ is an isomorphism). Further, for $f\in \mor_\Ccal(c,c')$, we have that $GF(f)=F^{-1}(\phi_{F(c')}\circ F(f)\circ \phi_{F(c)}^{-1})=F^{-1}(\id_{c'}\circ F(f)\circ \id_{c})=f$. Thus, $f\circ m_c=m_{c'}\circ GF(f)=f$, so $GF$ is indeed naturally equivalent to the identity functor.
+
+We finally show $FG:\Dcal\to \Dcal$ is naturally equivalent to the identity functor $\id_{\Dcal}$\textemdash we do so, however, somewhat \say{backwards}\textemdash in particular, we let $m_{-}$ be a natural transformation \emph{from} the identity functor \emph{to} $FG$. We let $m_d=\phi_d$ for all $d\in \Dcal$. By construction, $m_d$ is then an isomorphism. We let $f\in \mor_\Dcal(d,d')$ and have that $FG(f)=F(F^{-1}(\phi_{d'}\circ f \circ \phi_{d}^{-1}))=\phi_{d'}\circ f \circ \phi_d^{-1}\in \mor_\Dcal(F(c_{d}),F(c_{d'}))$.  Then, $FG(f)\circ m_d=\phi_{d'}\circ f$, and $m_{d'}\circ f=\phi_{d'}\circ f$ so our proof of this side of the implication is complete.
+
+($\implies$) We suppose that $\Ccal,\Dcal$ are equivalent by $F:\Ccal\to \Dcal$ and $G:\Dcal \to \Ccal$ and wish to show that $F$ fulfills the desired properties. We let $m_-$ be a natural isomorphism from $GF$ to $\id_\Ccal$ and $n_-$ a natural isomorphism from $FG$ to $\id_{\Dcal}$. Then, as $n_d$ is an isomorphism from $d$ to $FG(d)$, we have that each object in $\Dcal$ is isomorphic to an object in the image of $F$. We now show $F$ is injective on morphisms, in particular, we suppose $F(f)=F(f')$ for $f,f'\in \mor_\Dcal:c\to c'$. Then, we have that $m_{c'}^{-1}\circ f\circ m_c=GF(f)=GF(f')=m_{c'}^{-1}\circ f'\circ m_c$. However, as $m_c$, $m_c'$ are isomorphisms, this implies that $f=f'$. Hence, $F$ is injective on morphisms. We note as well that by symmetry, we have that $G$ is injective on morphisms.
+
+To show surjectivity, we let $h:F(c)\to F(c')$ and wish to find $\cl{h}:c\to c'$ such that $F(\cl{h})=h$. We claim that $\cl{h}=m_{c'}\circ G(h)\circ m_{c}^{-1}$ works as such. Applying $GH$, we have that $GF(\cl h)=m_{c'}^{-1}\circ\cl h\circ m_{c}=G(h)$. But $G$ is faithful by the above, so $F(\cl h)=h$.
+\end{proof}
+\prob{2} \begin{proposition*}
+ For two rings $A_1,A_2$, there exists a bijection $\Spec A_1\sqcup \Spec A_2\to \Spec A_1\times A_2$ by $\Spec A_i\ni x_\pfr\mapsto x(\pfr \times A_{i+1\vspace*{-5pt}\mod 2})$. 
+\end{proposition*}
+\begin{proof}
+	We let $P=\{x(\pfr \times A_{i+1\vspace*{-5pt}\mod 2})\::\:x_\pfr \in \Spec A_i\}\subset \Spec A_1\times A_2$. That $P$ is indeed a subset of $\Spec A_1 \times A_2$ is given by construction: for $\pfr$ prime in $A_1$, we have that $\pfr\times A_1$ is an ideal, as it is a subgroup of $A_1\times A_2$ by direct product construction, and as $(r_1a,r_2s)\in \pfr \times A_2$ for all $(a,s)\in \pfr\times A_2$ and $r_i\in A_i$. Finally, we note that $\pfr\times A_2$ is indeed prime, as for any $(a,r)(b,s)\in \pfr\times A_2$, we must have one of $a,b\in \pfr$. Hence without loss of generality we may assume $a\in \pfr$, and thus $(a,r)\in \pfr\times A_2$, so $\pfr\times A_2$ is prime; by symmetry this applies for those of the form $A_1\times \qfr$. We wish to show the reverse containment, that is, $\Spec A_1 \times A_2\subset P$. We let $I$ be an arbitrary prime ideal of the ring $A_1\times A_2$. We let $\pi_1,\pi_2$ be the coordinate projection functions and have that $\pi_1(I),\pi_2(I)$ are necessarily prime ideals. We suppose for the sake of contradiction that neither $\pi_1,\pi_2$ have surjective image when applied to $I$. We then let $a\in A_1\setminus\pi_1(I)$ and $b\in A_2\setminus \pi_2(I)$. Then $(a,0)(0,b)=(0,0)\in I$, but $(a,0),(0,b)\not \in I$. Hence, all prime ideals of $A_1\times A_2$ have surjective image under one of the projection maps, so $\Spec A_1\times A_2\subset P$. As $P$ is in obvious bijection with $\Spec A_1\sqcup \Spec A_2$, our proof is complete.
+\end{proof}
+\prob{3}
+\begin{proposition*}
+	Let $U\subset \Spec A$ be an open set containing all closed points of $\spec A$. Then $U=\spec A$.
+\end{proposition*}
+\begin{proof}
+We begin with the lemma suggested by the wording of the problem.
+\begin{lemma}\label{closemax}
+	Let $V$ be a non-empty closed set in $\spec A$. Then $V$ contains a closed point.
+\end{lemma}
+\begin{subproof} We let $E\subset A$ be any set generating the set $V=V(E)$. 
+	We let $\mathcal{P}$ denote the poset of prime ideals $\pfr\supset E$ ordered by inclusion. Zorn's lemma then gives the existence of maximal elements; let one of these be $\mfr$. Then, we claim $V(\mfr)=\{x_\mfr\}$, i.e. $x_\mfr$ is a closed point. To see this, we have that because $x_\mfr\in V$, $E\subset \mfr$, so as $V$ is inclusion reversing, $V(\mfr)\subset V(E)$. On the other hand, by maximality of $\mfr$ within $\mathcal{P}$, for any $\pfr\supset E$, there exists some $a\in \mfr\setminus \pfr$, so $x_\pfr\not \in V(\mfr)$. Thus $V(\mfr)$ is a singleton and we have constructed a closed point within $V(E)$.  
+\end{subproof}
+\begin{remark}\label{max}
+	The ideal found in the proof of the lemma is indeed maximal (assuming $V(E)$ is nonempty)--any other ideal containing it must also contain $E$! Indeed this shows that all maximal ideals correspond to closed points in $\spec A$ as we may take $E$ to be $0$.
+\end{remark}
+Now, we suppose that $U$ is an open subset of $\Spec A$ containing all closed points of $\Spec A$. Then, $U^c$ is closed, but contains no closed points. Hence, $U^c=\emptyset$ and $U=\spec A$. 
+
+\end{proof}
+\prob{4}
+\begin{proposition*}
+	Let $k$ be a field with $\bar k=k$ and $A=k[t]$ the free algebra with one generator over $k$. Then the set of closed points in $\spec A$ \emph{(i)} can be identified with $k$ and \emph{(ii)} include all points of $\spec A$ save the generic point $[\idl{0}]$.
+\end{proposition*}
+\begin{proof}
+	\emph{(i)} By remark \ref{max}, we have that all maximal ideals correspond to closed points. We show the reverse containment: if $x$ is a closed point, there exists some set $E\subset A$ such that $V(E)=\{x\}$--in other words, $\pfr_x$ is the only ideal in $A$ containing $E$. Thus, $\pfr_x$ is maximal. Hence, closed points in $\spec A$ may be identified in one-to-one correspondence with maximal ideals. As $k[t]$ is principal, maximal ideals correspond to irreducible elements modulo multiplication by a unit--we take the (unique!) monic generator of each maximal ideal to be a representative for its set of generators. As $k=\bar k$, we have that these irreducibles are necessarily degree 1, that is a complete set of representatives of generators of maximal ideals would be $\{(x-a)\;:\; a\in k\}$. Hence $k$ is in bijection with $\{\text{closed points of }\spec A\}$ by $a\mapsto x_{\idl{x-a}}\in \spec A$. Furthermore \emph{(ii)}, again as $k[x]$ is principal, any nonempty prime ideal is itself maximal and thus the only nonclosed point is indeed the generic point.
+	%
+	%
+	%
+	%
+	\prob{5} We let $K=k[x,y]$ where $k=\cl{k}$ and $X=\spec k[x,y]$.
+	\prt{1}
+	\begin{proposition*}
+		The closed points of $X$ may be identified with $k^2$.
+	\end{proposition*}
+\begin{proof}
+	We first show that any (proper) prime ideal $\pfr$ which is not principal can be written $\pfr=\idl{(x-a),(y-b)}$. we may find two elements $f(x,y), g(x,y)$ with no common factor. It is well-known that that $k[x,y]$ is Noetherian so we let $S=\{q_1(x,y),\hdots,q_n(x,y)\}$ be a generating set where $n$ is minimal. We let $q_i(x,y),q_j(x,y)$ be arbitrary elements in $S$ and let them be written $q_i(x,y)=f(x,y)p(x,y)$, $q_j(x,y)=g(x,y)p(x,y)$ where $f$ and $g$ share no common factors. We then have that both of $f(x,y)$ and $g(x,y)$ is in $\pfr$, as $\pfr$ is prime and if $p(x,y)\in \pfr$, we may replace $q_i$ and $q_j$ with $p(x,y)$, hence contradicting the minimality of $\pfr$. We then consider $K'\supset K$ where $K'=k(x)[y]$. Then, as $f,g$ have no common factors and $k(x)[y]$ is Euclidean, we may find some linear combination $r(x,y)f(x,y)+s(x,y)g(x,y)=h(x)$ where $h(x)$ is a rational function in $x$ (i.e. a unit in $K'$). By multiplying through by its denominator, WLOG we may assume $h(x)\in k[x]$. As $k[x]$ is a PID, we then have by the algebraic closure of $k$ that some linear factor $(x-a)\in \pfr$. By repeating this process in $K''=k(y)[x]$, we can also find some linear term $(y-b)\in \pfr$. As $K/\idl{(x-a),(y-b)}\approx k$, we have that $\idl{(x-a),(y-b)}$ is in fact maximal. Hence, all prime ideals in $K$ which are not principal are maximal, and as $a,b$ may be chosen to be arbitrary, we have identified $k^2$ with a subset of the maximal ideals of $K$. We now show that principal prime ideals in $K$ are not maximal. We let $\idl{f(x,y)}$ be prime, of course implying $f(x,y)$ must be irreducible. As $f$ is irreducible, we have that for $a\in k$ arbitrary, $f(a,y)=g(y)\neq 0$. As $k$ is algebraically closed, we have that there exists some $b$ such that $g(b)=0$. Then, $f(x,y)\mapsto 0$ in the quotient map $K\to K/\idl{(x-a),(x-b)}$; hence $\idl{f(x,y)}\subset \idl{(x-a),(x-b)}$. 
+\end{proof}
+\prt{2} \begin{proposition*}
+The nonclosed points other than the generic point are given by the ideals of type $\idl{f}$ where $f\in k$ is irreducible
+\end{proposition*}
+\begin{proof}
+	A byproduct of our proof to part a)
+\end{proof}
+\prt{3}\begin{proposition*}
+	For $x\in X$, $\cl{\{x\}}=\{x\}\cup\{x\in k^2\;:\; f(x)=0\}$ where $x=\idl{f}$ in the case $\{x\}$ is not closed. 
+\end{proposition*}
+\begin{proof}
+	This very nearly follows directly from parts a and b. We have that $\cl\{x\}=V(\pfr_x)=\{x_\qfr\;:\; \pfr\subset \qfr\}$. We have that for any principal prime ideals $\idl{f},\idl{g}$ that $\idl{g}\centernot\subset\idl{f} $ as $f$ is irreducible. Hence, the closure of $\{x\}$ contains $\{x\}$ and the maximal ideals containing $\{x\}$. As $\{x\}$ corresponds to $\idl{f}$, these are the maximal ideals $\idl{(x-a),(y-b)}$ such that $f\mapsto 0$ in the quotient $K\to K/\idl{(x-a),(y-b)}$, that is those such that $f(a,b)=0$. This completes our proof.
+\end{proof}
+	%
+	%
+	%
+	%
+\prob{6}
+We take the following to be the definition of irreducible topological space:
+\begin{definition*}
+A topological space $X$ is said to be irreducible if there are no proper closed subsets $X_1,X_2$ such that $X=X_1\cup X_2$. Equivalently,\footnote{A quick proof of this equivalence: suppose $X$ is irreducible, $U,V$ open, and $U\cap V=\emptyset$. Then, by de Morgan's laws, $\emptyset^c=X(U\cap V)^c=U^c\cup V^c$\textemdash a contradiction! The proof of the other direction is similar.} $X$ is irreducible if for any $\emptyset \neq U,V$ open in $X$, $U\cap V$ is nonempty.
+\end{definition*}
+\begin{proposition*}
+	For $X$ an irreducible topological space and $U\subset X$ open, $U$ is irreducible.
+\end{proposition*}
+\begin{proof}
+We have that the open sets of $U$ under the subspace topology are those written $V\cap U$ where $V\subset X$ is open. However, under the topology of $X$, we have that finite intersections of open sets are open. Thus, $V\cap U$ is open under the topology of $X$, and for any $W\subset U$ open under the topology of $X$, $W\cap U= W$. Hence, the topology of $U$ can be written $\{W\subset U\;:\;W \text{ open in X}\}$. Then, for any $V,W\subset U$ open, we have that $V,W$ are open in $X$, so $V\cap W\neq \emptyset$. However, as $V,W\subset U$ we have that $V\cap W\subset U$, thus proving the proposition.
+\end{proof}
+
+%
+%
+%
+%
+	\prob{7} 	Let $k$ be a finite field and $A$ a $k$-algebra with finite dimension when considered as a $k$-module. We let the set of maximal ideals of $A$ be denoted $\spm A\subset \spec A$ considered under the subspace topology.
+	\begin{proposition*}
+	$\spm A$ is Hausdorff.
+		\end{proposition*}
+	\begin{proof}
+	We instead prove the following lemma, with a brief remark to tie together the loose threads at the end.
+	\begin{lemma*}
+	$\spm A$ carries the discrete topology.
+	\end{lemma*}	
+\begin{subproof}
+We have that the closed sets of $\spm A$ are those which can be written $V(E)\cap \spm A$ where $V(E)\subset \spec A$. For $x\in \spm A$, we let $\pfr_x$ be the associated (maximal) ideal in $A$. Then $V(\pfr_x)=V(I(x))=x$ by the Nullstellenstatz as $\pfr_x=\rad \pfr_x$. Hence, for any $x\in \spm A$, we have that $\{x\}$ is closed. As $\Pcal(\spm A)$ is a finite set\footnote{Which follows from $\spm A$ being a finite set, which in turn follows from $\Pcal(A)$ being a finite set, which (finally) in turn follows from $A$ being a finite set.}, we have that arbitrary unions of closed sets in $\spm A$ are their selves closed. Thus for any arbitrary subset $S\subset \spm A$, we have that $S$ is closed, and equivalently, that $S^c$ is open. Hence, all sets are clopen and our proof is complete.
+\end{subproof}
+This of course proves the main proposition of the problem; indeed, spaces carrying the discrete topology are trivially Hausdorff: for any two elements $x,y\in X$ where $X$ is a topological space equipped with the discrete topology, $\{x\}, \{y\}$ both open and hence fulfill the separation requirement of the Hausdorff property.
+	\end{proof}
+\end{proof}
+%
+%
+%
+%
+%
+\prob{8}
+\begin{proposition*}
+	Let $A$ be a $k$-algebra of finite type where $k$ is a field. Then, for any closed subset $Y\subset X=\spec A$, the closed points $S$ of $X$ are dense in $Y$.
+\end{proposition*}\begin{proof}
+
+We shall take the following theorem as a lemma\footnote{A quick proof the hint implies the theorem: We have that $J(A)=\rad A$. Hence, for a prime ideal $\pfr$, $J(A/\pfr)=\rad(A/\pfr)=0$. Hence, by the bijection between ideals of $A/\pfr$ and ideals containing $\pfr$ of $A$, we let $q:A\to A/pfr$ and have that $\pfr=q^{-1}(0)=q^{-1}(J(A/\pfr))=q^{-1}\left(\bigcap_{\mfr\subset A/\pfr}\mfr\right)=\bigcap_{\mfr \supset \pfr}\mfr$.}
+\begin{thm*}\cite[Prop. 11.67, 11.70]{rot}
+	$K=k[x_1,\cdots,x_n]$ is a \textbf{Jacobson Ring,} i.e. for any prime ideal $\pfr\triangleleft K$, 
+	$$\pfr=\bigcap_{\substack{\mfr\supset \pfr\\\mfr\text{ maximal}}}\mfr.$$
+\end{thm*}
+Now, onto our proof
+We let $I=\ker (K\to A)$ and note that $\spec A\approx\spec K/I\approx V(I)$ where $V(I)$ is considered under the induced topology as a closed subset of $\spec A$ in canonical\footnote{I'm not positive this is a completely rigorous usage of the word `canonical,' but it is at the very least a correct colloquial usage.} homeomorphism.
+We have that as $Y=\cl{Y}$, $Y=V(E)$ for some $E\subset A$, and as $Y\subset V(I)$, we have by the inclusion-reversing nature of $V,I$ that $E\supset I$. We seek to show that for any open set $D(E')$ where $E'\supset I$, there exists some point $x_\mfr$ corresponding to maximal ideal $\mfr$ such that $x_\mfr\in D(E')$. We suppose the contrary, that there exists some $E'\supset I$ such that $D(E')\cap V(E)\neq \emptyset$ but $D(E')\cap V(E)$ contains no points corresponding to maximal ideals. We then have that $\displaystyle{E'\subset J=\bigcap_{\substack{\mfr\supset E\\\mfr\text{ maximal}}}}\mfr$, as all elements of $E'$ vanish on $x_{\mfr}$ for all maximal $\mfr$. However, by the above theorem, we have that for any prime ideal $\pfr\supset E$ (i.e. $x_\pfr\in V(E)$), $\pfr=\bigcap_{\substack{\mfr\supset \pfr\\\mfr\text{ maximal}}}\mfr\supset J$. Hence, we have that $E'\subset \pfr$, so $D(E')\cap V(E)=\emptyset$, contradicting our assumption. This completes our proof.
+\end{proof}
+\printbibliography
+\end{document}

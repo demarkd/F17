@@ -1,0 +1,285 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{relsize}
+
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\restr}[2]{\evat{#1}{#2}{}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newtheorem{claim}{Claim}
+%\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{22 November 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH 8301 Homework X}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8301}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\cbal}{\overline{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\intr}{\mathrm{int}}
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\vect}{\mathrm{Vect}}
+\newcommand{\Top}{\mathrm{Top}}
+\renewcommand{\top}{\Top}
+\newcommand{\hTop}{\mathrm{hTop}}
+\newcommand{\set}{\mathrm{Set}}
+\newcommand{\frp}{\mathop{\large {\mathlarger{*}}}}
+\newcommand{\ondt}{1_{\cdot}}
+\newcommand{\onst}{1_{\star}}
+\newcommand{\bdy}{\partial}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\re}{\mathrm{re}}
+\newcommand{\oX}{\overline{X}}
+\begin{document}
+\maketitle
+\prob{1} We let $X=S^2\cup D$ where $D= ([-1,1]\times {0,0})\subset \RR^3$. \prt{1}
+\begin{proposition*}
+	$\pi_1(X,x_0)=\ZZ$ for any $x_0\in X$. 
+\end{proposition*}
+\begin{proof}
+We first note that $X$ is clearly path connected, ensuring that a statement of the form of ours is well-formed. We let $U$ be the union of $D$ and a small open thickening of a geodesic arc between $(-1,0,0)$ and $(1,0,0)$, and let $V=S^2$. Then, $U\cap V$ is homeomorphic to a disk and hence simply-connected, $U$ deformation-retracts to $S^1$ by \say{pulling in the thickening,} and $V=S^2$ is well-known to be simply-connected. Thus, Siefert-von Kampen yields that $\pi_1(X,x_0)=\ZZ$.
+\end{proof}
+\prt{2}\begin{prompt*}
+	Construct geometrically $\tilde{X}$, a simply-connected covering space of $X$.
+\end{prompt*}
+\begin{proof}[Response]
+	We claim that such a space would be an \say{infinite necklace} of spheres $S^2$ laid out on the real line with paths connecting each to its neighbors. To see this, we note that \say{folding} the necklace such that each sphere is mapped to one, alternating orientation along the chain, yields a space homeomorphic to $X$ via a homeomorphism taking $D$ to a path in $\RR^3$ connecting the two poles through the exterior of the unit disk.
+\end{proof}
+\prt{3}\begin{prompt*}
+	Enumerate the subgroups of $\pi_1(X,x_0)$
+\end{prompt*}
+\begin{proof}[Response]
+	As $\pi_1(X,x_0)\cong \ZZ$, we have that its subgroups are in bijection with its elements modulo an equivalence relation unifying each element with its inverse\textemdash indeed, each positive element of $\ZZ$ generates a unique subgroup, and each subgroup of $\ZZ$ is generated by one element by unique factorization. Thus, all subgroups are of the form $m\ZZ$ for $m\in \ZZ^{\geq 0}$, and all proper subgroups are of the form $m\ZZ$ for $m\in \ZZ^{>1}$. We note as well that as $\ZZ$ is Abelian, each subgroup is in a singleton conjugacy class.
+\end{proof}
+\prt{4}
+\begin{prompt*}
+	Compute the set of isomorphism classes of covers of $X$ and describe each as a topological space.
+\end{prompt*}
+\begin{proof}[Response]
+	We have that the isomorphism classes of covering spaces $((\hat{X}, \hat{x_0}),p)$ of $X$ are in bijection with subgroups of $\pi_1(X,x_0)$ via the map $\hat{X}\mapsto p_*(\pi_1(\hat{X},\hat{x_0}))$. Thus, we wish to associate a covering space for each nonnegative integer $m$. For $m=0$, the universal cover of part b) is the covering space in question, and for $m=1$, the original space $X$ is. For $m>1$, we claim that such a space would be the \say{pearl necklace with $m$ beads,} that is the space which is the union of $m$ spheres arranged in a circle with antipodal points $A$ and $B$ marked on each and a path between point $B$ on a given sphere and point $A$ on the sphere one \say{link} clockwise. That this is a covering space is almost immediately clear by mapping each sphere to $X$ such that point $A$ maps to $(-1,0,0)$ and point $B$ maps to $(1,0,0)$, and we see immediately that as there are $m$ points $A$ that this is an $m$-sheeted cover. 
+\end{proof}
+\prob{2} We let $X=\RR P^2 \wedge \RR P^2$. 
+\prt{1}\begin{proposition*}
+	$\pi_1(X,x_0)=\ZZ/2\frp \ZZ/2$.
+\end{proposition*}
+\begin{proof}
+	Wait haven't we proven in class/aren't we able to use as a theorem that 1) $\pi_1(X\wedge Y,z_0)=\pi_1(X,z_0)\frp \pi_1(Y,z_0)$ and 2) $\pi_1(\RR P^2,x_0)=\ZZ/2$? Well, regardless, an easy application of SvK clears up all.
+\end{proof}
+\prt{2}
+\begin{proposition*}
+We let $\tilde{X}$ be the dijoint union of a set of copies of $S^2$, $\{S_i\}$ indexed by $\ZZ$ each with marked antipodal points $A_i$ and $B_i$, quotiented by the equivalence relation $A_i\sim B_{i+1}$. Then, $\tilde{X}$ is a universal cover for $X$.
+\end{proposition*}
+\begin{proof}
+	We note that the quotient map $q:S^2\to \RR P^2$ identifying antipodal points is a universal cover for $\RR P^2$, as $S^2$ is simply connected and the identification of antipodal points ensures that for any open cover for which no set is not contained in some half-sphere, there are two disjoint pre-images of each set which are mapped homeomorphically by $q$. Then, as our $\tilde{X}$ is clearly simply-connected, there is an obvious covering map which applies that quotient to each $S_i$, and identifies $S_{i}$ with $S_{i+2}$.
+\end{proof}
+\prt{3}\begin{proposition*}
+	$G:=\ZZ/2\ltimes \ZZ\cong \ZZ/2\frp \ZZ/2$
+\end{proposition*}
+\begin{proof}
+	We shall prove the proposition by constructing a map $\phi:H:=\ZZ/2\frp \ZZ\to \ZZ/2\frp \ZZ/2$, then showing the kernel is precisely elements of the form $tmtm$ where $0\neq t\in \ZZ/2$ and $m\in \ZZ$. This would prove the proposition, as $\ZZ/2\ltimes \ZZ$ is precisely the quotient group of $\ZZ/2\frp\ZZ$ by those elements. We let $\ZZ/2\frp \ZZ/2$ be generated by order-2 elements $t_1,t_2$ and let $\phi$ map on generators $t,1$ by $t\mapsto t_1$ and $1\mapsto (t_1t_2)$. Then, $\phi(tmtm)=t_1(t_1t_2)^mt_1(t_1t_2)^m=t_2(t_1t_2)^{m-1}t_2(t_1t_2)^{m-1}=(t_2t_1)^{m-1}(t_1t_2)^{m-1}=(t_1t_2)^{1-m}(t_1t_2)^{m-1}=0$, so $\langle tmtm\rangle_{m\in \ZZ}\subset \ker \phi$. We observe now that all elements of the form $mtmt\in \langle tmtm\rangle_{m\in \ZZ}$. We then suppose that $W\in \ker \phi$. We note that all elements in $H$ may be written in one of four forms: $F_1:\;m_1tm_2tm_3t\hdots tm_n$,  $F_2:\;m_1tm_2tm_3t\hdots tm_nt$, $F_3:\;tm_1tm_2tm_3\hdots tm_n$, or $F_4:\;tm_1tm_2tm_3\hdots tm_nt$ where $m_i\in \ZZ$. We let the $m$-length of an element in any of these forms be $n$, that is, the minimal quantity of elements of $\ZZ$ necessary to write the element. Then, we have for a word in form $F_1$ that $\phi(m_1tm_2tm_3t\hdots tm_n)=\phi((m_1-m_2+m_3)tm_4\hdots tm_n)$, thus showing that for any word of length $m$ of form $F_1$, there is a word in its equivalence class modulo $\langle tmtm\rangle_{m\in \ZZ}$ with length $n-1$. A similar argument can be given for the other three forms, showing that the only candidates for being a \say{unexpected} member of the kernel are those of length 0, or 1 which are all of the form $tmt$, $tm$, or $mt$. However, direct inspection shows that none of these are in the kernel of $\phi$, showing $\langle tmtm\rangle_{m\in \ZZ}\supset \ker \phi$. Thus, the uniqueness of quotient groups proves our proposition.
+\end{proof}
+\prt{4}
+\begin{prompt*}
+	The subgroups of $G$ are all of the form $\langle (t,m)\rangle$, $\langle (0,n)\rangle$ for some $m\in \ZZ$, $n\in \ZZ^{>0}$ or $\langle (t,m),(0,n)\rangle$ for some  $m<n\in \ZZ^{>0}$. Furthermore, this list is irredundant as $m,n$ vary. 
+\end{prompt*}
+\begin{proof}
+	\begin{claim*}
+		All subgroups of $G$ are generated by at most two elements.
+	\end{claim*}
+\begin{subproof}
+	We first note that $(t,m)(t,n)=(0,m-n)$ and $(0,m-n)(t,m)=(t,n)$. Thus, $\langle (t,m), (t,n) \rangle=\langle(t,m) (0,m-n)\rangle$. Further, by well-known facts about $\ZZ$, $\langle (0,m),(0,n) \rangle=\langle (0,\gcd (m,n))\rangle$. Thus, for any subgroup given by a presentation with more than two generators, if two of them are of the form $(t,m)$, we may replace them with one of that form and one with first coordinate zero. Then, we may replace all with first coordinate zero by their common divisor in $\ZZ$. This process reduces all presentations to two generators.
+\end{subproof}
+\begin{corollary*}
+Any subgroup generated minimally by two elements is of the form $\langle (t,m), (0,n)\rangle$
+\end{corollary*}
+Finally, what is left to prove is that our list is irredundant. We note that $\langle (t,m)\rangle $ is of order two, and hence cannot be written in any other minimal presentation. Furthermore, those of the form $\langle(0,n)\rangle$ are clearly uniquely presented by well-known facts about $\ZZ$. Finally, \textellipsis oops ran out of time!
+\end{proof}
+\textbf{I have been catching up on all of my classes after being sick last week, and the absolutely aggravating menial work required for the rest of this problem seems like a good candidate for the major casualty of my catching up.}
+\end{document}

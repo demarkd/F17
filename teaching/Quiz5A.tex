@@ -1,0 +1,135 @@
+% Exam Template for UMTYMP and Math Department courses
+%
+% Using Philip Hirschhorn's exam.cls: http://www-math.mit.edu/~psh/#ExamCls
+%
+% run pdflatex on a finished exam at least three times to do the grading table on front page.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% These lines can probably stay unchanged, although you can remove the last
+% two packages if you're not making pictures with tikz.
+\documentclass[11pt]{exam}
+\RequirePackage{amssymb, amsfonts, amsmath, latexsym, verbatim, xspace, setspace}
+\RequirePackage{tikz, pgflibraryplotmarks}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+% By default LaTeX uses large margins.  This doesn't work well on exams; problems
+% end up in the "middle" of the page, reducing the amount of space for students
+% to work on them.
+\usepackage[margin=1in]{geometry}
+
+
+% Here's where you edit the Class, Exam, Date, etc.
+\newcommand{\class}{Math 1271 - Lectures 010 and 030 }
+\newcommand{\term}{Fall 2017}
+\newcommand{\examnum}{Quiz 5}
+\newcommand{\examdate}{10/12/17}
+\newcommand{\timelimit}{25 Minutes}
+
+% For an exam, single spacing is most appropriate
+\singlespacing
+% \onehalfspacing
+% \doublespacing
+
+% For an exam, we generally want to turn off paragraph indentation
+\parindent 0ex
+
+\begin{document} 
+
+% These commands set up the running header on the top of the exam pages
+\pagestyle{head}
+\firstpageheader{}{}{}
+\runningheader{\class}{\examnum\ - Page \thepage\ of \numpages}{\examdate}
+\runningheadrule
+
+\begin{flushright}
+\begin{tabular}{p{2.8in} r l}
+\textbf{\class} & \textbf{Name (Print):} & \makebox[2in]{\hrulefill}\\
+\textbf{\term} &&\\
+\textbf{\examnum} &&\\
+\textbf{\examdate} &&\\
+\textbf{Time Limit: \timelimit} & Teaching Assistant & \makebox[2in]{\hrulefill}
+\end{tabular}\\
+\end{flushright}
+\rule[1ex]{\textwidth}{.1pt}
+
+You may \textit{not} use your books, notes, graphing calculator, phones or any other internet devices on this exam.\\
+
+You are required to show your work on each problem on this quiz.  
+\begin{minipage}[t]{2.3in}
+\vspace{0pt}
+%\cellwidth{3em}
+\gradetablestretch{2}
+\vqword{Problem}
+\addpoints % required here by exam.cls, even though questions haven't started yet.	
+\gradetable[v]%[pages]  % Use [pages] to have grading table by page instead of question
+
+\end{minipage}
+%\newpage % End of cover page
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% See http://www-math.mit.edu/~psh/#ExamCls for full documentation, but the questions
+% below give an idea of how to write questions [with parts] and have the points
+% tracked automatically on the cover page.
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vskip30mm
+
+\begin{questions}
+
+% Basic question
+\addpoints
+\question[2] Differentiate the function $f(x) = e^{x^3}$.
+
+[Response]
+	Chain rule! Let $g(x)=e^x$ and $h(x)=x^3$. Then, $g'(x)=e^x$ and $h'(x)=3x^2$. Since $f(x)=g(h(x))$, the chain rule says $f'(x)=h'(x)g(h'(x))=(3x^2)e^{x^3}$. It was also possible to start by taking the log of both sides and work from there\textemdash this would get you the right answer if you did it right, but there's a lot more to screw up there...
+	
+	One other thing to note: $e^{x^3}\neq e^{3x}$, or more generally $a^{(b^c)}\neq (a^b)^c$. To illustrate: $2^{2^3}=2^8=256$, but $(2^2)^3=2^6=64$.
+
+
+% Question with parts
+\newpage
+\addpoints
+\question[4] Differentiate $y = x^{e^x}$ using logarithmic differentiation (hint: take the natural logarithm of both sides, simplify, and find $y'$ using implicit differentiation).
+
+[Response] There are two ways to start this: take ln of both sides to get $\ln y=\ln(x^{e^x})$ and then recall $\ln(a^b)=b\ln(a)$ (so $\ln y=e^x\ln x$), or just use the identity $x=e^{\ln x}$ to re-write $x^{e^x}=(e^{\ln x})^{e^x}=e^{e^x\ln x}$, then take logarithm of both sides to get $\ln y=\ln (e^{e^x\ln x})=e^x\ln x$.
+
+Anyway, we should wind up with the equation $$\ln y=e^x \ln x$$
+Now, let's differentiate and use the product rule on the right. Write: $f(x)=g(x)h(x)$ with $g(x)=e^x$ and $h(x)=\ln x$. The product rule then gives
+$$\frac{y'}{y}=e^x\ln x+\frac{e^x}{x}$$
+Now multiplying through by $y$, we get
+$$y'=ye^x(\ln x+\frac{1}{x})$$
+Substituting in $y=x^{e^x}$ gives us our answer
+$$y'=e^xx^{e^x}(\ln x+\frac{1}{x})$$
+
+\addpoints
+\question[4] If $f(x)^3 + \sin(f(x)) = x$ and $f(0) = 0~$, find $f'(0)$.
+
+[Response] When we see some messy function of $f(x)$ like the left and need to find something involving $f'$, our first thought should be implicit differentiation. I'll make the aesthetic choice to call $f(x)$ by $y$. Let's re-write it like that and then take $\ddx{x}$ of both sides.
+\begin{align*}
+y^3+\sin (y)&=x\\
+\ddx{x}(y^3+\sin (y))&=\ddx{x}x\\
+3y^2\dydx{y}{x}+\cos (y)\dydx{y}{x}&=1
+\end{align*}
+Notice the left simplifies to $\dydx{y}{x}(3y^2+\cos y)$. Now we can divide through to find $\dydx{y}{x}$ in terms of $y$ and $x$. Once we have that, let's re-write it in terms of $f$. 
+\begin{align*}
+	\dydx{y}{x}&=\frac{1}{3y^2+\cos (y)}\\
+	f'(x)&=\frac{1}{3f(x)^2+\cos(f(x))}
+\end{align*}
+(continued on third page)
+
+We need $f'(0)$. We know what $f(0)$ is so we can use it!
+\begin{align*}
+f'(0)&=\frac{1}{3f(0)^2+\cos(f(0))}\\
+&=\frac{1}{3(0)^2+\cos(0)}\\
+&=\frac{1}{0+1}=1
+\end{align*}
+%\addpoints
+
+
+\end{questions}
+\end{document}

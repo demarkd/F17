@@ -1,0 +1,338 @@
+%!PS-Adobe-3.0
+%%Creator: polymake
+%%Title: (fan:f5)
+%%Pages: 1
+%%BoundingBox: (atend)
+%%DocumentSuppliedResources: procset Common::pointset 0
+%%+ procset Graph::common 0
+%%+ procset Graph::graph 0
+%%+ procset Graph::undirected 0
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset Common::pointset 0
+% R G B raduis (label) x y ->
+/Point {
+   gsave translate
+   dup stringwidth pop 2 div neg  2 index text_spacing add  moveto show
+   newpath 0 0 3 -1 roll 0 360 arc
+   gsave setrgbcolor fill grestore stroke
+   grestore
+} def
+
+%%EndResource
+%%BeginResource: procset Graph::common 0
+/text_spacing 3 def
+/labelheight 10 text_spacing add def
+
+% create rectangular path of size width*height
+% centered at the current position
+% width height ->
+/box {
+   1 index 2 div neg 1 index 2 div neg rmoveto
+   0 1 index rlineto
+   exch 0 rlineto
+   0 exch neg rlineto
+   closepath
+} bind def
+
+% draw the colored box with black border (if fill=true) or the white box with colored border (if fill=false)
+% centered at (x,y)
+% [ R G B /*border*/ ] borderwidth [ R G B /*fill*/ ]|null width height x y ->
+/BorderedBox {
+   gsave
+   newpath moveto box
+   dup null eq { pop 1 setgray } { aload pop setrgbcolor } ifelse
+   gsave fill grestore
+   setlinewidth
+   dup null eq { pop 0 setgray } { aload pop setrgbcolor } ifelse
+   stroke
+   grestore
+} bind def
+
+%%EndResource
+%%BeginResource: procset Graph::graph 0
+% draw a boxed label with center (x,y) and appropriate width
+% [ R G B (border) ]|null borderwidth [ R G B (fill) ]|null (label) magn x y ->
+/CenteredLabel {
+   gsave
+   5 dict begin
+   /y exch def
+   /x exch def
+   /magn exch def
+   magn 1 ne { currentfont magn scalefont setfont } if
+   dup stringwidth pop /lw exch def
+   /label exch def
+   lw text_spacing magn mul add labelheight magn mul x y BorderedBox
+   x lw 2 div sub y 10 0.3 mul magn mul sub moveto
+   label show
+   end
+   grestore
+} def
+
+%%EndResource
+%%BeginResource: procset Graph::undirected 0
+% draw edge from (x1,y1) to (x2,y2)
+% r g b linewidth x1 y1 x2 y2 ->
+/edge {
+   gsave newpath moveto lineto setlinewidth setrgbcolor stroke grestore
+} bind def
+
+%%EndResource
+%%EndProlog
+%%Page: (fan:f5) 1
+%%PageBoundingBox: 29.000 49.000 566.000 596.000
+%%BeginPageSetup
+/Times-Roman 10 selectfont
+1 setlinewidth
+0 setgray
+1 dict begin
+/text_spacing 3 def
+%%EndPageSetup
+0 0 0 1 559.000 319.000 297.500 319 edge
+0 0 0 1 297.500 580.500 297.500 319 edge
+0 0 0 1 297.500 319.000 297.500 319 edge
+0 0 0 1 36.000 319.000 297.500 319 edge
+0 0 0 1 297.500 503.908 297.500 319 edge
+0 0 0 1 482.408 319.000 297.500 319 edge
+0 0 0 1 297.500 319.000 297.500 319 edge
+0 0 0 1 482.408 134.092 297.500 319 edge
+0 0 0 1 297.500 57.500 297.500 319 edge
+null 1 [ 1 0 0 ] ( ) 1 297.500 319.000 CenteredLabel
+null 1 [ 1 0 0 ] (0) 1 559.000 319.000 CenteredLabel
+null 1 [ 1 0 0 ] (1) 1 297.500 580.500 CenteredLabel
+null 1 [ 1 0 0 ] (2) 1 297.500 319.000 CenteredLabel
+null 1 [ 1 0 0 ] (3) 1 36.000 319.000 CenteredLabel
+null 1 [ 1 0 0 ] (4) 1 297.500 503.908 CenteredLabel
+null 1 [ 1 0 0 ] (5) 1 482.408 319.000 CenteredLabel
+null 1 [ 1 0 0 ] (6) 1 297.500 319.000 CenteredLabel
+null 1 [ 1 0 0 ] (7) 1 482.408 134.092 CenteredLabel
+null 1 [ 1 0 0 ] (8) 1 297.500 57.500 CenteredLabel
+gsave newpath 297.5 319 moveto 297.5 319 lineto 297.5 580.5 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 559 319 moveto 297.5 319 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 580.5 lineto 559 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 580.5 moveto 297.5 319 lineto 559 319 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 319 lineto 297.5 580.5 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 36 319 moveto 297.5 319 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 580.5 moveto 297.5 319 lineto 36 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 580.5 lineto 36 319 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 580.5 lineto 297.5 503.908423280282 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 559 319 moveto 297.5 580.5 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 503.908423280282 lineto 559 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 503.908423280282 moveto 297.5 580.5 lineto 559 319 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 580.5 moveto 297.5 319 lineto 297.5 503.908423280282 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 36 319 moveto 297.5 319 lineto 297.5 580.5 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 503.908423280282 moveto 297.5 319 lineto 36 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 580.5 moveto 297.5 503.908423280282 lineto 36 319 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 559 319 moveto 297.5 319 lineto 482.408423280282 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 503.908423280282 moveto 297.5 319 lineto 559 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 482.408423280282 319 moveto 297.5 319 lineto 297.5 503.908423280282 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 559 319 moveto 482.408423280282 319 lineto 297.5 503.908423280282 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 319 lineto 297.5 503.908423280282 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 482.408423280282 319 moveto 297.5 319 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 503.908423280282 moveto 297.5 319 lineto 482.408423280282 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 503.908423280282 lineto 482.408423280282 319 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 319 lineto 297.5 503.908423280282 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 36 319 moveto 297.5 319 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 503.908423280282 lineto 36 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 503.908423280282 moveto 297.5 319 lineto 36 319 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 559 319 moveto 297.5 319 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 482.408423280282 134.091576719718 moveto 297.5 319 lineto 559 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 319 lineto 482.408423280282 134.091576719718 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 559 319 moveto 297.5 319 lineto 482.408423280282 134.091576719718 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 57.5 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 482.408423280282 134.091576719718 moveto 297.5 57.5 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 319 lineto 482.408423280282 134.091576719718 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 57.5 lineto 482.408423280282 134.091576719718 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 319 lineto 297.5 57.5 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 36 319 moveto 297.5 319 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 57.5 lineto 36 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 57.5 moveto 297.5 319 lineto 36 319 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 559 319 lineto 482.408423280282 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 482.408423280282 134.091576719718 moveto 559 319 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 482.408423280282 319 lineto 482.408423280282 134.091576719718 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 482.408423280282 319 moveto 559 319 lineto 482.408423280282 134.091576719718 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 482.408423280282 319 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 482.408423280282 134.091576719718 moveto 482.408423280282 319 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 319 lineto 482.408423280282 134.091576719718 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 482.408423280282 319 lineto 482.408423280282 134.091576719718 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 57.5 moveto 297.5 319 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 482.408423280282 134.091576719718 moveto 297.5 319 lineto 297.5 57.5 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 319 lineto 482.408423280282 134.091576719718 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 57.5 moveto 297.5 319 lineto 482.408423280282 134.091576719718 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 319 lineto 297.5 57.5 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 36 319 moveto 297.5 319 lineto 297.5 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 57.5 moveto 297.5 319 lineto 36 319 lineto closepath
+gsave 0.4667 0.9255 0.6196 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+gsave newpath 297.5 319 moveto 297.5 57.5 lineto 36 319 lineto closepath
+gsave 1 0 0 setrgbcolor eofill grestore
+0 0 0 setrgbcolor stroke
+grestore
+showpage
+end
+%%Trailer
+%%BoundingBox: 29.000 49.000 566.000 596.000
+%%EOF

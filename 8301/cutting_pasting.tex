@@ -1,0 +1,110 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{fancyhdr}
+
+\thispagestyle{fancyplain} \lhead{Cutting and Pasting Example}
+\chead{}
+ \rhead{Katie Gedeon}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{backgrounds}
+\usepgflibrary{shapes}
+\usetikzlibrary{through}
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+\usetikzlibrary{arrows, decorations.pathreplacing, decorations.markings}
+
+
+\begin{document}
+
+\tikzset{
+  % style to apply some styles to each segment of a path
+  on each segment/.style={
+    decorate,
+    decoration={
+      show path construction,
+      moveto code={},
+      lineto code={
+        \path [#1]
+        (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+      },
+      curveto code={
+        \path [#1] (\tikzinputsegmentfirst)
+        .. controls
+        (\tikzinputsegmentsupporta) and (\tikzinputsegmentsupportb)
+        ..
+        (\tikzinputsegmentlast);
+      },
+      closepath code={
+        \path [#1]
+        (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+      },
+    },
+  },
+  % style to add an arrow in the middle of a path
+  mid arrow/.style={postaction={decorate,decoration={
+        markings,
+        mark=at position .5 with {\arrow[#1]{stealth}}
+      }}},
+}
+
+
+
+
+\tikzstyle{main node}=[circle, draw, fill=black,
+                        inner sep=0pt, minimum width=2pt]
+
+\tikzstyle{vecArrow} = [thick, decoration={markings,mark=at position
+   1 with {\arrow[semithick]{open triangle 60}}},
+   double distance=1.4pt, shorten >= 5.5pt,
+   preaction = {decorate},
+   postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
+
+\tikzstyle{innerWhite} = [semithick, white,line width=3pt, shorten >= 4.5pt]
+
+
+
+
+
+
+
+
+
+
+
+\begin{enumerate}
+\item Show that the connected sum of a torus $T$ and the projective plane $\mathbb{R}\mathbf{P}^{2}$ is homeomorphic to the connected sum of three copies of $\mathbb{R}\mathbf{P}^2$.
+\begin{proof}
+Let $T \# \mathbb{R}\mathbf{P}^{2}$ be given in the first picture below. Then by a chain of cuttings and gluings:
+%\input{trp2}
+We see that $T \# \mathbb{R}\mathbf{P}^{2} \simeq \mathbb{R}\mathbf{P}^{2} \# \mathbb{R}\mathbf{P}^{2}\# \mathbb{R}\mathbf{P}^{2}$ as desired.
+\end{proof}
+
+
+\item Let $X$ be a surface obtained by pasting edges of an $8$-sided polygon with labeling scheme
+\[
+a_1a_2a_3a_4a_1a_4^{-1}a_3a_2^{-1}.
+\] 
+To which standard surface is $X$ homeomorphic?
+
+\begin{proof}
+ We consider the polygon with the given labeling scheme, and follow a chain of cuttings and gluings:
+%\input{rp2}
+Hence, $X$ is homeomorphic to the connected sum of three copies of $\mathbb{R}\mathbf{P}^{2}$.
+
+\end{proof}
+
+
+\item I'm not sure what problem I was working on this code for, but here it is anyway.
+%\input{other}
+
+
+\end{enumerate}
+\end{document}

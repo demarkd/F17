@@ -1,0 +1,382 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows, matrix}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\spm}{Spm}
+\DeclareMathOperator{\rad}{rad}
+\newcommand{\mor}{\mathrm{Mor}}
+\newcommand{\obj}{\mathrm{Obj}~}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\newcommand{\Aa}{\mathbb{A}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\afr}{\mathfrak{a}}
+\newcommand{\bfr}{\mathfrak{b}}
+\newcommand{\cfr}{\mathfrak{c}}
+\newcommand{\dfr}{\mathfrak{d}}
+\newcommand{\efr}{\mathfrak{e}}
+\newcommand{\ffr}{\mathfrak{f}}
+\newcommand{\gfr}{\mathfrak{g}}
+\newcommand{\hfr}{\mathfrak{h}}
+\newcommand{\ifr}{\mathfrak{i}}
+\newcommand{\jfr}{\mathfrak{j}}
+\newcommand{\kfr}{\mathfrak{k}}
+\newcommand{\lfr}{\mathfrak{l}}
+\newcommand{\mfr}{\mathfrak{m}}
+\newcommand{\nfr}{\mathfrak{n}}
+\newcommand{\ofr}{\mathfrak{o}}
+\newcommand{\pfr}{\mathfrak{p}}
+\newcommand{\qfr}{\mathfrak{q}}
+\newcommand{\rfr}{\mathfrak{r}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\tfr}{\mathfrak{t}}
+\newcommand{\ufr}{\mathfrak{u}}
+\newcommand{\vfr}{\mathfrak{v}}
+\newcommand{\wfr}{\mathfrak{w}}
+\newcommand{\xfr}{\mathfrak{x}}
+\newcommand{\yfr}{\mathfrak{y}}
+\newcommand{\zfr}{\mathfrak{z}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ccal}{\mathcal{C}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{27 September 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH 8253 Homework I}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8253}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\idl}[1]{\langle #1 \rangle}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\cat}[1]{{\mathrm{\bf{#1}}}}
+%\usepackage[backend=biber,style=alphabetic]{biblatex}
+%\addbibresource{algeo.bib}
+
+\begin{document}
+\maketitle\prob{1} \begin{proposition*}
+	Let $A$ be a ring, $S\subset A$ a multiplicative system, and $\tau:A\to A_S$ the localization homomorphism. Then, the induced map $$\tau^*:\spec A_S\to \bigcap_{f\in S} D(f)\subset\spec A$$ is a homeomorphism.
+\end{proposition*}
+\begin{proof}
+	\begin{itemize}
+		\item \emph{Well-Defined} It is well-known that for any ring homomorphism, the pre-image of a prime ideal is a prime ideal. We let $\pfr\triangleleft A_S$. We note that $\tau^{-1}(\pfr)\neq \emptyset$ as $(\im \tau)^c\subset A^\times$. Then, $\tau^{-1}(\pfr)\cap S\neq \emptyset$, as else $\pfr$ contains a unit. Hence, $\tau^*(x_\pfr)=x_{\tau^{-1}(\pfr)}\in \bigcap_{f\in S}D(f)$.
+		\item \emph{Injectivity} From our previous observation that $(\im \tau)^c\subset A_S^\times$, we have that for any proper ideal $I\triangleleft A_S$, $I\subset \im \tau$. Thus, for any two prime ideals $\pfr_1,\pfr_2$, we have that $\tau^{-1}(\pfr_1\Delta \pfr_2)\neq\emptyset$ and hence $\tau^{-1}(\pfr_1)$ and $\tau^{-1}(\pfr_2)$ are distinct. It follows $\tau^*$ is injective. 
+		\item \emph{Surjectivity} We let $x_\qfr\in \bigcap_{f\in S}D(f)$ and let $\qfr=\langle x_1,\hdots\rangle $. We claim that $\tau^{-1}\langle\tau \qfr\rangle=\qfr$. That $\qfr\subset \tau^{-1}\langle\tau \qfr\rangle$ is obvious. We suppose $r\in \tau^{-1}\tau \qfr$. Then, $\frac{r}{1}\in \langle\tau \qfr\rangle=\qfr[S^{-1}]$, so $\frac{r}{1}=\frac{q}{s}$ for some $q\in \qfr$, $s\in S$. Then, $s'(rs-q)=0$ for some $s'\in S$. However, we must have that $(rs-q)\in \qfr$ as $s\notin \qfr$, which then implies $rs\in \qfr$ which in turn implies by primality $r\in \qfr$ as $s\notin \qfr$. Thus, $\tau^{-1}\langle \tau \qfr\rangle=\qfr$, so $\tau^{*}x_{\langle \tau \qfr\rangle}=x_\qfr$ and $\tau^{*}$ is surjective.
+		\item \emph{Bicontinuity} We let $E\subset A$. Then, $(\tau^*)^{-1}D(E)=D_S(\tau E)$, which is open, so $\tau^*$ is continuous. 
+		
+		To show continuity of $(\tau^*)^{-1}$, we let $E\subset A_S$ and claim $\tau^*(V_S(E))=V(\tau^{-1}(E))$. We note that if $E\subset \pfr\triangleleft A_S$ then certainly $\tau^{-1}(E)\subset \tau^{-1}(\pfr)$, so $\tau^*V_S(E)\subset V(\tau^{-1}(E))$. On the other hand, for $\tau^{-1}(E)\subset\qfr\triangleleft A$, we have that $E\subset \tau\tau^{-1}(E)\subset \langle\tau(\qfr)\rangle=(\tau^*)^{-1}(\qfr)$, so $V(\tau^{-1}(E))\subset \tau^*(V_S(E))$ and our proof is complete.
+		%On the other hand, letting $E\subset A_S$, $\tau^*(D_S(E))=\tau^*(\{x_{\pfr}:E\not \subset \pfr\})=\{x_{\tau^{-1}\pfr}:E\not \subset \pfr\}$. We note that if $E\not \subset\pfr$, then there exists some $\frac{e}{s}\in A_S\setminus \pfr$ for $e\in A$, then implying that $\frac{e}{1}\not \in \pfr$ and thus $e\in\tau^{-1}(\frac{e}{1})$
+	\end{itemize}
+	
+	\end{proof}
+
+\prob{2}
+\begin{proposition*}
+	Let $X$ be an irreducible topological space such that there is some $x_0\in X$ with $\cl{\{x_0\}}=X$. Then, for $\phi:X\to Y$ continuous, \emph{(i)}, $\cl{\mathrm{Im}(\phi)}$ is irreduicble, and \emph{(ii)} $\cl{\{\phi(x)\}}=\cl{\mathrm{Im}(\phi)}$ 
+\end{proposition*}
+\begin{subproof}
+	We begin with a quick lemma.
+	\begin{lemma*}
+		With the hypotheses of the proposition, for any $u\subset \cl{\im(\phi)}$ open, $\phi^{-1}(u)= \emptyset$ if and only if $u=\emptyset$.
+	\end{lemma*}
+\begin{subproof} One direction is obvious, we now show the other.
+We suppose $\phi^{-1}(u)=\emptyset$. Then, $u\cap \im(\phi)=\emptyset$, so $\cl{\im(\phi)}\setminus u$ is a closed subset of $Y$ containing the image of $\phi$ and hence its closure, that is $\cl{\im(\phi)}\subseteq \cl{\im(\phi)}\setminus u$. Thus, $u=\emptyset$.
+\end{subproof}
+Now, onward to the proposition. \begin{enumerate}[label=\emph{(\roman*)}]
+\item We let $\emptyset\neq u,v\subset \cl{\im(\phi)}$ be open. Then, $\phi^{-1}(u),\phi^{-1}(v)$ are nonempty open sets in $X$ by the lemma, and hence $\emptyset\neq \phi^{-1}(u)\cap \phi^{-1}(v)=\phi^{-1}(u\cap v)$. Thus, for any two non-empty open sets in $\cl{\im(\phi)}$, their intersection is non-empty and hence $\cl{\im(\phi)}$ is irreducible.
+\item We let $\phi(x)\notin v\subset \cl{\im(\phi)}$ where $v$ is open. Then, $x\notin \phi^{-1}(v)$, so $X\setminus \phi^{-1}(v)$ is a closed subset of $X$ containing $x$ and is hence the full set $X$. Thus, $\phi^{-1}(v)$ is empty, so by the lemma $v=\emptyset$. Hence, $\cl{\{\phi(x)\}}=\cl{\im(\phi)}$
+\end{enumerate}
+\end{subproof}\begin{corollary*}
+Let $\phi:A\to A'$ be a ring homomorphism and $\phi^*:\spec A'\to \spec A$ the corresponding map of spectra. If $\spec A'$
+is irreducible with $\xi$ its generic point, then the closure $\cl{\phi^*(Spec A')}$ is irreducible and
+ $\phi^*(\xi)$ is a generic point of it.
+\end{corollary*}
+\begin{proof}
+	Follows from the proposition, replacing $\spec A'$ with $X$ and $\xi$ with $x$.
+
+\end{proof}
+\prob{3}
+\begin{proposition*}
+	For $R$ a principal ideal domain with natural injection $\iota:R\to R[t]$ and induced map $\pi:\spec R[t]\to \spec R$, $\pi^{-1}(s)\approx \mathbb{A}_{k(s)}^1$.
+\end{proposition*}
+\begin{proof}
+	We let $s\in \spec{R}$ correspond to ideal $\pfr_s\triangleleft R$. Then, $K(s)=\left(R/\pfr_s\right)_{\pfr_s}=R/\pfr_s$ as in a PID, primality and maximality are equivalent. Thus, $\Aa_{k(s)}^1=\spec{k(s)[t]}=\spec{(R/\pfr_s)[t]}=\spec{(R[t]/\pfr_s[t])}\approx V(\pfr_s[t])\subset \Aa_{R}^1$. Thus, we need only show $V(\pfr_s[t])=\pi^{-1}(s)$. We note for $x\in \Aa_{R}^1$, $\pi(x)=s$ if and only if $\pfr_s[t]\subset \qfr_x\subset R[t]$, as $\pfr_s$ is maximal in $R$. This is precisely the set $V(\pfr_s[t])$. This completes our proof 
+\end{proof}
+\prob{4}
+We let $A$ be a ring
+\prt{1}
+\begin{proposition*}
+	For $f\in A$, we let $S(f)=\{g\in A\;:\;D(f)\subset D(g)\}$. Then $S(f)$ is a multiplicative system containing $\{f,f^2,f^3,\hdots\}$.
+\end{proposition*}
+\begin{proof}
+	We let $g,h\in S(f)$. Then, $D(gh)=D(g)\cap D(h)\supseteq D(f)$, so $gh\in S(f)$. We also note that as $A\to k(s)$ is a ring homomorphism, for $f\neq 0$ in $k(s)$, we have $f^n\neq 0$ as otherwise $k(s)$ would contain zero-devisors. Thus, for any $s\in D(f)$, $s\in D(f^n)$ for all $n$. 
+\end{proof}
+\prt{2}
+\begin{proposition*}
+The localization map $\sigma: A_f\to A_{S(f)}$ is an isomorphism.
+\end{proposition*}
+\begin{proof}
+ We shall state and prove a lemma then show its equivalence to the proposition.
+ \begin{lemma*}
+ 	For $D(f)\subset D(g)$, and $\rho_f:A\to A_f$ the localization map, $\rho_f(g)$ is a unit in $A_f$.
+ \end{lemma*}
+\begin{subproof}
+We rewrite our hypothesis as $V(f)\supset V(g)$ and have by the Nullstellensatz that $\rad(\langle f \rangle)=I(V(F))\subset I(V(g))=\rad(\idl{g})$. In particular, we have that $f\in \rad(\idl{g})$, so for some $n$, $f^n=gr$ with $r\in A$. Applying $\rho_f$ to that equality yields $\frac{f^n}{1}=\frac{gr}{1}$, so dividing through by $f^n$ gives the relation $\rho_f(g)\frac{r}{f^n}=1$.
+\end{subproof}
+We have the below commutative diagram
+
+	\[ 
+	\begin{tikzcd}
+	&A \arrow{ld}{\rho_f} \arrow{d}{\rho_{S(f)}} &  \\
+	A_{f} \arrow{r}{\sigma} & A_{S(f)} \\
+	\end{tikzcd}
+	\]
+We note that as $f$ is mapped by $\rho_{S(f)}$ to the unit group of $A_{S(f)}$, the localization universal mapping property implies that $\sigma$ is the unique map for which this diagram commutes. On the other hand, as $S(f)$ is mapped to the unit group of $A_f$ by $\rho_f$, we have that there is a unique map $\psi$ making the below diagram commutative.
+	\[ 
+\begin{tikzcd}
+&A \arrow{ld}{\rho_f} \arrow{d}{\rho_{S(f)}} \arrow{rd}{\rho_f} &  \\
+A_{f} \arrow{r}{\sigma} & A_{S(f)} \arrow[dashrightarrow]{r}{\psi} &A_f \\
+\end{tikzcd}
+\]
+However, as the identity is the unique map from $A_f$ to $A_f$ commuting with $\rho_f$, we must have that $\psi\sigma=\id_{A_f}$. This argument can be restated symmetrically, thus showing $\psi$ and $\sigma$ to be two-sided mutual inverses and hence isomorphisms.
+\end{proof}
+\prt{3}\begin{prompt*}
+	Define a contravariant functor $\OO_X:\DD(X)\to \cat{Ring}$ by $$D(f)\mapsto A_{S(f)}$$
+	$$D(f)\subset D(g)\mapsto( A_{S(g)}\to A_{S(f)})$$
+\end{prompt*}
+\begin{proof}[Response]
+	We show functoriality. We first note that $D(f)\subset D(g)$ implies that for any $h\in S(g)$, $D(f)\subset D(g)\subset D(h)$, so $h\in S(f)$. Thus, $S(g)\subset S(f)$, so the morphism $A_{S(g)}\to A_{S(f)}$ is achieved simply by localizing $A_{S(g)}$ at $S(f)$. We note that $A_{S(f)}\to A_{S(f)}$ is indeed the identity morphism in $\cat{Ring}$ and thus $\OO_X$ preserves identity. Finally, we suppose $D(f)\subset D(g)\subset D(h)$. Then, $A_{S(h)}\to A_{S(g)}\to A_{S(f)}$ is the composite of the localization of one set and a superset to it and hence the same map as $A_{S(h)}\to A_{S(f)}$ (this also follows immediately from a universal mapping property argument). Hence $\OO_X$ is indeed a contravariant functor.
+\end{proof}
+\prt{4}
+\begin{proposition*}
+$\OO^\#_X:\DD^\#(X)\to \cat{Ring}$ is naturally equivalent to the composition $\OO_X\circ F:\DD^\#(X)\to\DD(X)\to \cat{Ring}$
+\end{proposition*}\begin{proof}
+We define our natural transformation by $n_{\bullet}\in \mor_{\DD^\#(X)}(\bullet,-)$ and $m_{\bullet}\in \mor_{\cat{Ring}}(\bullet,-)$.\footnote{This feels like terrible and possibly not even well-defined notation, but I'm not sure how to express this otherwise?} We let $n_{f}=\id_{f}$ and $m_{A_{f}}=\sigma$ where $\sigma$ is the isomorphism defined in part 4b. Then, we have the following diagram showing the paths of elements:
+$$
+\begin{tikzcd}
+ f\arrow[mapsto]{rr}{\OO^\#(X)}\arrow[mapsto]{d}{n_f}&&A_f\arrow[mapsto]{d}{m_{f}}\\
+ f\arrow[mapsto]{r}{F}&D(f)\arrow[mapsto]{r}{\OO_X}&A_{S(f)}
+\end{tikzcd}
+$$ It is immediately clear this diagram commutes.
+As all of $m_{\bullet}$ and $n_{\bullet}$ are isomorphisms, our natural transformation is a natural equivalence.
+\end{proof}
+\prob{5}
+\prt{1}\begin{proposition*}
+	Let $A$ be a ring, $X$ its spectrum, $f\in A$, $X_f$ the spectrum of $A_f$, and $\tau^*:X_f\to D(f)\subset X$ the homeomorphism of problem 1. Then $\tau^*$ induces a bijection between basic open sets $D(g)\subset D(f)$ and those $D_f(g)\subset X_f$.
+\end{proposition*}
+\begin{proof}
+We shall show that for $U\subset X_f$ open, $\tau^*(U)$ is basic if and only if $U$ is basic. We first assume $\tau^*(U)=D(g)$ with $g\in A$. Then, as $\tau^*$ is a homeomorphism, $U=(\tau^*)^{-1}(D(g))=D_f(\tau(g))=D_f(\frac{g}{1})$. Conversely, consider $D_f(\frac{h}{f^n})$ where $n\geq 0$. We claim that $D_f(\frac{h}{f^n})=D_f(\frac{h}{1})$. Indeed, as $f^n$ is a unit in $A_f$, if $\frac{h}{f^n}$ maps to a nonzero element in $k(s)$ for any $s\in X_f$, then $f^n\frac{h}{f^n}$ is necessarily nonzero. Thus, $D_f(\frac{h}{f^n})=D_f(\frac{h}{1})=\tau(D(h))$. This completes our proof. 
+\end{proof}
+\prt{2}
+\begin{proposition}
+	The restriction of $\OO_X$ to $\DD(D(f))$ for some $f\in A$ is equivalent to $\OO_{X_f}:\DD(X_f)\to \cat{Ring}$.
+\end{proposition}
+\begin{proof} I'm ultimately a bit confused by this\textellipsis We can only define a natural transformation between functors between the \emph{same} two categories $\Ccal$ and $\Dcal$\textellipsis It seems like a natural interpretation to require a natural equivalence $F:\DD(D(f))\to X_f$ which commutes with $\OO_{X_f}$ and $\OO_X$, that is a natural equivalence $F$ such that the following commutes: $$
+	\begin{tikzcd}
+	\DD(D(f))\arrow{r}{\OO_X}\arrow{d}{F}&\cat{Ring}\\
+	\DD(X_f)\arrow{ru}[swap]{\OO_{X_f}}
+	\end{tikzcd}$$
+	
+	We let $F(D(g))=D_f(\frac{g}{1})=(\tau^*)^{-1}(D(g))$, and $F(D(g)\xhookrightarrow{}D(h))=[(\tau^*)^{-1}(D(g))\xhookrightarrow[]{}(\tau^*)^{-1}(D(h))]$ (As $\tau$ is a homeomorphism, such inclusions are preserved). As $F$ is in fact surjective (even better than essentially surjective!) in light of part a and is in its description explicitly bijective on morphisms, it is indeed a natural equivalence. Further, as $(\OO_{X_f}\circ F)(D(g))=(A_f)_g=A_g=\OO_X(D(g))$ (4b,c), it is clear our diagram commutes on objects (that it commutes on morphisms is more or less trivially checked as each morphism set has cardinality at most one). This completes our \say{proof.} 
+\end{proof}
+\prob{6}
+\begin{prompt*}
+	Find two presheaves, one of which \emph{(i)} fails locality but satisfies gluing and the other of which \emph{(ii)} satisfies locality but fails gluing.
+\end{prompt*}
+\begin{proof}[Response]
+	\begin{enumerate}[label=\emph{(\roman*)}]
+		\item We let $X$ be some Euclidean\footnote{well, I think any topological space with cardinality greater than 1 \emph{should} work, but let's stick to Euclidean so I can make my counter-example super concrete so there's less to poke holes in} space, say $\CC^n$ for $n\geq 1$ and define the \say{double-power} presheaf $P:\cat{Op}(X)\to \cat{Set}$ as follows: for an open set $U\subset X$, let $P(U)=\Pcal(\Pcal(U))$. For $V\subset U$, $S\in P(U)$, let $\evat{S}{V}{}=\{s\in S\;:\; s\subset V\}$. Then, $\evat{S}{U}{}=\{s\in S\;:\; s\subset U\}=S=\id_{\cat{Set}}(S)$, so the identity restriction axiom of presheaves is satisfied. In addition, for $S\in P(U)$, $W\subset V\subset U$, $\evat{\left(\evat{S}{V}{}\right)}{W}{}=\evat{\{s\in S\;:\;s\subset V\}}{W}{}=\{s\in S\;:\; s\subset V\cap W\}$. As $V\cap W=W$ by assumption, this is the same set as $\{s\in S\;:\; s\subset W\}=\evat{S}{W}{}$. Thus, $P$ is indeed a presheaf. We claim it satisfies the gluing sheaf axiom: we let $\{U_i\}_{i\in I}$ be some open cover of $X$ and $\{S_i\}_{i\in I}$ an element of $\prod_{i\in I}P(U_i)$ satisfying the intersection-compatibility condition of the gluing axiom. We claim that $S=\bigcup_{i\in I}S_i$ satisfies $\evat{S}{U_i}{}=S_i$ for all $i$. Indeed, that $S_i\subset \evat{S}{U_i}{}$ follows trivially from the way in which we defined restriction maps. To show the opposite containment, we suppose there exists some $\emptyset\neq W\in \left(\evat{S}{U_i}{}\setminus S_i\right)$. Then, $W\in S_j$ for some $j$, and $W\subset U_i$ as otherwise it would not be an element of $\evat{S}{U_i}{}$. Thus, $W\in \left(\evat{S_j}{U_i\cap U_j}{}\setminus \evat{S_i}{U_i\cap U_j}{}\right)$, contradicting our assumption of compatibility, and showing $P$ to satisfy the gluing sheaf axiom. However, we claim it does not satisfy the locality axiom. To see this, we let $\{B_i\}_{i\in I}$ be an open covering of $X$ by unit balls, $V$ a ball of radius exceeding unity and $S$ the singleton set $S=\{V\}$. Then, $\evat{V}{B_i}{}=\emptyset$ for all $i$ as clearly $V\centernot\subset B_i$, but $V\neq \emptyset$. This contradicts the locality sheaf axiom so indeed $P$ is not a sheaf.
+		\item\emph{ (Note: I found reference to this one in Vakil, but proved its relevant properties myself)} We let $X=\CC$ and let $\BB_X$ be the \say{presheaf of bounded functions,} that is, a functor from $\DD(\CC)$ to $\cat{Ring}$ where $\BB_X(u)$ is the ring of bounded functions on $u\subset \CC$ open and $(u\subset v)\mapsto (f\mapsto \evat{f}{v}{})$, that is simple function restriction. Then, it is clear that $\BB_X$ is a presheaf, and it quite clearly satisfies the locality axiom as any non-zero function on $\CC$ certainly must restrict to a non-zero function on some set of an open cover. However, if we consider the function on $\CC$ $f(x)=x$ and an open cover $\{u_i\}_{i\in I}$ consisting of bounded sets, we have that on each $u_i$, $\evat{f}{u_i}{}$ is bounded, but $f\not \in \BB_X(\CC)$ as it is not bounded on the complex plane. Thus, $\BB_X$ fails to be a sheaf because it fails the gluing axiom.
+		\end{enumerate}
+\end{proof}
+\end{document}

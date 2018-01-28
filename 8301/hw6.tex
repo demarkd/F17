@@ -1,0 +1,337 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{relsize}
+
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{9 October 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH 8301 Homework V}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8301}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\cbal}{\overline{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\intr}{\mathrm{int}}
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\vect}{\mathrm{Vect}}
+\newcommand{\Top}{\mathrm{Top}}
+\renewcommand{\top}{\Top}
+\newcommand{\hTop}{\mathrm{hTop}}
+\newcommand{\set}{\mathrm{Set}}
+\newcommand{\frp}{\mathop{\large {\mathlarger{\star}}}}
+\newcommand{\ondt}{1_{\cdot}}
+\newcommand{\onst}{1_{\star}}
+\begin{document}
+	\maketitle
+\prob{1}
+We shall prove a general theorem; the proposition of the problem shall come at the end as a corollary.
+\begin{theorem*}
+Let $\Ccal$ be a category in which coproducts exist, and let $G=\coprod_{\alpha\in A} G_\alpha$ where $G_\alpha$ is an object in $\Ccal$ for each $\alpha$ and $\iota_\alpha\in \hom(G_\alpha,G)$ is the canonical inclusion map. Then, the map $\iota^*:\hom(G,H)\to \prod_{\alpha\in A}\hom(G_\alpha,H)$ defined by $[f:G\to H]\mapsto (f\circ \iota_\alpha: G_\alpha\to H)_{\alpha\in A}$ induces a bijection between its domain and target.
+\end{theorem*}
+\begin{subproof}[Prough]
+	As one may expect (and as we are more or less forced to do), we take $\coprod_{\alpha\in A}G_\alpha$ to be defined by its universal mapping property.
+	
+\emph{Surjectivity:} Let $(g_\alpha)_{\alpha\in A}$ be an arbitrary element of $\prod_{{\alpha\in A}}\hom(G_\alpha,H)$ where each $g_\alpha\in \hom(G_\alpha,H)$. Then, the universal mapping property of the coproduct states that there is a unique morphism $g\in\hom(G,H)$ such that $g\circ \iota_\alpha=g_\alpha$ for each $\alpha$. Hence, $\iota^*(g)= (g_\alpha)_{\alpha\in A}$. As $(g_\alpha)_{\alpha\in A}$ was assumed to be arbitrary, this establishes surjectivity.
+
+\emph{Injectivity:} We suppose that $(f_\alpha)_{\alpha\in A}=\iota^*(\psi)=\iota^*(\phi)$ for some $\psi,\phi\in\hom(G,H)$. Then, the universal mapping property of $G$ states that there exists a unique morphism $f\in \hom(G,H)$ such that $f\circ\iota_{\alpha}=f_{\alpha}$ for each $\alpha\in A$. As $\iota^*(\psi)=(\psi\circ \iota_{\alpha})_{\alpha\in A}=(f_\alpha)_{\alpha\in A}$ and $f$ is unique, we have that $f=\psi$. However, the same argument applies to $\phi$, so we have $f=\phi$. Thus, $\phi=f=\psi$, hence establishing injectivity.
+\end{subproof}
+\begin{corollary}
+	For $$G=\frp_{\alpha\in A}G_{\alpha}$$ a free product of groups $G_\alpha$, there exists a bijection $$\hom(G,H)\cong \prod_{\alpha\in A}\hom(G_\alpha,H)$$
+\end{corollary}
+\begin{proof}[Prough]
+	Follows immediately from the theorem and the fact (proven in class) that the free product is the coproduct in the category of groups.
+\end{proof}
+
+\prob{2}
+We let $X$ be a set equipped with two binary operations $\cdot$ and $\star$ with respective unities $1_{\cdot}$ and $1_{\star}$ satisfying the exchange relation \eqref{exc}:\begin{equation}\label{exc} 
+	(x\cdot y)\star (w\cdot z)=(x\star w)\cdot (y\star z)
+\end{equation}
+
+\prt{1}\begin{proposition*}
+	$\ondt=\onst$
+\end{proposition*}
+\begin{proof}[Prough]
+	We apply \eqref{exc} with $x=z=\ondt$ and $y=w=\onst$:
+\begin{equation}\label{uexc}(\ondt\cdot \onst)\star (\onst\cdot \ondt)=(\ondt\star \onst)\cdot (\onst\star \ondt)\end{equation}
+
+We note $(\ondt\cdot\onst)=(\onst\cdot\ondt)=\onst$ and $(\ondt\star\onst)=(\onst\star\ondt)=\ondt$, and further $\ondt\cdot\ondt=\ondt$ and $\onst\star\onst=\onst$. This simplifies \eqref{uexc} to \begin{equation*}
+	\onst=\onst\star\onst=\ondt\cdot\ondt=\ondt
+\end{equation*}
+This proves our proposition. Henceforth, we shall let $\ondt=\onst=1$.
+\end{proof}
+\prt{2}\begin{proposition*}
+	\begin{enumerate}[label=\emph{(\roman*)}]
+		\item $a\cdot b=b\star a$
+		\item $a\cdot b=a\star b$
+	\end{enumerate}
+\end{proposition*}
+\begin{proof}[Prough]
+	\begin{enumerate}[label=\emph{(\roman*)}]
+		\item  We write $a\cdot b=(1\star a)\cdot (b\star 1)$. Then, \eqref{exc} gives $(1\star a)\cdot (b\star 1)=(1\cdot b)\star(a\cdot 1)=b\star a$.
+		\item We write $a\cdot b=(a\star 1)\cdot (1\star b)$. Then, \eqref{exc} gives $(a\star 1)\cdot (1\star b)=(a\cdot 1)\star(1\cdot b)=a\star b$.
+	\end{enumerate}
+Henceforth, we shall let $\star=\cdot=*$.
+\end{proof}\prt{3}
+\begin{proposition*}
+	$*$ is associative
+\end{proposition*}
+\begin{proof}[Prough]
+	We rewrite \eqref{exc} in light of what we have learned: \begin{equation}
+		\label{sexc}(x*y)*(w*z)=(x*w)*(y*z)
+	\end{equation}
+	We wish to show for any $x,y,z\in X$, $(x*y)*z=x*(y*z)$. Letting $w=1$ in \eqref{sexc} gives $(x*y)*z=(x*y)*(1*z)=(x*1)*(y*z)=x*(y*z)$
+\end{proof}
+
+\prob{3} We let $G$ be a topological space with a continuous binary operation $\mu:G\times G\to G$ such that there exists some element $e\in G$ such that $\mu(e,g)=\mu(g,e)=g$ for all $g\in G$. For loops $\gamma,\rho$ we denote $(\gamma\cdot\rho)(t):=\mu(\gamma(t),\rho(t))$.
+\prt{1}\begin{proposition*}
+The map $\tilde{\mu}:\pi_1(G,e)\times \pi_1(G,e)$ (denoted $[\gamma]\cdot[\rho]:=\tilde\mu([\gamma],[\rho])$) given by $[\gamma]\cdot[\rho]=[\gamma\cdot\rho]$ is well-defined.
+\end{proposition*}
+\begin{proof}[Prough]
+	We let $[\gamma]$, $[\rho]\in \pi_1(G,e)$ with representatives $\gamma,\rho$ respectively. We first check that $\gamma\cdot\rho$ is a loop based at $e$. We note that $\gamma(0)\cdot\rho(0)=\gamma(1)\cdot \rho(1)=\mu(e,e)=e$. As $\gamma$ and $\rho$ are assumed to be continuous and $\mu$ is continuous, we now have that $\gamma\cdot\rho$ is indeed a loop based at $e$. We now show that $\cdot$ respects equivalence classes. We let $\rho \sim \rho'$ and $\gamma\sim \gamma'$, with $H_1: I\times I\to G$ a homotopy with $H(t,0)=\gamma(t)$ and $H(t,1)=\gamma'(t)$ and $H_2$ similarly a homotopy between $\rho$ and $\rho'$. We claim that $H(t,s)=\mu(H_1(t,s),H_2(t,s))$ is a homotopy between $\gamma\cdot\rho$ and $\gamma'\cdot \rho'$. As $\mu, H_1$, and $H_2$ are continuous by assumption, we have that $H$ is continuous, and $H(t,0)=\mu(H_1(t,0),H_2(t,0))=\mu(\gamma(t),\rho(t))=(\gamma\cdot \rho)(t)$, with a similar statement showing $H(t,1)=(\gamma'\cdot \rho')(t)$. Thus, $\gamma\cdot \rho\sim \gamma'\cdot \rho'$, proving our proposition.
+\end{proof}
+\prt{2}
+\begin{proposition*}
+	Letting $[1]$ be the homotopy class of the constant loop at $e$, $\cdot$ is unital with $[1]$ its unit.
+\end{proposition*}
+\begin{proof}[Prough]
+	By the result of the previous problem, it is enough to show that for any loop $\gamma:I\to G$ based at $e$, $\gamma\cdot 1\simeq \gamma$ (or the same with 1 replaced by a homotopy equivalent). Indeed, $(\gamma\cdot1)(t)=\mu(\gamma(t),e)=\gamma(t)\simeq \gamma(t)$. Hence, $[\gamma]\cdot [1]=[\gamma\cdot1]=[\gamma]$. 
+\end{proof}
+\prt{3}
+\begin{proposition*}
+We let $\star$ denote the standard concatenation product on $\pi_1(G,e)$. Then, $\star,\cdot$ satisfy \eqref{exc}.
+\end{proposition*}
+\begin{proof}[Prough] By direct computation:
+We let $x,y,w,z$ be loops $I\to G$. Then, \begin{equation}
+	\left[(x\cdot y)\star(w\cdot z)\right](t)=\begin{cases}
+\mu(x(2t),y(2t))&0\leq t \leq \frac{1}{2}\\
+\mu(w(2t-1),z(2t-1))&0\leq t \leq \frac{1}{2}
+	\end{cases}
+\end{equation}
+and \begin{equation*}\begin{aligned}
+\left[(x\star w)\cdot (y\star z)\right](t)&=\left(\begin{cases} x(2t)&0\leq t \leq \frac{1}{2}\\
+	w(2t-1)&0\leq t \leq \frac{1}{2}\end{cases}\right)\cdot\left(\begin{cases} y(2t)&0\leq t \leq \frac{1}{2}\\
+	z(2t-1)&0\leq t \leq \frac{1}{2}\end{cases}\right)\\
+	&=\begin{cases}
+	\mu(x(2t),y(2t))&0\leq t \leq \frac{1}{2}\\
+	\mu(w(2t-1),z(2t-1))&0\leq t \leq \frac{1}{2}
+	\end{cases}\\&=\left[(x\cdot y)\star(w\cdot z)\right](t)
+	\end{aligned}
+	\end{equation*}
+\end{proof}
+\prt{4}
+\begin{proposition*}
+	$\pi_1(G,e)$ is an Abelian group.
+\end{proposition*}
+\begin{proof}[Prough]
+	We have that $\pi_1(G,e)$ is a group. The result of problem 2b combined with the previous result ensures that $\cdot=\star$ and $\star$ is commutative. Thus, $\pi_1(G,e)$ is Abelian.
+\end{proof}
+\prob{4}
+\begin{proposition*}
+We let $X=\{x\in \RR^3\;:\; 1\leq\abs{x}\leq 2\}$ and let $\sim$ be defined by $x\sim 2x$ for all $\abs{x}=1$. Then, $\pi_1(X/\sim,x_0)=\ZZ$ for all $x_0\in X/\sim$.
+\end{proposition*}
+ \begin{proof}[Prough]
+ 	We begin with a lemma.
+ 	\begin{lemma}
+ 		\label{prod} For $X, Y$ path-connected topological spaces and $x_0$, $y_0$ arbitrary basepoints, $\pi_1(X\times Y,(x_0,y_0))\approxeq \pi_1(X,x_0)\times \pi_1(Y,y_0)$. 
+ 	\end{lemma}
+ \begin{subproof}[Prough]
+ 	We let $\rho_x:X\times Y\to X$, $\rho_y:X\times Y\to Y$ be the canonical projection maps. We claim the group homomorphism $\Phi:\pi_1(X\times Y,(x_0,y_0))\to\pi_1(X,x_0)\times \pi_1(Y,y_0)$ by $[\gamma]\mapsto ([\rho_x\gamma],[\rho_y\gamma])$ is an isomorphism. To show injectivity, we suppose $([\rho_x\gamma],[\rho_y\gamma])=([1_x],[1_y])$. Then, there exist homotopies $H_x:I^2\to X$, $H_y:I^2\to Y$ between $\rho_x\gamma$, $\rho_y\gamma$ and $1_x$, $1_y$ respectively. Then, $H:I^2\to X\times Y$ given by $(s,t)\mapsto (H_1(s,t),H_2(s,t))$ is a continuous\footnote{A quick sketch of this: we let $A,B,C$ be topological spaces. \textbf{Claim.} for $\phi:A\to C$, $\psi:A\to B$ continuous, the map $\Psi:A\to B\times C$ by $x\mapsto (\psi(x),\phi(x))$ is continuous. \emph{Proof.} We show continuity on a basis of $B\times C$. Let $u\subset B$, $v\subset C$ be open. $\Psi^{-1}(u\times v)=\psi^{-1}(u)\cap \phi^{-1}(v)$, which is open by continuity of $\phi,\psi$.} homotopy between $\gamma$ and $1_{X\times Y}$, so $[\gamma]=[1_{X\times Y}]$. To show surjectivity, we note that for any $([\gamma_1],[\gamma_2])\in \pi_1(X,x_0)\times\pi_1(Y,y_0)$, $(\gamma_1,\gamma_2)$ is a continuous\footnote{See previous footnote} loop to $X\times Y$, the homotopy class of which is projected by $\Phi$ to $([\gamma_1],[\gamma_2])$. 
+ \end{subproof}
+\begin{lemma}
+	$X/\sim$ is homeomorphic to $S^2\times S^1$
+\end{lemma}
+\begin{subproof}[Prough]
+We view $X$ in polar coordinates $(\phi,\psi,t)$ and note that as $0\not \in X$, these coordinates are unique modulo $2\pi$ in the first two coordinates. We claim that the map $\Phi$ defined by $X\ni(\phi,\psi,t) \mapsto((\phi,\phi),t-1)\in S^2\times I$ is a homeomorphism. Indeed, bijectivity is obvious from our above remark. To show continuity of $\Phi$, we let $u\subset S^2$, $v\subset I$ be basic open sets. Then, $\phi^{-1}(u\times v)$ is the intersection of an open spherical annulus corresponding to $v$ and the open set $\{(\phi,\psi,t):t>0;\;(\phi,\psi)\in v\}$, which is itself open. The map in the reverse direction is simply the product of the absolute value map and the projection to the unit sphere, both of which are continuous. Thus, $\Phi$ is a homeomorphism. Letting $q_1$ be the quotient map $S^2\times I\to S^2 \times S^1$ given $(\phi,\psi,t)\mapsto (\phi,\psi,t\mod 1)$ and $q_2:X\to X/\sim$ we note that $\phi$ maps preimages of $q_2$ to preimages of $q_1$. This proves our proposition.
+\end{subproof}
+The statement of the problem now follows trivially from our work above coupled with the observation that $\pi_1(S^2,x)=0$ and $\pi_1(S^1,y)=\ZZ$ for any $x\in S^2$, $y\in S^1$.
+ \end{proof}
+
+\end{document}

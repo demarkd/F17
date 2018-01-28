@@ -1,0 +1,348 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath,calligra,mathrsfs}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{relsize}
+
+\usetikzlibrary{arrows, matrix}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\spm}{Spm}
+\DeclareMathOperator{\rad}{rad}
+\newcommand{\mor}{\mathrm{Mor}}
+\newcommand{\obj}{\mathrm{Obj}~}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\newcommand{\Aa}{\mathbb{A}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\FF}{\mathscr{F}}
+\newcommand{\GG}{\mathscr{G}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\afr}{\mathfrak{a}}
+\newcommand{\bfr}{\mathfrak{b}}
+\newcommand{\cfr}{\mathfrak{c}}
+\newcommand{\dfr}{\mathfrak{d}}
+\newcommand{\efr}{\mathfrak{e}}
+\newcommand{\ffr}{\mathfrak{f}}
+\newcommand{\gfr}{\mathfrak{g}}
+\newcommand{\hfr}{\mathfrak{h}}
+\newcommand{\ifr}{\mathfrak{i}}
+\newcommand{\jfr}{\mathfrak{j}}
+\newcommand{\kfr}{\mathfrak{k}}
+\newcommand{\lfr}{\mathfrak{l}}
+\newcommand{\mfr}{\mathfrak{m}}
+\newcommand{\nfr}{\mathfrak{n}}
+\newcommand{\ofr}{\mathfrak{o}}
+\newcommand{\pfr}{\mathfrak{p}}
+\newcommand{\qfr}{\mathfrak{q}}
+\newcommand{\rfr}{\mathfrak{r}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\tfr}{\mathfrak{t}}
+\newcommand{\ufr}{\mathfrak{u}}
+\newcommand{\vfr}{\mathfrak{v}}
+\newcommand{\wfr}{\mathfrak{w}}
+\newcommand{\xfr}{\mathfrak{x}}
+\newcommand{\yfr}{\mathfrak{y}}
+\newcommand{\zfr}{\mathfrak{z}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ccal}{\mathcal{C}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{30 October 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH 8253 Homework III}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8253}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\idl}[1]{\langle #1 \rangle}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id} }
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\cat}[1]{{\mathrm{\bf{#1}}}}
+%\usepackage[backend=biber,style=alphabetic]{biblatex}
+%\addbibresource{algeo.bib}
+\newcommand{\colim}{\varinjlim}
+\newcommand{\clim}{\varprojlim}
+\newcommand{\frp}{\mathop{\large {\mathlarger{\star}}}}
+\newcommand{\restr}[2]{\evat{#1}{#2}{}}
+\begin{document}
+\maketitle
+\prob{1}
+\emph{We save this problem for after problem 3 so that we may use its result}
+\prob{2}
+\begin{proposition*}
+	$\colim_{G_i,f_{ij}}G_i=G:=\frp_{i\in I} G_i/N$ where $N$ is generated by elements of the form $a_ia_j^{-1}$ where there is some $k$ such that $f_{ik}(a_i)=f_{ij}(a_j)$ for all $i\leq j$ and $\frp$ is taken to be the free product.
+\end{proposition*}
+\begin{proof}
+	We let $\rho_j:G_j\to G$ be the inclusion map $G_j\to \frp_{i\in I}G_i$ composed with the quotient map $\frp_{i\in I}G_i\to \frp_{i\in I} G_i/N$. Then, $(G,\rho_j)$ is a co-cone as $\rho_j(f_{ij}(a))\rho_i(f_{ii}(a))^{-1}\in N\implies \rho_j(f_{ij}(a))=\rho_i(a)$. To see that it is universal, we let $(C,\sigma_j)$ be another co-cone and first note that there is a unique map $\frp_j G_j\to C$ commuting with $\sigma_j$ by the universal property of the coproduct; hence, we may consider the $\sigma_j$ maps fully determined by the map $\psi: \frp_j G_j\to C$. We then note that $\sigma_j(a)=\sigma_i(b)$ for all $(a,b)\in G_j\times G_i$ such that $f_{jk}(a)=f_{ik}(b)$ for all $i,j$ as $C$ is a co-cone. Hence, $N\trianglelefteq \ker \psi$, so there is a unique map $G\to G/(\ker \psi/N)$ commuting with $\psi$ by the universal property of the quotient map. This completes our proof.
+\end{proof}
+\prob{3} \begin{proposition*}
+ We let $A$ be an integral domain. For any open set $U\subset X$, $\OO(U)$ is canonically isomorphic to $\bigcap_{x\in U}A_x$ (viewing $A_x$ as a subset of the ring $\mathrm{frac}(A)$). 
+\end{proposition*}
+\begin{proof}
+	We break into two subclaims:
+	\begin{claim*}
+		For any \emph{basic} open set $U:=D(f)$ with $f\in A$, $\OO(U)\cong\bigcap_{x\in U}A_x$ canonically.
+	\end{claim*}
+\begin{subproof}
+	We have that $\OO(U)=A_{S(f)}$ where $S(f)=\{g\in A\;:\;D(f)\subset D(g)\}$. We note that $\bigcap_{x\in U} A_x=\{\frac{a}{b}\in \mathrm{frac}(A)\;:\;b\notin \bigcup_{x\in U} \pfr_x\}=A[S^{-1}]$ where $S:=\left(\bigcup_{x\in U}\pfr_x\right)^c$. We let $g\in S$. Then, for all $\pfr$ such that $f\not \in \pfr$ (i.e. $x_\pfr\in D(f)=U$),$g\not \in \pfr\implies D(g)\supset D(f)\implies S\subset S(f)$. Moreover, for any $g\in S(f)$, we have that $g\notin \pfr_x$ for any $x\in U$, so $S(f)=S$. Thus, $\bigcap_{x\in U} A_x\cong A_{S(f)}$, and as $A_{S(f)}$ is the limit of all $\OO(D(g))\subset \OO(D(f))$, we have that there is a canonical isomorphism $\bigcap_{x\in U}A_x\to A_{S(f)}$ commuting with restriction maps.
+\end{subproof}
+\begin{claim*} For any $U\subset X$ open, $\OO(U)\cong\bigcap_{D(f)\subset U}\OO(D(f))$
+	\end{claim*}
+\begin{subproof}
+	We have that $\OO(U)=\clim_{D(f)\subset U}\OO(D(f))=\clim_{D(f)\subset U}A_f$. As $A$ is a domain, each restriction map $A_f\to A_g$ where $D(g)\subset D(f)$ is an injection. Thus, for any $V,W\subset U$ basic open with $V\cap W\neq \emptyset$, we must have for any $s\in \OO(U)$ that $\restr{s}{V}=\restr{s}{W}$ and hence $s\in \OO(V)\cap \OO(W)$ viewed as a subset of $\mathrm{frac}(A)$. We recall that $\spec A$ is connected\footnote{Brief proof of this fact: suppose there exist $U:=D(I_1),W:=D(I_2)$ open such that $U\cap W=\emptyset$ and $U\cup W=X$. Then, $V(I_1)\cup V(I_2)=V(I_1I_2)=X$, so $I_1I_2\subset \bigcap_{\pfr\triangleleft A}\pfr$. But as $A$ is a domain, this last ideal is the zero ideal! Hence, one of $I_1$ or $I_2$ is the zero ideal, so either $U=\emptyset$ or $V=\emptyset$.}. Considering the open cover of $U$ by all basic open sets it contains, by taking a \say{walk} from $D(f)$ to $D(g)$ by a sequence $D(f)=D(f_0),D(f_1),\hdots,D(f_n)$ where $D(f_i)\cap D(f_{i+1})\neq \emptyset$, we have for any $D(f),D(g)\subset U$, any $s\in \OO(U)$ has $s\in D(f)\cap D(g)$. Thus, $\OO(U)\subset \bigcap_{D(f)\subset U}\OO(D(f))$. To show the reverse containment, we note that $\bigcap_{D(f)\subset U}\OO(D(f))$ has obvious inclusion maps commuting with restriction to each $D(f)\subset U$, thus making it a cone. As the largest possible cone, we have that it must indeed be a universal cone and thus $\OO(U)\cong\bigcap_{D(f)\subset U}\OO(D(f))$ canonically.
+\end{subproof}
+These two claims together combine to prove the proposition.
+\end{proof}
+\prob{1}\begin{proposition*}
+	For $X=\spec \ZZ$, $\OO_X(U)=\ZZ[\{p_1,p_2,\hdots,p^n\}^{-1}]$ where $U=D(p_1p_2\hdots p_n)$\footnote{that all open sets are of this form is a rephrasing of the hint}, with restriction maps all inclusions.
+\end{proposition*}
+\begin{proof}
+	We have that $\OO_X(U)=\bigcap_{x_p\in U} \ZZ_p$\footnote{That is, $\ZZ$ localized at the ideal $p$, not the $p$-adic integers--we shall not make reference to the completion of $\ZZ_p$ in this problem set.} by the result of the previous problem. Viewed as a subset of $\QQ$, this is $\{\frac{a}{b}\::\:\gcd(a,b)=1;\;b\notin p\ZZ\text{ for any} x_p\in U\}$, which can be rephrased $\ZZ[p_1p_2\hdots p_n^{-1}]$. Then, as each ring $\OO_X(U)$ is an integral domain, all restriction maps are injective and hence inclusions.
+\end{proof}
+
+\prob{4}\begin{corollary*}
+	Any ring $A$ is canonically isomorphic to the projective limit of all its localizations $A_f$ for $f\in A$.
+\end{corollary*}
+\begin{proof}
+	Follows immediately from the fact that for \emph{any\footnote{as opposed to just those which are not basic}} open set $U\subset X=\spec A$, $\OO_X(U)=\clim_{D(f)\subset U} \OO_X(D(f))=\clim_{D(f)\subset U}A_f$ by letting $U=X$. 
+\end{proof}
+\prob{5}
+\begin{proposition*}
+	$D(2,t)\subset \AA_\ZZ^1$ is not affine.
+\end{proposition*}
+\begin{proof}
+We note that as $\langle 2, t\rangle $ is a maximum ideal, $U:=D(2,t)=\AA_\ZZ^1\setminus \{x_{\langle 2,t\rangle}\}$. By the result of problem 3, $$\OO(U)=\bigcup_{x\in U}\ZZ[t]_{\pfr_x}=\bigcup_{\langle 2,t\rangle \neq \pfr\triangleleft \ZZ[t]}\ZZ[t]_{\pfr}$$. As $\ZZ[t]$ is a(n?)\footnote{Is UFD pronounced \say{unique factorization domain} or \say{yoo-eff-dee?}} UFD, we may rewrite this as $$\OO(U)=\left\{\frac{f(t)}{g(t)}\in \ZZ(t)\;\:\;g(t)=1 \text{ or }\langle 2,t\rangle \text{ is the \emph{only} ideal } \pfr \text{ such that }g(t)\in \pfr\right\}$$. However, as $\ZZ[t]$ is a UFD, all elements are contained in a \emph{principal} prime ideal, which $\langle 2,t\rangle $ is not. Thus, $g(t)$ may be assumed to be $1$, so $\OO(U)=\ZZ[t]$. We suppose for the sake of contradiction that $U$ is affine. Then, $U\cong \spec\OO(U)$, so $V$ induces a bijection between radical ideals of $\OO(U)$ and varieties in $\spec \OO(U)$. However, $\langle 2,t\rangle  $ is a radical ideal in $\OO(U)$, but $V(2,t)=\emptyset$. This completes our proof.
+	\end{proof}
+\prob{6}
+
+\begin{proposition*}
+	We let $\OO(U)$ be the algebra of holomorphic functions on $U\subset \CC$ open.
+	\begin{enumerate}[label=\emph{\roman*)}]
+	\item  This presheaf is indeed a sheaf on $\CC$
+	\item The stalk $\OO_0$ may be identified with $\left\{f(z)=\sum_{n=0}^\infty a_nz^n \;:\;f(z)\text{ converges for some }z\in \CC\setminus \{0 \}\right\}$
+	
+	\end{enumerate}
+\end{proposition*}
+\begin{proof}
+	\begin{enumerate}[label=\emph{\roman*)}]
+\item Locality follows trivially; indeed if a holomorphic function is zero everywhere in any open set, it is a basic theorem of complex analysis that it is zero everywhere. Gluing follows nearly as trivially. We let $(u_i)_{i\in I}$ be an open cover of $\CC$ and $(f_i)_{i\in I}$ a compatible $I$-touple of functions. Then, $$F(x)=\begin{cases}f_i(x)&x\in u_i
+\end{cases}$$ is well-defined as $f_i(x)=f_j(x)$ for any $x$ in any $u_i\cap u_j$. We claim $F$ is holomorphic. For any $x$ in $\CC$, we let $N_x$ be a neighborhood of $x$ such that $N_x\subset u_i$ for some $u_i$ and have that as $F(x)=f_i(x)$ has all its complex derivatives in that neighborhood, it is holomorphic at $x$. As $x$ was arbitrary, this shows that $F\in \OO(\CC)$.
+\item We claim that $\OO_0=\{f(z)=\sum_{n=0}^\infty a_nz^n\::\:f(z)\text{ convergent in some open }U\ni 0\}$. Indeed, as any holomorphic function on an open set is equal to its Taylor series centered at any point in that set, we may identify each element of each $\OO_X(U)$ with its Maclaurin series. Then, as the construction from problem 1 generalizes immediately to rings or algebras, we identify $f\in \OO_X(U)$ with $g\in \OO_X(V)$ if $f=g$ on $U\cap V$, which occurs if and only if their Maclaurin series coincide. This proves our first claim. We then note that all functions of $\OO_0$ converge \emph{somewhere} and if a Maclaurin series converges at $z_0\in \CC$, it then converges in the open ball centered at zero with radius $\norm{z_0}$. This identifies the two interpretations of $\OO_0$ and proves the proposition.
+\end{enumerate}
+
+\end{proof}
+\prob{7}\begin{proposition*}
+	We let $\FF$ be a presheaf on topological space $X$, and $\FF^+$ its sheafification with natural sheafification map $\FF\to \FF^+$. Then, there is a canonical isomorphism between stalks $\FF_p\to \FF^+_p$.
+\end{proposition*}
+\begin{proof}
+	We recall that for $U\subset X$ open, $$\FF^+(U)=\{(s_x\in \FF_x)\;:\; s_x\in \FF_x;\;\forall \;x,\;\exists x\in V\subset U \text{ s.t. } \exists s\in \FF(V)\text{ s.t. } s_y=\restr{s}{y}\;\forall y\in V\}.$$ There is naturally a unique set\footnote{I'm ignoring some set-theoretic issues here; replacement with `class' does not effect my argument.} of morphisms $\rho_{U,x}:\FF(U)\to \FF^+_x$ for all $U\subset X$ open, $x\in U$ commuting with the restriction morphisms, that is $\FF(U)\to\FF^+(U)\to \FF^+_p$, the composition of the sheafification map and the restriction to stalk map. Thus, $\FF^+_x$ is a co-cone for $\FF$, so there is a unique morphism $\phi_x:\FF_x\to \FF^+_x$ commuting with the restriction maps for $\FF$ (and as a byproduct, the sheafification maps). On the other hand, there is an obvious set of maps $\sigma_{U,x:}\FF^+(U)\to \FF_x$ for any $x\in U\subset X$ open, that is $(s_y\in \FF_y)_{y\in U}\mapsto s_x\in \FF_x$. As for any $V\subset U$, the restriction $\FF^+(U)\to \FF^+(V)$ is the \say{tautological restriction map} $(s_y\in \FF_y)_{y\in U}\mapsto (s_y\in \FF_y)_{y\in V}$, it is clear that $\sigma_{U,x}$ forms a co-cone. Hence, there is a unique map $\psi_x:\FF^+_x\to \FF_x$ commuting with $\sigma_{U,x}$. Then, $\phi_x\circ \psi_x:\FF_x^+\to \FF_x^+$ gives a morphism commuting with the restriction maps of $\FF^+$ and hence must be the identity by the universal mapping property of the colimit, with a mirrored statement holding for $\psi_x\circ \phi_x:\FF_x\to \FF_x$. Thus, as $\phi_x$ and $\psi_x$ were unique and are inverse isomorphisms, our proof is complete.
+\end{proof}
+\prob{8}\prt{1} \begin{proposition*}We consider a morphism of sheaves (with concrete target category\footnote{Following Heartshorne's lead\textellipsis}) $\phi:\FF\to \GG$ with maps $\phi_U:\FF(U)\to \GG(U)$ where both are sheaves over $X$. For any $p\in X$:
+	\begin{enumerate}[label=\emph{\roman*)}]
+	\item $(\ker\phi)_p=\ker(\phi_p)$
+	\item $(\im\phi)_p=\im(\phi_p)$
+	\end{enumerate}
+\begin{proof}Proof by awful element-chasing:
+	\begin{enumerate}[label=\emph{\roman*)}]
+		\item We recall that in a concrete category, $\FF_p=\bigsqcup_{U\ni p} \FF(U)/\sim$, where $\sim$ is a relation (quotient by ideal, normal subgroup, etc.) allowing commutation. Then, the induced map $\phi_p: [x]\mapsto [\phi_U(x)]$ for some $U\ni x$ is well-defined. We suppose $[x]\in \ker(\phi_p)$. Then, $\phi_U(x)=0\in \GG(U)$ for some $U\ni p$ and indeed any $p\in V\subset U$, so $x$ has a representative in $(\ker\phi)(U)$ for any such $V$. Then, $[x]\in (\ker\phi)_p$, so $(\ker\phi)_p\supseteq\ker(\phi_p)$ On the other hand, we suppose $[x]\in (\ker\phi)_p$. Then, there exists some $U\ni p$ such that $\phi_U(x)=0$, so $[\phi_U(x)]=\phi_p([x])=[0]$. Thus, $(\ker\phi)_p=\ker(\phi_p)$.
+\item We suppose $[x]\in (\im\phi)_p$. Then, there is some representative $x\in \GG(U)$ where $p\in U$ such that $x=\phi_U(y)$ for some $y\in \FF(U)$, so $\phi_p([y])=[x]$, and $[x]\in \im\phi_p$, so $(\im\phi)_p\subseteq \im\phi_p$. On the other hand, we let $[x]\in \im\phi_p$ Then, there is some $[y]\in \FF_p$ such that $\phi_p([y])=[x]$, so there is some $U\ni p$ such that $[y]$ has a representative $y\in \FF(U)$ where $\phi_U(y)=x\in[x]$. Thus, $x\in (\im\phi)(U)$ implying $[x]\in(\im\phi)_p$ so $\im\phi_p= \im\phi_p$.
+	\end{enumerate}\end{proof}\end{proposition*}
+\prt{2}\begin{corollary*}
+	$\phi$ is injective (resp. surjective) if and only if $\phi_p$ is injective (resp. surjective)
+\end{corollary*}\begin{proof}
+We claim that for a sheaf $\mathscr{A}$, $A=0$ if and only if $A_p=0$ for all $p\in X$. Indeed, the locality axiom ensures this is true. Then, $\phi$ is injective if and only if $\ker\phi$ is the $0$ sheaf, if and only if $(\ker\phi)_p=0$, if and only if $\ker\phi_p=0$ for all $p$ by the previous result.  The same follows for surjectivity by simply replacing $\ker$ with $\mathrm{coker}$.\end{proof}
+
+\prt{3}\begin{corollary*}
+	Let $\Fcal:=\hdots\displaystyle{\mathrel{\mathop{\leftarrow}^{\mathrm{\phi^{i-1}}}}}\FF_{i-1}\displaystyle{\mathrel{\mathop{\leftarrow}^{\mathrm{\phi^i}}}}\FF_i\displaystyle{\mathrel{\mathop{\leftarrow}^{\mathrm{\phi^{i+1}}}}}\hdots$ be a sequence of morphisms and sheaves. Then, $\Fcal$ is exact if and only if the induced sequence $\Fcal_p$ is exact for all $p\in X$.
+\end{corollary*}
+\begin{proof}
+	We suppose $\Fcal$ is exact. Then, $\ker\phi^i=\im\phi^{i+1}$ for all $i$, so by part a, we have $\ker(\phi^i_p)=\im(\phi^{i+1}_p)$ for all $p$. Thus, for any $p\in X$, $\Fcal_p$ is exact. On the other hand, as sheaves may be recovered uniquely from stalks, if the sequence $\Fcal_p$ is exact at every point $p$, we may reconstruct the sheaves $\ker(\phi^i)$ and $\im(\phi^{i+1})$ from their stalks and have by exactness at stalks that $\Fcal$ is exact once again from part a.
+\end{proof}
+\end{document}

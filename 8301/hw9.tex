@@ -1,0 +1,280 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{relsize}
+
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\restr}[2]{\evat{#1}{#2}{}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newtheorem{claim}{Claim}
+%\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{19 November 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH 8301 Homework IX}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8301}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\cbal}{\overline{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\intr}{\mathrm{int}}
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\vect}{\mathrm{Vect}}
+\newcommand{\Top}{\mathrm{Top}}
+\renewcommand{\top}{\Top}
+\newcommand{\hTop}{\mathrm{hTop}}
+\newcommand{\set}{\mathrm{Set}}
+\newcommand{\frp}{\mathop{\large {\mathlarger{\star}}}}
+\newcommand{\ondt}{1_{\cdot}}
+\newcommand{\onst}{1_{\star}}
+\newcommand{\bdy}{\partial}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\re}{\mathrm{re}}
+\newcommand{\oX}{\overline{X}}
+\begin{document}
+\maketitle
+\prob{1} We let $X$ be a path-connected topological space with $x_0\in N\subset X$ where $N$ is contractible, $f:X\to X$ a continuous map fixing $x_0$, and $M_f$ its mapping torus with basepoint $m_0$ the image of $(x_0,1/2)$ in $M_f$.  
+\prt{1}
+\begin{proposition*}
+	$M_f$ is path-connected. 
+\end{proposition*}
+\begin{proof}
+	We note that as $X$ and $I$ are path-connected, $X\times I$ is path-connected as the product of paths is itself a path. Thus, $M_f$ is path-connected, as the quotient of a path is also itself a path.
+\end{proof}
+\prt{2}\begin{proposition*}
+	We let $U$ be the image of $X\times (0,1)$. Then, $\pi_{1}(U,m_0)=\pi_1(X,x_0)$. 
+\end{proposition*}
+\begin{proof}
+	We note that each point in $U$ is in a singleton equivalence class in the quotient defining $M_f$. Thus, $U\cong X\times (0,1)$, so $\pi_1(U,m_0)=\pi_1(X,x_0)\times \pi_1((0,1),1/2)=\pi_1(X,x_0)$.
+\end{proof}
+\prt{3} \begin{proposition*}
+	We let $V=X\times ([0,1/3)\cup (2/3,1])\cup N\times I$. Then, $\pi_1(V,m_0)=\pi_1(X,x_0)\frp \ZZ$. 
+\end{proposition*}
+\begin{proof}
+	We let $W$ be a contractible neighborhood around $X_0$ such that $f(W)\subset N$ and $f(W)$ is contractible. We let $A=X\times ([0,1/3)\cup (2/3,1])$, and let $B=(f(W)\times [0,1/3))\cup (W\times (2/3,1] )\cup N\times (1/5,4/5)$. We let $m_0'$ be the image of $(x_0,1)$. Then, $B$ deformation-retracts to $S_1$ by applying the appropriate contraction-retraction to each cross-section, so $\pi_1(B,m_0')\cong\ZZ$, and $A$ deformation retracts to $X\times {0}$, which we show by constructing a map $H:A\times I\to A$ defined by \begin{equation*}
+		H((x,t),s):=\begin{cases}
+		(x,(1-s)t) & 0<t<1/3\\
+		(x,(1-s)t+s)& 2/3<t<1\\
+		(x,t)&t=0
+		\end{cases}
+	\end{equation*} 
+	Thus, $\pi_1(A,m_0')\cong\pi_1(X,x_0)$. Finally, as $A\cap B$ deformation-retracts to $S_1\setminus \{e^{i\theta}\;:\;1/3\leq \theta \leq2/3\}$, we have that $\pi_1(A\cap B,m_0')$ is trivial. Thus Siefert-von Kampen yields the statement of the proposition. 
+\end{proof}
+\prt{4} \begin{proposition*}
+	$\pi_1(U\cap V,m_0)\cong G\frp \tilde{G}$ where $G\cong \pi_1(X,m_0)\cong \tilde{G}$.
+\end{proposition*}
+\begin{proof}
+	We let $A'=(X\times (2/3,1))\cup N\times (1/3,4/5) $ and $B'=(X\times (0,1/3))\cup N\times (1/5,2/3) $. Then, by contracting $(1/3,1)$ to $\{4/5\}$ in the second coordinate, we see that $A'$ deformation-retracts to a space homeomorphic to $X$, as does $B'$ by a symmetric argument. Finally, $A'\cup B'$ is simply $N\times (1/3,2/3)$, which is contractible, proving the proposition by an application of SvK. 
+\end{proof}
+\prt{5}\begin{proposition*}
+	$H:=\pi_1(M_f,m_0)=(G\frp \ZZ)/\langle tf_*(\gamma)t^{-1}f_*(\gamma^{-1})\;:\; \gamma \in G\rangle$.
+\end{proposition*}\begin{proof}
+We have from Siefert-von Kampen that $H=(G\frp \ZZ\frp \hat{G})/M$ where $\hat{G}$ is again a distinct isomorphic copy of $G$ and $M$ is some normal subgroup. We let $\iota_U$ and $\iota_V$ be the inclusions of $U\cap V$ to their indices. We claim that $(\iota_U)_*$ is simply the \say{forgetful} map, which evaluates elements of $G\frp \tilde{G}$ by identifying $G$ and $\tilde{G}$. This can be seen by composing the inclusion $\iota_U$ with the deformation retract we used to compute $\pi_1(U,m_0)$. We claim as well that $(\iota_V)_*$ acts by mapping $\gamma\mapsto \gamma$ for $\gamma\in G$ and $\tilde{\gamma}\mapsto t^{-1}f_*(\gamma)t$. To see this, we note that if $\tilde{\gamma}\in \tilde{G}$ (corresponding to $X\times(2/3,1]$), we may \say{push $\gamma$ though} $X\times[0]$ so that after the homotopy, $\gamma$ is a path $\alpha$ from $m_0$ \say{the long way} to $(x_0,1/4)$ concatenated with $f_*(\gamma)$ lying in $X\times \{1/4\}$, then concatenated with $\alpha^{-1}$. We let $\beta$ be a path from $(x_0,1/4)$ to $m_0$ \say{the short way} and \say{stretch} the image of the path we've constructed to $\alpha^{-1}\beta^{-1}f_*(\gamma) \beta\alpha$. Noting $\beta \alpha=t\in \ZZ$ shows our claim. Then, quotienting by $(\iota_U)_*(\iota_V)_*^{-1}$ identifies $G$ and $\hat{G}$ and induces the relation of the statement of the proposition. 
+\end{proof}
+\prt{6}
+\begin{proposition}
+	$\ZZ\ltimes G\cong \ZZ\frp G/\langle tgt^{-1}\phi(g^{-1})\rangle$
+\end{proposition}
+\begin{proof}
+	We note that $\ZZ\ltimes G$ is clearly a quotient of the free product $\ZZ\frp G$ as it is generated by the same set $G\sqcup \ZZ$, identifying $\ZZ$ with $(\ZZ,[1])$ and identifying $G$ with $(0,G)$. As all commutation relations between elements of $G$ or between elements of $\ZZ$ are predetermined respectively by the group structure, what is left is to determine commutation relations between elements of $G$ and $\ZZ$. From the definition of $\ZZ\ltimes G$, we have that $gt=(0,g)(t,[1])=(t,\phi(g))=(t,[1])(0,\phi(g))=t\phi(g)$. Thus, $t^{-1}gt=\phi(g)$.  
+\end{proof}
+\prt{7} \begin{proposition*} We suppose $f$ is a homotopy equivalence. Then,
+$\pi_1(M_f,m_0)\cong \ZZ\ltimes G$
+\end{proposition*}
+\begin{proof}
+Follows immediately from the presentation of $\pi_1(M_f,m_0)$ given above as well as the observation that if $f$ is a homotopy equivalence, then $f_*$ is an automorphism. \end{proof}
+
+\prob{2}
+\begin{proposition*}
+	Any map $f:\RR P^2\to S^1$ is nullhomotopic.
+\end{proposition*}
+\begin{proof}
+	We note that $\pi_1(\RR P^2,x_0)\cong\ZZ/2$, which is a torsion group and hence has no non-zero quotient isomorphic to a subgroup of $\ZZ\cong \pi_1(S_1,0)$. Thus, $f_*$ is the zero map for any such map. Hence, by the lifting criterion, there exists a lift $\tilde{f}:\RR P^2\to \RR$. However, moreso than simply connected, $\RR$ is contractible. We let $\tilde{H}$ be that contraction and let $H:\RR P^2 \times I\to S^1$ be given by $H:=p\circ \tilde H\circ \tilde f$. Then, $H$ is a nullhomotopy of $f=p\circ \tilde f$. 
+\end{proof}
+\end{document}

@@ -1,0 +1,349 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath,calligra,mathrsfs}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{relsize}
+
+\usetikzlibrary{arrows, matrix}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\spm}{Spm}
+\DeclareMathOperator{\rad}{rad}
+\newcommand{\mor}{\mathrm{Mor}}
+\newcommand{\obj}{\mathrm{Obj}~}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\newcommand{\Aa}{\mathbb{A}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\FF}{\mathscr{F}}
+\newcommand{\GG}{\mathscr{G}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\afr}{\mathfrak{a}}
+\newcommand{\bfr}{\mathfrak{b}}
+\newcommand{\cfr}{\mathfrak{c}}
+\newcommand{\dfr}{\mathfrak{d}}
+\newcommand{\efr}{\mathfrak{e}}
+\newcommand{\ffr}{\mathfrak{f}}
+\newcommand{\gfr}{\mathfrak{g}}
+\newcommand{\hfr}{\mathfrak{h}}
+\newcommand{\ifr}{\mathfrak{i}}
+\newcommand{\jfr}{\mathfrak{j}}
+\newcommand{\kfr}{\mathfrak{k}}
+\newcommand{\lfr}{\mathfrak{l}}
+\newcommand{\mfr}{\mathfrak{m}}
+\newcommand{\nfr}{\mathfrak{n}}
+\newcommand{\ofr}{\mathfrak{o}}
+\newcommand{\pfr}{\mathfrak{p}}
+\newcommand{\qfr}{\mathfrak{q}}
+\newcommand{\rfr}{\mathfrak{r}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\tfr}{\mathfrak{t}}
+\newcommand{\ufr}{\mathfrak{u}}
+\newcommand{\vfr}{\mathfrak{v}}
+\newcommand{\wfr}{\mathfrak{w}}
+\newcommand{\xfr}{\mathfrak{x}}
+\newcommand{\yfr}{\mathfrak{y}}
+\newcommand{\zfr}{\mathfrak{z}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ccal}{\mathcal{C}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{remark*}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{15 November 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH 8253 Homework IV}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8253}
+\cfoot{\thepage}
+\renewcommand{\bar}{\overline}
+
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\idl}[1]{\langle #1 \rangle}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id} }
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\cat}[1]{{\mathrm{\bf{#1}}}}
+%\usepackage[backend=biber,style=alphabetic]{biblatex}
+%\addbibresource{algeo.bib}
+\newcommand{\colim}{\varinjlim}
+\newcommand{\clim}{\varprojlim}
+\newcommand{\frp}{\mathop{\large {\mathlarger{\star}}}}
+\newcommand{\restr}[2]{\evat{#1}{#2}{}}
+\newcommand{\imp}[1]{\underline{#1}}
+\newcommand{\ihm}{\imp{\hom}}
+\newcommand{\him}{\ihm(\FF,\GG)}
+
+\begin{document}
+\maketitle\emph{To the Grader: I've been sick and overwhelmed this week and this is the best I can do. I'm sorry you have to wade through it.}
+\prob{1} \begin{prompt*}
+Describe all open sets of $X=\spec \CC[t]/\langle t^2-t\rangle$ and the restriction morphims of its structure sheaf $\OO_X$.
+\end{prompt*}
+\begin{proof}[Response]
+	We recall that for ring $R$ and ideal $I\leq R$, there is a bijection between prime ideals of $R$ containing $I$ and prime ideals of $R/I$. Thus, the prime ideals of $\CC[t]/\langle  t^2-t\rangle$ may be identified with those of $\CC[t]$ containing $t^2-t$ as $\CC[t]$ is a PID. Moreover, again using that $\CC[t]$ is a PID, we have that the only such ideals are those generated by divisors of $t^2-t$, that is $\idl{t-1}$ and $\idl{t}$. As both of these are closed points, $X$ carries the discrete topology, so the only proper open sets are the singleton sets containing each. We consider $\OO_X(\idl{t})=D(t-1)=\left(\CC[t]/\idl{t^2-t}\right)_{t-1}$. By basic computations with the localization equivalence relation, we see that the kernel of $\CC[t]/\idl{t^2-t}\to \left(\CC[t]/\idl{t^2-t}\right)_{t-1}$ is the ideal $\idl{t}$, and note that this implies that the image of the map is isomorphic to $\CC[t]/\idl{t}$. By the universal mapping property of localization, we may conclude that this is the whole of $\left(\CC[t]/\idl{t^2-t}\right)_{t-1}$. A similar argument (or application of the isomorphism $\CC[t]/\idl{t^2-t}\to\CC[t]/\idl{t^2-t}$ by $t\mapsto t-1$) shows that $\OO_X(D(t))$
+\end{proof}
+\prob{2}
+\begin{proposition*}
+	$\spec \ZZ$ is the terminal object of $\cat{AffSch}$.
+\end{proposition*}
+\begin{proof}
+We recall that locally ringed space morphisms between affine schemes are determined by their ring morphism on global sections. The proposition is therefore equivalent to the claim that $\ZZ$ is the initial object of $\cat{Ring}$. This is indeed the case; as the free group on one generator, any group morphisim $\ZZ\to G$ is determined by the image of its generator $1\in \ZZ$, and any ring morphism $\ZZ\to R$ must preserve multiplicative identity, uniquely determining the image of $1$. Thus, for any ring $R$, there is a unique morphism $\ZZ\to R$, proving the equivalent claim to the proposition.
+\end{proof}
+\begin{corollary}
+	$\cat{AffSch}$ is in natural equivalence with the category of Affine Schemes over $\spec \ZZ$
+\end{corollary}
+\begin{proof}
+	Indeed, even better there is a categorical isomorphism between the two! This follows immediately from the fact that uniqueness of morphism to $\spec \ZZ$ implies that any morphism between two Affine schemes $X$ and $Y$ commutes with their respective morphisms to $\spec{\ZZ}$.
+\end{proof}
+\prob{3}
+\prob{4}\begin{prompt*}
+	Suppose $\FF$ and $\GG$ are sheaves of Abelian groups on a topological space $X$. For any open set $U \subset X,$ set
+	$\ihm(\FF, \GG)(U) := \hom(\restr{\FF}{U} , \restr{\GG}{U} )$,
+	where $\hom(\restr{\FF}{U} , \restr{\GG}{U} )$ is the set of sheaf morphisms on $ U$. Define the structure of
+	a presheaf of Abelian groups of $\ihm(\FF,\GG)$ on $X$.
+\end{prompt*}\begin{proof}[Response]
+We have our global sections defined for us; what is left is to show that $\him(U)$ is an Abelian group and define the restriction maps. Indeed, for arbitrary morphisms of Abelian groups $\phi:G\to H$ and $\psi:G\to H$, we may define $(\phi\cdot \psi):G\to H$ by $(\phi\cdot \psi)(g)=\phi(g)\psi(g)$ for $g\in G$ and see that $(\psi\cdot \psi)(gh)=\phi(gh)\psi(gh)=\phi(g)\phi(h)\psi(g)\psi(h)=\phi(g)\psi(g)\phi(h)\psi(h)=(\phi\cdot\psi)(g)(\phi\cdot\psi)(h)$, showing $(\phi\cdot\psi)$ is indeed a morphism of Abelian groups. For $\phi,\psi\in \him(U)$, we may define the same analogously, simply defining $(\phi\cdot\psi)(V)$ as $(\phi(V)\cdot\psi(V))$ for $V\subseteq U$ open. The restriction maps come about in a similarly straightforward manner; we recall that $\phi\in \him(U)$ is the data of a set of maps $\phi(V):\FF(V)\to \GG(V)$ for all open $V\subset U$. We may then define $\restr{\phi}{W}$ to be the set of $\phi(V)$ where $V\subset W\subset U$ are open, and see that the sheaf morphism structure of $\phi$ ensures in a quite natural manner that our restriction maps commute with the Abelian group structure of $\him(U)$.
+\end{proof}
+\begin{proposition*}
+	With the presheaf structure of above, $\ihm(\FF,\GG)$ is indeed a sheaf.
+\end{proposition*}\begin{proof}
+\textbf{Locality:} We wish to show that for $U\subseteq X$ open, $0\neq\phi\in\him(U)$, it is not the case that $\restr{\phi}{V}=0$ for all open $V\subset U$. We suppose the contrary: that $\phi$ is such a morphism and let $f\in \FF(U)$ be such that $\phi(U)(f)=g\neq 0\in \GG(U)$. Then, as $\restr{\phi}{V}=0$ for all $V\subset U$, we have that $\restr{g}{V}=\phi(V)(f)=\restr{\phi}{V}(V)(f)=0$, contradicting locality of $\GG$.
+
+\textbf{Gluing:} We let $\{U_\alpha\}_{\alpha\in A}$ be an open cover of $U$ and let $\{\phi_{U_\alpha}\}_{\alpha\in A}$ be a compatible set of sheaf morphisms. We wish to show that there exists some $\phi\in\him(U)$ such that $\restr{\phi}{U_\alpha}=\phi_{U_{\alpha}}$. We construct $\phi$ as such: for $V\subset U_\alpha$, we let $\phi(V)=\restr{\phi_{U_\alpha}}{V}$; our assumption of compatibility ensures this is well-defined. Otherwise, we let $\{V_{\beta}\}_{\beta\in B}$ be an open cover of $V$ such that each $V_\beta$ is contained within some $U_\alpha$ and let $r:B\to A$ be a (possibly not uniquely determined) set map\footnote{The actual details of $r$ are not important here; it is pretty much a notational tool only.} such that $V_{\beta}\subset U_{r(\beta)} $. We let $f\in \FF(V)$ and consider $\bar{\phi(V)(f)}:=\{\phi_{U_{r(\beta)}}(V_\beta)(\restr{f}{V_{\beta}})\}_{\beta\in B}$. Then, by the sheaf morphism structure of $\phi_{U_{r(\beta)}}$ and our assumption of compatibility on $\{\phi_{U_\alpha}\}$, we have that $\bar{\phi(V)(f)}$ is a compatible set of sections on $\restr{\GG}{V}$. Thus, there exists a unique element $g\in \restr{\GG}{V}(V)$ such that $\restr{g}{V_\beta}=\phi_{U_{r(\beta)}}(V_\beta)(\restr{f}{V_{\beta}})$ by the gluing property of $\restr{\GG}{V}$; we let $\phi(V)(f)=g$. Then, it is clear that $\phi$ fits the desired properties.
+\end{proof}
+\prob{5} \prt{1}
+\begin{proposition*}
+	We let $F$ be an abelian group and $x$ a closed point of the topological space $X$. We define the presheaf on $X$ $\FF$ by:\begin{equation}
+		\FF(U):=\begin{cases}
+		F&x\in U\\
+		0&x\notin U
+		\end{cases}
+	\end{equation}
+	Then, $\FF$ is a sheaf.
+\end{proposition*}
+\begin{proof}
+	We first show locality: we let $0\neq f\in \FF(X)=F$ where $x\in U$ and suppose $\restr{f}{V}=0$ for all $V\subset X$ open. Then, as all restriction maps are isomorphisms or the zero map, we have that $x\notin V$ for all $V\subset X$ open\textellipsis wait why is that a problem? Why can we not have that?
+	
+	To show gluing, we let $\{U_\alpha\}_{\alpha}$ be an open cover of $X$ and $\{f_\alpha\}_{\alpha}$ be compatible. Then, as all restriction maps are either isomorphisms or the zero map, we have that for $x\in U_\alpha\cap U_\beta$, we must have $f_\alpha=f_\beta$, and for $x\notin U_\alpha\cap U_\beta$, we have that both restriction maps are the zero map. Hence, we now have for some fixed $f\in F$, \begin{equation*}
+		f_\alpha=\begin{cases}
+		0&x\notin U_\alpha\\
+		f&x\in U_\alpha
+		\end{cases}
+	\end{equation*}
+	Then, $f\in \FF(X)=F$ satisfies the requirement for the gluing axiom. 
+\end{proof}
+\prt{2}\begin{proposition*}
+	The skyscraper sheaf is uniquely characterized by its stalks $\FF_x=F$ and $\FF_y=0$ for $y\neq x$. 
+\end{proposition*}
+\prob{6}\prt{1}\begin{proposition*}
+	For $X=\AA_k^1$ where $k$ is a field, let $\FF$ be the skyscraper sheaf supported at $\vec{0}:=[(t)]$ with group $k(t)$ with the usual $k[t]$-module structure. Then, $\FF$ is an $\OO_X$-module, but not quasicoherent.
+\end{proposition*}
+\begin{proof}
+	We note for $\vec{0}\notin U\subset X$, $\FF(U)=0$ is trivially an $\OO_X(U)$-module. For $\vec{0}\in U\subset X$, we claim that $k(t)$ has a natural $\OO_X(U)$-module structure. By problem 3 of homework 3, $\OO_X(U)$ may be identified with a subset of the field of fractions of $k[t]$, $k(t)$, and hence the $\OO_X(U)$-module structure on $k(t)$ is given by standard multiplication in $k(t)$. However, $\FF$ is not quasicoherent, as for $U=D(t)$, (again by the same homework problem coupled with flatness of $A[u^{-1}]$ for any ring $A$ and multiplicative system $u$) $\FF(U)=0\neq \OO_X(U)\otimes \FF(X)=k(t)$.
+\end{proof}
+\prt{2} \begin{proposition*}
+We let $X=\AA_k^1$ and $\FF$ the skyscraper sheaf at $[\langle 0\rangle ]$ with $k[t]$-module $k(t)$. Then $\FF$ is quasicoherent.
+\end{proposition*}\begin{proof}
+For any nonempty open set $U$, we have that $[\langle 0 \rangle]\in U $, so $\FF(U)=k(t)=\OO_X(U)\otimes k(t)=\tilde{k(t)}$. 
+\end{proof}
+\prob{7}\begin{proposition*}[Heartshorne II.5.2(c)]
+	For an $A$-module $M$, we denote the sheaf associated to $M$ on $\spec A$ by $\tilde{M}$ or alternatively $(M)^\sim$ depending on clarity. Then, for $\{M_i\}$ a family of $A$-modules, $\bigoplus \tilde{M_i}\cong(\bigoplus M_i)^\sim$.
+\end{proposition*}
+\begin{remark*}
+ Rather than use Heartshorne's definition, we take the definition of \say{sheaf associated to $M$} to be the one given in Vakil, defined over the basic open sets $D(f)$ as $\tilde{M}(D(F)):=M_f:=A_f\otimes_A M$.
+\end{remark*}
+We use the following essential lemma:
+\begin{lemma*}
+	We let $R$ be a commutative unital ring.\footnote{as all rings are, of course} For $N$, $\{M_i\}_i$ $R$-modules, $N\otimes_R\left(\oplus_i M_i\right)=\oplus_i(N\otimes_RM_i)$. 
+\end{lemma*}
+
+\begin{proof}[Proof (of proposition)]
+We recall that sheaves are uniquely recoverable from their data on distinguished open sets $D(f)$, $f\in A$. As such, we shall show equivalence only on basic opens $D(f)$; equivalence on basic opens then implies equivalence on arbitrary open sets $U$. We then have that $(\oplus M_i)^\sim(D(f))=\OO_X(D(f))\otimes (\oplus M_i)=\oplus_i\left(\OO_X(D(f))\otimes M_i\right)=\oplus_i(\tilde{M_i})(D(f))$
+
+
+\end{proof}
+\end{document}

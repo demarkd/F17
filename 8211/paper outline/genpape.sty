@@ -1,0 +1,250 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{rafecomps}[2017/05/21]
+
+%\usepackage[titletoc]{appendix}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{algpseudocode}
+\usepackage{dirtytalk}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+#1
+\end{align}}
+
+\usepackage{float}
+ %\usepackage{ulem}
+ \renewcommand{\eminnershape}{\bfseries}
+%%legendre symbols?
+\makeatletter
+\def\legendre@dash#1#2{\hb@xt@#1{%
+  \kern-#2\p@
+  \cleaders\hbox{\kern.5\p@
+    \vrule\@height.2\p@\@depth.2\p@\@width\p@
+    \kern.5\p@}\hfil
+  \kern-#2\p@
+  }}
+\def\@legendre#1#2#3#4#5{\mathopen{}\left(
+  \sbox\z@{$\genfrac{}{}{0pt}{#1}{#3#4}{#3#5}$}%
+  \dimen@=\wd\z@
+  \kern-\p@\vcenter{\box0}\kern-\dimen@\vcenter{\legendre@dash\dimen@{#2}}\kern-\p@
+  \right)\mathclose{}}
+\newcommand\legendre[2]{\mathchoice
+  {\@legendre{0}{1}{}{#1}{#2}}
+  {\@legendre{1}{.5}{\vphantom{1}}{#1}{#2}}
+  {\@legendre{2}{0}{\vphantom{1}}{#1}{#2}}
+  {\@legendre{3}{0}{\vphantom{1}}{#1}{#2}}
+}
+\def\dlegendre{\@legendre{0}{1}{}}
+\def\tlegendre{\@legendre{1}{0.5}{\vphantom{1}}}
+\makeatother
+
+\usepackage[shortlabels]{enumitem}
+\def\talph{\tilde{\alpha}}
+
+
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+
+
+
+\newenvironment{subproof}[1][\proofname]{%
+  \renewcommand{\qedsymbol}{$\blacksquare$}%
+  \begin{proof}[#1]%
+}{%
+  \end{proof}%
+}
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\makeatletter
+
+\usepackage{color}
+%usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+
+
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+%usepackage{hyperref}
+
+
+\def\AA{{\mathbb A}}
+\def\BB{{\mathbb B}}
+\def\CC{{\mathbb C}}
+\def\FF{{\mathbb F}}
+\def\GG{{\mathbb G}}
+\def\KK{{\mathbb K}}
+\def\MM{{\mathbb M}}
+\def\NN{{\mathbb N}}
+\def\OO{{\mathbb O}}
+\def\QQ{{\mathbb Q}}
+\def\PP{{\mathbb P}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\TT{{\mathbb T}}
+\def\ZZ{{\mathbb Z}}
+\def\ZZp{{\mathbb Z}_p}
+\def\QQp{{\mathbb Q}_p}
+\def\mfr{{\mathfrak m}}
+\def\pfr{{\mathfrak p}}
+\def\qfr{{\mathfrak q}}
+\def\rfr{{\mathfrak r}}
+\def\afr{{\mathfrak a}}
+\def\bfr{{\mathfrak b}}
+\def\cfr{{\mathfrak c}}
+
+\def\xsf{{\mathsf x}}
+\def\ysf{{\mathsf y}}
+\def\Asf{{\mathsf A}}
+\def\Bsf{{\mathsf B}}
+\def\Esf{{\mathsf E}}
+\def\Fsf{{\mathsf F}}
+\def\Psf{{\mathsf P}}
+\def\Ssf{{\mathsf S}}
+
+\def\hhat{{\hat h}}
+\def\Hhat{{\hat H}}
+
+\def\0{{\mathbf 0}}
+\def\1{{\mathbf 1}}
+\def\a{{\mathbf a}}
+\def\b{{\mathbf b}}
+\def\c{{\mathbf c}}
+\def\e{{\mathbf e}}
+\def\f{{\mathbf f}}
+\def\h{{\mathbf h}}
+\def\j{{\mathbf j}}
+\def\r{{\mathbf r}}
+\def\v{{\mathbf v}}
+\def\w{{\mathbf w}}
+\def\x{{\mathbf x}}
+\def\y{{\mathbf y}}
+\def\z{{\mathbf z}}
+
+\def\Abf{{\mathbf A}}
+\def\Bbf{{\mathbf B}}
+\def\Cbf{{\mathbf C}}
+\def\Dbf{{\mathbf D}}
+\def\Ebf{{\mathbf E}}
+\def\Fbf{{\mathbf F}}
+\def\Gbf{{\mathbf G}}
+\def\Hbf{{\mathbf H}}
+\def\Ibf{{\mathbf I}}
+\def\Jbf{{\mathbf J}}
+\def\Kbf{{\mathbf K}}
+\def\Lbf{{\mathbf L}}
+\def\Mbf{{\mathbf M}}
+\def\Nbf{{\mathbf N}}
+\def\Obf{{\mathbf O}}
+\def\Pbf{{\mathbf P}}
+\def\Qbf{{\mathbf Q}}
+\def\Rbf{{\mathbf R}}
+\def\Sbf{{\mathbf S}}
+\def\Tbf{{\mathbf T}}
+\def\Ubf{{\mathbf U}}
+\def\Vbf{{\mathbf V}}
+\def\Wbf{{\mathbf W}}
+\def\Xbf{{\mathbf X}}
+\def\Ybf{{\mathbf Y}}
+\def\Zbf{{\mathbf Z}}
+
+\def\Acal{{\mathcal A}}
+\def\Aa{{\mathcal A}}
+\def\Bcal{{\mathcal B}}
+\def\Bb{{\mathcal B}}
+\def\Ccal{{\mathcal C}}
+\def\Dcal{{\mathcal D}}
+\def\Ecal{{\mathcal E}}
+\def\Fcal{{\mathcal F}}
+\def\Gcal{{\mathcal G}}
+\def\Hcal{{\mathcal H}}
+\def\Ical{{\mathcal I}}
+\def\Jcal{{\mathcal J}}
+\def\Lcal{{\mathcal L}}
+\def\Mcal{{\mathcal M}}
+\def\Ncal{{\mathcal N}}
+\def\Ocal{{\mathcal O}}
+\def\Pcal{{\mathcal P}}
+\def\Qcal{{\mathcal Q}}
+\def\Rcal{{\mathcal R}}
+\def\Rr{{\mathcal R}}
+\def\Scal{{\mathcal S}}
+\def\Ss{{\mathcal S}}
+\def\Tcal{{\mathcal T}}
+\def\Xcal{{\mathcal X}}
+\def\Zcal{{\mathcal Z}}
+ \renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+
+
+%FINAL(ish) ONLY
+%\usepackage[disable]{todonotes}
+%\usepackage[margins=.8in]{geometry}
+\usepackage{centernot}
+%DRAFT ONLY (comment for nice-looking doc w/ no todos)
+\usepackage[letterpaper,left=.6in,right=1.25in,top=.7in,bottom=.7in]{geometry}
+\usepackage{todonotes}%feel free to change ur color or macro of course
+\newcommand{\dd}[1]{\todo{#1}}
+\newcommand{\ddi}[1]{\todo[inline]{#1}}
+\newcommand{\ddf}[1]{\todo[fancyline]{#1}}
+\newcommand{\mmt}[1]{\todo[color=yellow]{#1}}
+\newcommand{\mmi}[1]{\todo[inline,color=yellow]{#1}}
+\newcommand{\mmf}[1]{\todo[fancyline,color=yellow]{#1}}
+\newcommand{\ms}[1]{\todo[color=blue!40]{#1}}
+\newcommand{\msi}[1]{\todo[color=blue!40,inline]{#1}}
+\newcommand{\msf}[1]{\todo[color=blue!40,fancyline]{#1}}
+
+%CONTEXT-SPECIFIC MACROS
+
+
+\usepackage{microtype}
+\usepackage{listings}
+
+
+\let\oldforall\forall
+\let\oldexists\exists
+\renewcommand{\forall}{\oldforall\,}
+\renewcommand{\exists}{\oldexists\,}
+% \usepackage{xr}
+% \externaldocument{appendices}
+% \externaldocument{sec_analytic}
+% \externaldocument{sec_eis}
+% \externaldocument{sec_field}
+% \externaldocument{sec_parm}
+% \externaldocument{sec_seq}

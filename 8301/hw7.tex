@@ -1,0 +1,269 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{relsize}
+
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\restr}[2]{\evat{#1}{#2}{}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{30 October 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH 8301 Homework VII}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8301}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\cbal}{\overline{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\intr}{\mathrm{int}}
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\vect}{\mathrm{Vect}}
+\newcommand{\Top}{\mathrm{Top}}
+\renewcommand{\top}{\Top}
+\newcommand{\hTop}{\mathrm{hTop}}
+\newcommand{\set}{\mathrm{Set}}
+\newcommand{\frp}{\mathop{\large {\mathlarger{\star}}}}
+\newcommand{\ondt}{1_{\cdot}}
+\newcommand{\onst}{1_{\star}}
+\newcommand{\bdy}{\partial}
+\newcommand{\im}{\mathrm{im}}
+
+\begin{document}
+	\maketitle
+	\prob{1}
+	We let $(X,*)$ be a based topological space such that
+	%\footnote{I couldn't figure out how to make this proof work without this assumption, and some language that Craig has used in class has seemed to indicate that this is a common assumption for algebraic topology. Grade me down for it if you must.} 
+	for all $x\in X$, there exists a small contractible open neighborhood $N_x$ such that $x\in N_x\subset X$. We let $f:S^n\to X$ be a based map with $n\geq 2$. We let $Y=X\sqcup D^{n+1}/\sim$ by $z\sim f(z)$.
+	\prt{1} \begin{proposition*}
+		The inclusion $X\to Y$ induces an isomorphism $\pi_1(X,*)\cong \pi_1(Y,*)$.
+	\end{proposition*}  
+	\begin{proof} We let $*=f(z)$ for some $z\in S^n$. 
+		We define the following subsets of $Y$: we let $U$ be the union of $X$ and the subset of $Y$ corresponding to $\{\vec{x}\in D^{n+1}\;:\; .8<\norm{\vec{x}}\leq 1\}$, and we let $V$ be the subset of $Y$ corresponding to $\{\vec{x}\in D^{n+1}\;:\;\norm{\vec{x}}<.9\}$. Then $Y=U\cup V$ with $U$ and $V$ open, so we may apply the Seifert--von Kampen theorem to yield $\pi_1(Y,*)=\pi_1(U,*)\frp_{\pi_1(U\cap V,*)}\pi_1(V,*)$. $U$ deformation retracts to $X$ and hence has $\pi_1(U,*)\cong \pi_1(X,*)$. $V$ is contractible and thus $\pi_1(V,*)=1$. $U\cap V$ deformation-retracts to $S^n$ and hence also has $\pi_1(U\cap V,*)=1$. Thus, $\pi_1(Y,*)=\pi_1(X,*)\frp_{1}1\cong \pi_1(X,*)$.
+	\end{proof}
+	\prt{2}
+	\begin{proposition*}
+		We let $Y$ be a connected $d$-manifold and let $B\subseteq Y$ be an open neighborhood homeomorphic to $\RR^d$. Then, $\pi_1(Y\setminus B,*)\cong \pi_1(Y,*)$ for any $*\in Y\setminus B$. 
+	\end{proposition*}\begin{proof}
+		We note that $\RR^d\cong \intr D^d$ by the map $\vec{x}\mapsto \frac{2\tan^{-1}(\norm{\vec{x}})}{\pi\norm{\vec{x}}}\vec{x}$. Hence, $\bdy B\cong S^{n-1}$, so we may apply the previous proposition with $X=Y\setminus B$ and $f$ any inclusion $S^{n-1}\to \bdy B\subset Y\setminus B$. 
+	\end{proof}
+	\prt{3}
+	\begin{proposition*}
+		Letting $A$ and $B$ be connected $d$-manifolds, $\pi_1(A\# B,*)=\pi_1(A,*)\frp \pi_1(B,*)$.
+		
+	\end{proposition*}
+	\begin{proof} We fix some embedding $D^d$ in both $A$ and $B$
+		By the previous part, we note $\pi_1(A\setminus \intr D^d,*)=\pi_1(A,*)$ and $\pi_1(B\setminus\intr D^d,*)=\pi_1(B,*)$. We note that for all $x\in \bdy D^d$ in both $A$ and $B$, there exists a neighborhood containing $x$ homeomorphic to $\RR^{d+}$ in $A\setminus\intr D^d$ or $B\setminus \intr D^d$. We may then let $\tilde A= A\setminus \intr D^d\cup T\subset A\#B$ where $T$ is a small thickening of $\bdy D^d$ in $B\setminus \intr D^d\subset A\#B$ and let $\tilde B$ be defined analogously. Then, $A\# B=\tilde A\cup \tilde B$ with $\tilde A\cap\tilde B\simeq \bdy D^d=S^d$, so application of Seifert--von Kampen completes the proof.  
+	\end{proof}
+	\prob{2}
+	\prt{1} \begin{proposition*}
+		We let $\sim$ be a relation on $D^n$ by $x\sim -x$ for all $x\in \bdy D^n=S^{n-1}$. We let $q$ be the associated quotient map. Then, $q(D^n)=D^n/\sim\cong \RR P^n$.
+	\end{proposition*}
+	\begin{proof}
+		We identify $D^n$ with the closed \say{upper} half-sphere\footnote{Indeed, for the duration of this proof, we shall take the final coordinate of $\RR^{n+1}$ to be \say{up and down,} with positivity in that coordinate being \say{up.}} of $S^n$ as follows: we let $D^n$ be embedded in $\RR^{n+1}=\RR^n\times \RR$ by $$D^n=\left\{(\vec{x},0)\;\:\;\norm{\vec{x}}\leq 1\right\}$$
+		Then, we let $\phi:D^n\to S^n$ be defined by $(\vec{x},0)\mapsto (\vec{x},\sqrt{1-\norm{x}^2})$, with image precisely the closed upper half-sphere of $\S^n$. As $\phi$ is polynomial, with inverse $\phi^{-1}:(\vec{x},y)\mapsto (\vec{x},0)$ also polynomial, $\phi$ is bicontinuous and clearly bijective on its image and hence precisely the desired identification. We let $\sim'$ be an equivalence relation on $S^n$ defined by $x\sim -x$, with associated quotient map $q'$. We first note that $\restr{q'}{D^n}=q$ as $q$ identifies the upper open half-sphere with the lower and $\intr D^n$ sits within the open upper half-sphere. Furthermore, $q'$ and $q$ have the same image, as for each equivalence class defined by $\sim'$, there is at least one representative in $D^n\subset S^n$. This completes our proof.
+	\end{proof}
+	\prt{2} \begin{proposition*}
+		$\RR P^n$ can be constructed by attaching a copy of $D^n$ to $\RR P^{n-1}$.
+	\end{proposition*}
+\begin{proof}
+	We let $q:S^{n-1}\to \RR P^{n-1}$ be the standard quotient map and let $Y=\RR P^{n-1}\sqcup D^n/\sim$ where $z\sim q(z)$ for all $z\in \bdy D^n$. Then, $D^n/\sim'=Y$ where $\restr{\sim'}{\bdy D^n}$ is precisely that of $q$ and $x\sim' x$ for all $x\in \intr D^n$. However, this is exactly the quotient map of problem 1!
+	\end{proof}
+\prt{3}\begin{proposition*}
+	$\pi_1(\RR P^2)\cong \ZZ/2$.
+\end{proposition*}
+\begin{proof}
+	We consider the polygonal model of $\RR P^2$ $aa$. Then, $\pi_1(\RR P^2)=F\{a\}/\langle aa \rangle\cong \ZZ/2$
+\end{proof}
+\prt{4}\begin{proposition*}
+	$\pi_1(\RR P^n)\cong \ZZ/2$ for all $n>1$
+	\end{proposition*} 
+\begin{proof}
+	Follows immediately from the observation that problem 2b constructs $\RR P^n$ in the fashion of $Y$ in problem 1a with $\RR P^{n-1}$ playing the role of $X$. This was a really neat problem set incidentally!
+\end{proof}
+\end{document}
+

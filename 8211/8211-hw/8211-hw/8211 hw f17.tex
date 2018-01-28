@@ -1,0 +1,770 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{appendix}
+\usepackage{dirtytalk}
+\usepackage{cleveref}
+\usepackage{microtype}
+\usepackage[style=alphabetic,doi=false,isbn=false,url=false,backend=biber]{biblatex}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}{\mathrm{Dis}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\Jcal}{\mathcal{J}}
+\newcommand{\Zcal}{\mathcal{Z}}
+\newcommand{\bfr}{\mathfrak{b}}
+\newcommand{\cfr}{\mathfrak{c}}
+\newcommand{\dfr}{\mathfrak{d}}
+\newcommand{\efr}{\mathfrak{e}}
+\newcommand{\ffr}{\mathfrak{f}}
+\newcommand{\gfr}{\mathfrak{g}}
+\newcommand{\hfr}{\mathfrak{h}}
+\newcommand{\ifr}{\mathfrak{i}}
+\newcommand{\jfr}{\mathfrak{j}}
+\newcommand{\kfr}{\mathfrak{k}}
+\newcommand{\lfr}{\mathfrak{l}}
+\newcommand{\mfr}{\mathfrak{m}}
+\newcommand{\nfr}{\mathfrak{n}}
+\newcommand{\ofr}{\mathfrak{o}}
+\newcommand{\pfr}{\mathfrak{p}}
+\newcommand{\qfr}{\mathfrak{q}}
+\newcommand{\rfr}{\mathfrak{r}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\tfr}{\mathfrak{t}}
+\newcommand{\ufr}{\mathfrak{u}}
+\newcommand{\vfr}{\mathfrak{v}}
+\newcommand{\wfr}{\mathfrak{w}}
+\newcommand{\xfr}{\mathfrak{x}}
+\newcommand{\yfr}{\mathfrak{y}}
+\newcommand{\zfr}{\mathfrak{z}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+
+
+\usepackage{calc}
+%\newcommand{\prob}[2]{\setcounter{section}{#1}\setcounter{subsection}{#2-1}\subsection{}}
+%\newcommand{\probl}[1]{\prob{\thesection}{#1}}
+%
+%\newcommand{\prt}[1]{\setcounter{subsubsection}{#1-1}\subsubsection{}}
+%\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+%
+
+
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+\renewcommand\thesubsubsection{\alph{subsubsection}}
+\usepackage[sl,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newtheorem{claim}[theorem]{Claim}
+\crefname{lemma}{lemma}{lemmas}
+\Crefname{lemma}{Lemma}{Lemmas}
+\crefname{theorem}{theorem}{theorems}
+\Crefname{theorem}{Theorem}{Theorems}
+\crefname{proposition}{proposition}{propositions}
+\crefname{proposition}{Proposition}{Propositions}
+\usepackage{tikz-cd}
+%\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\renewcommand{\thetheorem}{\arabic{section}.\Alph{theorem}}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{Fall 2017}
+\RequirePackage{geometry}
+\geometry{margin=1in}
+\usepackage[]{todonotes}
+\title{MATH 8211 Homework}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8211}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+\newcommand{\ddi}{\todo[inline]}
+\newcommand{\num}{\#(\Gamma\cap \xi^\perp)}
+\newcommand{\xuo}{x_{u_0}}
+\newcommand{\bxuo}{\overline{x_{u_0}}}
+\newcommand{\xvo}{x_{v_0}}
+\newcommand{\bxvo}{\overline{x_{v_0}}}
+\newcommand{\alphs}{\valph^*}
+\newcommand{\bets}{\vbet^*}
+\newcommand{\alphp}{\valph^*{}'}
+\newcommand{\betp}{\vbet^*{}'}
+\newcommand{\Ip}{\text{I}_p}
+\newcommand{\IIp}{\text{II}_p}
+\newcommand{\dsys}{$(\clubsuit\clubsuit)$~}
+\newcommand{\dv}{\dot{v}}
+\newcommand{\dx}{\dot{x}}
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\ZM}[1]{\ZZ/{#1}\ZZ}
+\newcommand{\aps}[1]{\abs{#1}_p}
+\newcommand{\sq}{\mathrm{sq}}
+\newcommand{\sqf}{\mathrm{sqf}}
+\newcommand{\acl}{\overline}
+
+\newcommand{\gen}[1]{\langle #1 \rangle}
+\newcommand{\genb}[2]{\langle #1\;:\;#2 \rangle}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\Ii}{\mathcal{I}}
+\newcommand{\Zz}{\mathcal{Z}}
+
+\newcommand{\lcm}{\mathrm{lcm}}
+
+\bibliography{hw.bib}
+\usepackage{centernot}
+\newcommand{\mor}{\mathrm{Mor}}
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\coker}{\mathrm{coker}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\ass}{\mathrm{Ass}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\pd}{\mathrm{pd}\,}
+\newcommand{\rad}{\mathrm{rad}~}
+\newcommand{\tor}{\mathrm{Tor}}
+\newcommand{\ext}{\mathrm{Ext}}
+\newcommand{\col}[3]{{#1}:_{#2}{#3}}
+\newcommand{\rank}{\mathrm{rank}~}
+\newcommand{\del}{\partial}
+\newcommand{\ann}{\mathrm{Ann}}
+\newcommand{\colim}{\varinjlim}
+\newcommand{\limi}{\varprojlim}
+\newcommand{\spec}{\mathrm{spec}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\gr}{\mathrm{gr}}
+\newcommand{\ins}{\mathrm{in}}
+\newcommand{\idl}[1]{\left\langle{#1}\right\rangle }
+%\usepackage{tocloft}
+%
+%\setlength\cftparskip{-2pt}
+%\setlength\cftbeforechapskip{0pt}
+\begin{document}
+	\maketitle
+%	\tableofcontents
+	\section*{Collaborators}
+	\textit{Andy Hardt, Galen Dorpalen-Berry, Esther Bannian, Greg Michel}
+	\section*{Notation and other conventions}
+	We standardize the following notational and mathematical conventions for use throughout this document. \begin{itemize}
+		\item For $L$ some indexing set, $R$ a commutative ring and any subset $S=\setc{r_\ell}{\ell\in L }\subset R$, we denote the ideal $I=\sum_{\ell \in L} r_\ell R$ as any of $I=\gen{S}$, (in the case $\abs{S}=s<\infty$) $I=\gen{r_1,\hdots, r_s}$, or (in a possible slight abuse of notation) $I=\genb{r_\ell}{\ell\in L}$.
+		\item We let $R$ be a ring, and $X=R^n$ (resp. $\spec R$). We denote by $\mathcal{I}$ the (canonical) functor from $\mathrm{Cl}(X)$ to $R\mathrm{-mod}$ mapping algebraic sets (resp. Zariski-closed sets) to their associated ideal, and $\mathcal{Z}$ denote the (canonical) functor mapping ideals to their associated algebraic set (resp. variety in $\spec R$). We shall make clear by context which of these two definitions of $\mathcal{I}$ and $\Zcal$ we are referring to.
+		\item We shall attempt to remind the reader of this each time we introduce one, but unless \emph{explicitly} stated otherwise, all power series may be assumed to be \textbf{formal} power series over whichever field or ring the coefficients are said to reside in (which we shall be more precise about). 
+		\item We shall not make any attempt to keep any consistency as to whether an $R$-module $M$ which admits a finite generating set is \say{finitely generated} or simply \say{finite.} In teh event that we encounter an $R$-module which is of finite cardinality as a set, we shall say so in explicit terms. We do not expect to invoke this last clause.
+	\end{itemize}
+\prob{1}
+\begin{theorem*}[Eisenbud, problem 1.1]
+ We let $M$ be an $R$-module. The following are equivalent:\begin{enumerate}[label=\emph{(\roman*)}]
+ 	\item Any submodule of $M$ is finitely generated (i.e. $M$ is Noetherian).
+ 	\item $M$ satisfies the ascending chain condition.
+ 	\item Every set of submodules of $M$ contains maximal elements under inclusion. 
+ 	\item Given a sequence $f_1,f_2,\hdots$ of elements in $M$, there exists some $m>0$ such that for all $n>m$, there exits an expression $f_n=\sum_{i=1}^m a_i f_i$ with $a_i\in R$. 
+ \end{enumerate}
+\end{theorem*}
+\begin{proof}~
+	\begin{enumerate}
+		\item[\emph{(i)}$\implies$ \emph{(ii)}] We suppose $M$ is Noetherian, and let $0=M_0\subset M_1\subset M_2\subset\hdots$ be an ascending chain of submodules. Then, $N=\bigcup_{i=1}^\infty M_i$ is a submodule of $M$ and hence has a finite generating set, i.e. can be written $N=\idl{f_1,f_2\hdots,f_k}$. We let $m_j=\inf_{i\geq 0}\{i\;:\;f_j\in M_i\}$ and let $m=\sup_{1\leq j \leq }\{m_1,\hdots, m_k\}$. As $[k]$ is a finite set, we have that $m$ is finite, and contains each of $f_1,\hdots,f_k$ and thus $M_n=M_m$ for all $n\geq m$.  
+		\item[\emph{(ii)}$\implies$ \emph{(iii)}]
+		We let $\Acal=\{M_\alpha\}_{\alpha\in A}$ be a set of submodules of $M$ and have that any chain contained within $\Acal$ is finite and hence contains its own upper bound by the ascending chain condition. Thus, We may apply Zorn's lemma to yield the desired result. 
+		\item[\emph{(iii)}$\implies$ \emph{(iv)}]
+		We let $M_i=\idl{f_1,\hdots,f_i}$ for any $i\geq 1$. Then, condition \emph{(iii)} implies that $\{M_i\}$ contains some maximal element $M_m$, and as the $M_i$ form an ascending chain, we have that such a maximal element is unique up to isomorphism. Thus, we have that $\idl{f_1,\hdots}=\idl{f_1,\hdots f_m}=M_k$, and thus $f_n\in M_k$ for any $n>m$. 
+		\item[\emph{(iv)}$\implies$ \emph{(i)}]
+		We let $N\subset M$ be a submodule and suppose for the sake of contradiction it is not finitely generated. We let $F=\{f_\alpha\}_{\alpha\in A}$ be a generating set and note that for any finite subset $S$ of $F$, there exists some element $f\in F\setminus S$ such that $f\notin R\{S\}$. Thus, we may choose some $\{f_1,f_2\hdots,\}$ such that for all $i>0$, $f_{i+1}\notin \idl{f_1,\hdots, f_i}$, contradicting statement \emph{(iv).}
+	\end{enumerate}
+\end{proof}
+	
+\prob{2}
+
+\begin{prompt*}[Eisenbud, problem 1.13]
+	Let $R$ be a commutative ring and $I$ an ideal of $R$. Show that \emph{(i)} if $\rad I$ is finitely generated, then there exists some $N$ such that $(\rad I)^N\subset I$. Conclude that \emph{(ii)} if $R$ is Noetherian, then two ideals $I, J$ have the same radical if and only if there is some $N$ for which $I^N\subset J$ and $J^N\subset I$. Use the Nullstellensatz to deduce that \emph{(iii)} for $I,J\subset S=k[x_1,\hdots,x_r]$ ideals with $k$ algebraically closed, then $\Zz(I)=\Zz(J)$ iff $I^N\subset J$ and $J^N\subset I$ for some $N$.\end{prompt*}
+\begin{proof}
+	\begin{enumerate}[label=\emph{(\roman*)}]
+		\item In general, for an ideal $J\subset R$ where $R$ is a commutative ring, $J^m$ is the $R$-submodule of $J$ consisting of $R$-linear combinations of elements of the form $a_1a_2\hdots a_m$ where $a_i\in J$. We suppose $J=\gen{f_1,\hdots,f_r}$. Then, $J^m=\genb{f_1^{e_1}f_2^{e_2}\hdots f_r^{e_r}}{\sum_i e_i=m}$. Letting $J=\rad I$, we let $m_i= \min\{m:f_i^m\in I\}$, and let $N=\sum_i m_i$. Then, by a generalization of the pigeonhole principle, we have that any monomial $\alpha$ in $f_1,\hdots,f_r$ of total degree $\geq N$ must in any presentation of the form $\alpha=rf_1^{e_1}\hdots f_r^{e_r}$ have some index $\ell$ such that $e_\ell\geq m_\ell$. Then, letting $r'=rf_\ell^{e_\ell-m_\ell}\prod_{i\neq \ell} f_i^{e_i}$, we have that $\alpha=r'f_\ell^{m_{\ell}}\in I$. As $(\rad I)^N $ is generated as an $R$-module by such monomials, we have that $(\rad I)^N\subset I$.
+		\item We assume $R$ to be Noetherian and will use frequently and possibly without explicit mention that for any ideal $L\subset R$, $L$ is finitely generated. \newline ($\implies$) We suppose $I,J\subset R$ are ideals and $\rad I=\rad J=L$. We then have from statement \emph{(i)} that there exist $m,n\in \NN$ such that $L^m\subset I$ and $L^n\subset J$. Noting that for any ideal $Q\subset R$, $Q^k\subset Q^j$ if $k>j$, we let $N=\max\{m,n\}$ and have that (as $I,J\subset L$) $J^N\subset L^N\subset L^m\subset I$ and $I^N\subset L^N\subset L^n\subset J$.\newline ($\impliedby$) We suppose there exists some $N$ such that $I^N\subset J$ and $J^N\subset I$. We let $x\in \rad I$ be arbitrary and let $m\in \NN$ be such that $x^m\in I$. Then, $x^{mN}=(x^m)^N\in I^N\subset J$, so  $x\in \rad J$. As $x$ was arbitrary, we now have that $\rad I\subset \rad J$ and by symmetry, $\rad J\subset \rad I$. Thus, $\rad J=\rad I$. 
+		\item We suppose $\Zz(I)=\Zz(J)$. The Nullstellensatz then states that this is equivalent to the statement $\rad I=\Ii(\Zz(I))=\Ii(\Zz(J)))=\rad J$. Then, by part \emph{(ii)}, we have that this is in turn equivalent to the existence of some $N$ such that $I^N\subset J$ and $J^N\subset I$. This completes our proof.
+	\end{enumerate}
+	\end{proof}
+%
+%
+\prob{3} We let $R$ be a ring and $X=\spec R$. We define $\Zcal(I):=\{\pfr\in \spec R\;:\;I\subset \pfr\}$
+\prt{1}\begin{prop*}     
+	The \say{Zariski-closed} sets $\{\Zcal(I)\}$ are closed under finite union and arbitrary intersection and hence satisfy the axioms of a closed basis for a topology on $X$.
+\end{prop*}\begin{proof}~
+\emph{Finite union} We note that for any prime ideal $\pfr$ such that ideal $I_1\subset \pfr$, we have that for $I_2$ any other ideal, $I_1I_2\subset I_1\subset \pfr$. Hence, $\Zcal(I_1)\cup \Zcal(I_2)\subseteq\Zcal(I_1I_2)$. On the other hand, we suppose $\pfr \centernot\supset I_1$ and $\pfr \centernot \supset I_2$. We let $a\in I_1\setminus \pfr$ and $b\in I_2\setminus \pfr$. Then, as $\pfr$ is prime, we have that $ab\in I_1I_2\setminus \pfr$, so $\Zcal(I_1)\cup \Zcal(I_2)\supseteq\Zcal(I_1I_2)$.
+
+\emph{Arbitrary intersection} We let $\{I_\alpha\}_{\alpha\in A}$ be an arbitrary set of $R$-ideals and note that $I_\alpha\subset \pfr$ for all $\alpha$ if and only if $\sum_\alpha I_\alpha\subset \pfr$. Thus, $\bigcap_\alpha \Zcal(I_\alpha)=\Zcal(\sum_\alpha I_\alpha) $.
+\end{proof}
+
+\prt{2}
+\begin{prop*}[Eisenbud, problem 1.24]
+	We let $\AA_k^1$ be the affine line of $k=\acl{k}$. Then, the only proper open sets of $\AA_k^1$ are co-finite. 
+\end{prop*}
+\begin{proof} We let $A:=k[t]$.
+	We shall prove an (obviously) equivalent statement: all closed sets are finite. We recall that the closed sets of $\AA_k^1$ are those of the form $V(E)$ where $E$ is an $A$-ideal. As $A=k[t]$ is a principal ideal domain, we have that $E=\idl{a}$ for some $a\in A$. As $A$ is factorial as well, we have that $a=p_1p_2\hdots p_k$ where each $p_i$ is prime in $A$. Thus, as all prime ideals in $A$ are generated by a single prime element, the only prime ideals to contain $a$ (and hence $E$) are those generated by the $k$ primes $p_i$, so $V(E)=\{\idl{p_1},\idl{p_2}\hdots,\idl{p_k}\}$, which is a finite set. 
+	\end{proof}
+\begin{prop*}
+	The Zariski topology on $\AA_k^n$ is not the product topology, even when $n=2$. 
+\end{prop*}
+\begin{proof}
+	We note as $k=\overline{k}$, $\abs{k}=\infty$. We note that\footnote{throwing out the generic point as far as I can tell\textellipsis} as a set, $\AA_k^n$ may be identified with $(\AA_k^1)^n$ and in turn with $k^n$. By the first proposition of this part, we have that a closed basis for the product topology on $(\AA_k^1)^n$ is given by finite collections of hyperplanes of dimension $0\leq d\leq n$. In particular, letting $\pi_i:\AA^n_k\to k$ be the $i$th coordinate projection map, we have that for any closed set $V$, $V$ is infinite if and only if $\pi_i^{-1}(a)$ is infinite for some $i\in [n]$, $a\in k$. We let $I=\idl{t_i-t_j\;:\;i<j}$. Then, $V(I)=\{(t_1,\hdots,t_n)\;:\;t_i=t_j \;\forall\, i,j\}$, which is an infinite set with the property that $\pi_i^{-1}(a)=1$ for all $i\in [n]$, $a\in k$. Thus, the Zariski topology on $\AA_k^n$ does \emph{not} coincide with the product topology on $(\AA_k^1)^n$.
+\end{proof}
+
+\prob{4}
+\begin{prompt*}[Eisenbud, problem 2.4]
+	For each of the following objects, describe their structures (as modules unless otherwise stated).
+	\begin{enumerate}[label=\textbf{\alph*.)}]
+		\item \emph{(i)} $\hom_\ZZ\left(\ZZ/n,\ZZ/m\right)$ and \emph{(ii)} $\hom_{k[x]}\left(k[x]/(x^n),k[x]/(x^m)\right)$
+		\item\emph{(i)} $\ZZ/n\otimes_{\ZZ}\ZZ/m$ and \emph{(ii)} $k[x]/(x^n)\otimes_{k[x]}k[x]/(x^m)$
+	    \item $k[x]\otimes_k k[x]$ (as an algebra).
+	\end{enumerate}
+\end{prompt*}
+\prt{1}
+\begin{proof}[Response]~
+	\begin{enumerate}[label=\emph{(\roman*)}]
+		\item We recall that there exists an exact sequence $\ZZ\to\ZZ\to\ZZ/n\to 0$, with the first map is the multiplication-by-$n$ map $n\cdot$ and the second a quotient map. Then, there is an exact sequence $0\to \hom_{\ZZ}(\ZZ/n,\ZZ/m)\to \hom_{\ZZ}(\ZZ,\ZZ/m) \to \hom_{\ZZ}(\ZZ,\ZZ/m)$, where once again the final map is the multiplication-by-n map $(n\cdot)^*$. We recall that $\hom_{\ZZ}(\ZZ,\ZZ/m)\cong \ZZ/m$. Thus, $\hom_{\ZZ}(\ZZ/n,\ZZ/m)$ is isomorphic to the kernel of the map $n\cdot: \ZZ/m\to\ZZ/m$, that is $(\frac{\lcm(m,n)}{n})\ZZ/m\ZZ\cong \ZZ/\gcd(m,n)$.
+		 
+		\item We denote by $M:=\hom_{k[x]}\left(k[x]/(x^n),k[x]/(x^m)\right)$. We consider the exact sequence $k[x]\to k[x]\to k[x]/(x^n)\to 0$, and have that it induces an exact sequence
+		$$0\to M\to\hom_{k[x]}\left(k[x],k[x]/(x^m)\right)\to \hom_{k[x]}\left(k[x],k[x]/(x^m)\right).$$ We recall $\hom_{k[x]}\left(k[x],k[x]/(x^m)\right)\cong k[x]/(x^m)$.
+		Thus, $M\cong \ker\left(x^n\cdot:k[x]/(x^m)\to k[x]/(x^m)\right)\cong x^{\min(m-n,0)}k[x]/(x^m)\cong k[x]/(x^{\min(m,n)})$
+		\end{enumerate}
+\end{proof}
+\prt{2}
+\begin{proof}[Response]~
+	\begin{enumerate}[label=\emph{(\roman*)}]
+		\item We recall that there exists an exact sequence $\ZZ\to\ZZ\to\ZZ/n\to 0$, with the first map is the multiplication-by-$n$ map $n\cdot$ and the second a quotient map. Then, there is an exact sequence $\ZZ\otimes \ZZ/m\to \ZZ\otimes \ZZ/m\to \ZZ/n\otimes \ZZ/m\to 0$. We recall $\ZZ\otimes \ZZ/m\cong \ZZ/m$. Thus, $\ZZ/n\otimes \ZZ/m\cong \coker(n\cdot: \ZZ/m\to\ZZ/m)\cong (\ZZ/m)/(n\ZZ/m)\cong \ZZ/\gcd(m,n)$.
+		
+		\item Without loss of generality (by the isomorphism $A\otimes B\to B\otimes A$), we let $n\leq m$. Then, we have that there exists an exact sequence $k[x]\to k[x]\to k[x]/(x^n)\to 0$ inducing an exact sequence $k[x]\otimes k[x]/(x^m)\to k[x]\otimes k[x]/(x^m)\to k[x]/(x^n)\otimes k[x]/(x^m)\to0$. We recall that $k[x]\otimes k[x]/(x^m)\cong k[x]/(x^m)$. Thus, $k[x]/(x^n)\otimes k[x]/(x^m)\cong \coker(x^n\cdot:k[x]/x^m\to k[x]/x^m)\cong (k[x]/x^m)/(x^nk[x]/x^m)\cong k[x]/x^n$. Thus, in general,  $k[x]/(x^n)\otimes k[x]/(x^m)\cong k[x]/x^{\min(m,n)}$.
+	\end{enumerate}
+\end{proof}
+\prt{3}
+\begin{proof}[Response]
+We claim that $k[x]\otimes_k k[x]\cong k[x,y]$ by the map defined on homogenous generators  $x^m\otimes x^n\mapsto x^my^n$. Indeed, we see immediately that the map is surjective, as for any $f=\sum_{(m,n)\in \NN^2}a_{mn}x^my^n\in k[x,y]$, we have that $\sum_{(m,n)}a_{mn}x^m\otimes x^n\mapsto  f$. To see injectivity, we let $\sum_{m,n}a_{mn}x^m\otimes x^n\mapsto 0$ and then have that $\sum_{m,n} a_{mn}x^my^n=0$, implying $a_{mn}=0$ for all $(m,n)$ by freeness of $k[x,y]$. Thus, our map is indeed an isomorphism. 
+\end{proof}
+%
+%
+%
+\prob{5}
+For reference, we restate the definition of ring localization by universal property here:
+\begin{definition}
+	\label{def:local} We let $R$ be a ring and $U\subset R$ a multiplicative system. The ring $R[U^{-1}]$ is defined by the property that for any ring morphism $\phi: R\to S$ such that $\phi(U)\subset S^\times$, there exists a unique morphism $\phi':R[U^{-1}]\to S$ which commutes with $\iota: R\to R[U^{-1}]$ such that the below diagram commutes:
+$$
+\begin{tikzcd}
+	R \arrow[rd,"\iota"] \arrow[rr, "\phi"]& & S \\
+	& R[U^{-1}]\arrow[ru,dashrightarrow,swap,"\exists!\;\phi'"]
+\end{tikzcd}
+$$
+
+\end{definition}
+\begin{prop*}[Eisenbud, problem 2.7]
+	Ring localizations are unique, that is, for $R\to L$ fulfilling the property of Definition \ref{def:local}, there exists a unique isomorphism $R[U^{-1}]\to L$. 
+\end{prop*}
+\begin{proof}
+	We let $\iota: R\to R[U^{-1}]$, $\nu: R\to L$ fulfill the property of Definition \ref{def:local}. Then, we have that there is a unique map $\nu': R[U^{-1}]\to L$ commuting with $\iota$. By the same argument, there exists a unique map $\iota': L\to R[U^{-1}]$ commuting with $\nu$. In other words, we are in the situation of the below commutative diagram: 
+	$$
+	\begin{tikzcd}
+	&R\arrow[dl,swap,"\iota"]\arrow[d,"\nu"]\arrow[dr,"\iota"]&\\
+	R[U^{-1}]\arrow[r,dashrightarrow,"\exists!\;\nu'"]&L\arrow[r,dashrightarrow,"\exists!\;\iota'"]&R[U^{-1}]
+	\end{tikzcd}$$
+	We then have that the morphism $\iota'\circ\nu':R[U^{-1}]\to R[U^{-1}]$ commutes with $\iota$. However, Definition \ref{def:local} implies that only one such map exists, that is, the identity $\id_{R[U^{-1}]}$. Thus, we have that $\iota'\circ\nu'=\id_{R[U^{-1}]}$, and a symmetric argument shows $\nu'\circ\iota'=\id_{L}$. Thus, $\nu'$ and $\iota'$ are mutual inverses, and we have already observed that they uniquely commute with the monomorphisms $\iota$, $\nu$. This completes our proof.
+\end{proof}
+\prob{6}\begin{prop*}[Eisenbud, problem 2.14]
+	We let $R$ be a $\ZZ$-graded ring and $I\subset R$ an $R$-ideal. Then, $I$ is homogenous iff for all $f\in I$, every homogenous component $f^{(j)}\in R_j$ of $f$ is in $I$. 
+\end{prop*}
+\begin{proof}
+	($\impliedby$) Trivial: the union of the homogenous components of each element form a generating set.
+	
+	($\implies$) We let $f\in I$ be arbitrary and write $I=\idl{g_i}_{i\in I}$ for some indexing set $I$ where all $g_i$ are homogenous. We may then write $f=\sum_{i\in I}h_ig_i$ for $h_i\in R$ and where only finitely many $h_i$ are nonzero. We decompose each $h_i$ into homogenous components $h_{i}^{(j)}$ and now have $h_i=\sum_{j\in \ZZ}h_i^{(j)}$ where again for each $i$ only finitely many $h_i^{(j)}$ are nonzero. Now, we may write:
+	\begin{align*}
+		f=\sum_{i\in I}h_ig_i&=\sum_{i\in I}\left(\sum_{j\in \ZZ}h_i^{(j)}\right)g_i\\
+	&=\sum_{(i,j)\in I\times \ZZ}h_i^{(j)}g_i
+	\end{align*} 
+	We note that each term $h_i^{(j)}g_i$ is homogenous and an element of $I$. Thus, we may recover each $f^{(k)}$ by summing along terms $h_i^{(j)}g_i$ of degree $k$ and have that $f^{(k)}\in I$. 
+\end{proof}
+\prob{7}
+\prt{1}\begin{prop*}[Eisenbud, problem 3.17a]
+We let $k:=\ZZ/2$ and $I:=\idl{x,y}\subset k[x,y]/(x,y)^2$. Then, $I$ is the union of three properly smaller ideals. 
+\end{prop*}
+\begin{proof}
+We note that as $(x,y)^2$ consists of all elements whose homogenous components have degree $\geq 2$ and the only nonzero degree-0 element is $1$, we have that $\idl{x}=\{0,x\}$, $\idl{y}=\{0,y\}$ and $\idl{x+y}=\{0,x+y\}$. Direct computation once equipped with the above observations shows that $I=(x,y)=\{0,x,y,x+y\}$ and hence $I=\idl{x}\cup \idl{y}\cup \idl{x+y}$.
+\end{proof}
+\prt{2}\begin{prop*}[Eisenbud, problem 3.17b]
+We let $k$ be any field and $R:=k[x,y]/\idl{xy,y^2}$. We define the $R$-ideals $I_1:=\idl{x}$, $I_2:=\idl{y}$, and $J:=\idl{x^2,y }$. Then, the homogenous elements of $J$ are contained in $I_1\cup I_2$ but $J\centernot\subset I_1$ and $J\centernot\subset I_2$. 
+\end{prop*}
+\begin{proof}
+	We compute the homogenous components of $J$ explicitly by degree. In degree 1, we have one degree-1 generator and hence $J_1=\{ry\;:\;r\in k\}\subset I_2$. In degree 2, we have one degree-2 generator $x^2$ and as $xy=y^2=0\in R$, we have that there are no degree-2 elements of the type $g(x,y)y$. Thus, $J_{2}=\{rx^2\;:\;r\in k\}\subset I_1$. The same argument shows that all degree $\geq 2$ elements with a factor of $y$ in $R$ are $0$, and thus, $J_{d}=\{rx^d\;:\;r\in k\}\subset I_1$ for all $d\geq 2$. However, $y\not\in I_1$ and $x^2\notin I_2$, so we have that $J\centernot\subset I_1$ and $J\centernot\subset I_2$. 
+\end{proof}
+\prob{8}
+\begin{prompt*}[Eisenbud, problem 3.1]
+Identify the associated primes of any finitely generated $\ZZ$-module $G$ in terms of the structure theorem for finitely generated Abelian groups. 
+\end{prompt*}\begin{proof}[Response]
+By the aforementioned structure theorem, $$G\cong\ZZ^{e_0}\oplus\left( \bigoplus_{i=1}^n \ZZ/p_i^{e_i}\right)$$ where each $e_i>0$ for $i>0$, $e_0\geq 0$, and the $p_i$ are not necessarily distinct. Then, for any prime ${p}$, we have $\idl{p}\in \ass_\ZZ(G)$ if and only if there exists some $g\in G$ such that $rp^kg=0$ for some $k>0$, $r\in \ZZ$, but $mg\neq 0$ for any $m<rp^k$. Thus, $g$ has order $rp^k$, which is possible if and only if $p$ divides the order of the torsion group of $G$, which here is $\bigoplus_{i=1}^n \ZZ/p_i^{e_i}$. Thus, the full list of associated primes of $G$ are (deleting any redundancies) $\{\idl{p_1},\idl{p_2},\hdots,\idl{p_n}\}$.
+\end{proof}
+%
+%
+%
+%
+\prob{12}\begin{prop*}[Eisenbud, problem 4.7]
+The Jacobson radical $J$ of a ring $R$ can be characterized as $J=\{s\;:\;1+rs\text{ is a unit for all } r\in R\}$.  
+\end{prop*}
+\begin{proof}
+	$(\subseteq)$ We let $s\in J$. Then, $rs\in J$ for any $r\in R$ as $J$ is an ideal. Letting $\mfr\subset R$ be any maximal ideal, we have that $1+rs\notin \mfr$ as $rs\in \mfr$ but $1\notin \mfr$. Thus, $1+rs\notin \bigcup_{\mfr \text{ max.}}\mfr$. We suppose for the sake of contradiction that $1+rs$ is a non-unit. Then, $\idl{1+rs}$ is a proper ideal, and a Zorn's lemma argument shows that all ideals are contained in some maximal ideal, contradicting our supposition. 
+	
+	$(\supseteq)$ We suppose for the sake of contradiction that $1+rs$ is a unit for all $r\in R$, but $r\notin \mfr$ for some maximal ideal $\mfr\subset R$. We let $q:R\to R/\mfr$ be the quotient map (noting that $q(r)\neq 0$ in the field $R/\mfr$), and let $s\in q^{-1}(-1/q(r))$ be arbitrary. Then, $1+rs\in R$ is a unit, but $q(1+rs)=1+q(r)q(s)=1+q(r)\left(-1/q(r)\right)=0$. As any ring homomorphism necessarily sends units to units, this contradicts our assumption, proving the reverse containment.
+\end{proof}
+%
+%
+\prob{13}
+\begin{prop*}
+	We let $R\subset S\subset T$ be rings. Then, if $S$ is integral over $R$ and $T$ is integral over $S$, $T$ is integral over $R$
+	\end{prop*}
+
+	We begin with a standard lemma.\begin{lemma}\label{finint}
+	 $s\in S$ is integral over $R$ if and only if $R[s]$ is a finite $R$-module.
+	\end{lemma}
+\begin{subproof}[Proof of lemma\ref{finint}]
+	$(\implies)$ We assume there exists monic $p(x)=x^n+r_{n-1}x^{n-1}+\hdots+r_0\in R[x]$ such that $p(s)=0$ and without loss of generality let $n$ be the minimal degree for such a polynomial. We note that $R[s]$ is generated by $\{1,s,s^2,s^3,\hdots\}$. We claim that in fact $\{1,\hdots,s^n\}$ is sufficient to generate the full module $R[s]$.Indeed, the equation $p(s)=0$ implies that $s^n=-(r_{n-1}s^{n-1}+\hdots +r_0)$. Thus, for any $m>n$, we may write $s^m=-s^(m-n)(r_{n-1}s^{n-1}+\hdots +r_0)$, which is a polynomial expression in $s^d$ ranging over $0\leq d \leq m-1$. Iterating this observation then yields the forward implication.
+
+$(\impliedby)$ We suppose $R[s]$ is a finite $R$-module. As $R[s]$ is generated by the set $\{1,s,s^2,\hdots\}$, we have that there exists some $N$ such that for any $n>N$, $s^n=\sum_{i=1}^N r_is^i$ where $r_i\in R$. Then, $p(x)=x^n-\sum_{i=1}^Nr_ix^i$ gives an element of $R[x]$ such that $p(s)=0$. \end{subproof}
+\begin{proof}[Proof of main proposition]
+	We suppose the hypothesis of the proposition. Then, for any $t\in T$, there exists some $q(x):=x^n+s_{n-1}x^{n-1}+\hdots+s_0\in S[x]$ such that $q(t)=0$. By the lemma, as $S$ is integral over $R$, we have that $R[s_0]$ is a finite $R$-module. We note that if $S\supset V\supset R$ and $S$ is integral over $R$, then $S$ is integral over $V$ as $R[x]\subset V[x]$. Thus, $R[s_0,s_1]$ is integral over $R[s_0]$ and hence a finite module extension thereof. We also note that $t$ is clearly integral over $R[s_0,\hdots,s_{n-1}]$, as $q(x)\in \left(R[s_0,\hdots,s_{n-1}]\right)[x]$. Iterating this, we have that $Q_0:=R\subset Q_1:=R[s_0]\subset Q_2:=R[s_0,s_1]\subset \hdots\subset Q_n:=R[s_0,s_1,\hdots, s_{n-1}]\subset Q_{n+1}:=R[s_0,s_1,\hdots, s_{n-1},t]$ is a finite chain of module extensions with each $Q{i+1}/Q_i$ a finite extension. Thus, $Q_{n+1}/R$ is a finite module extension, so by the lemma, we have that $t$ is integral over $R$. As $t$ was arbitrary, this completes our proof.
+\end{proof}
+\begin{corollary*} For rings $Q\subset W$, 
+${\overline{{\overline{Q}}^W}^W=\overline{Q}^W}$
+\end{corollary*}
+\begin{proof}
+In the statement of the proposition, replace $R$ by $Q$, $S$ by $\overline{Q}^W$ and $T$ by $\overline{{\overline{Q}}^W}^W$. Then, $\overline{{\overline{Q}}^W}^W\subset W$ is integral over $Q$ and contains the integral closure of $W$ over $Q$. As  $\overline{Q}^W$ is the maximal subset of $W$ which is integral over $Q$, the corllary follows. 
+\end{proof}
+\prob{14}
+\begin{prop*}[Eisenbud, problem 4.11a (non-graded only)]
+If $(R,\mfr)$ is local and $M$ is a finitely generated projective $R$-module, then $M$ is free. 
+	\end{prop*}
+\begin{proof}
+	We note that $R/\mfr$ is a field, and $M/\mfr M$ a $R/\mfr$-vector space. Moreover, as the Jacobson radical $J:=\mfr$ for a local ring, we may apply the first statement of Nakayama's lemma to yield $\mfr M=M$ if and only if $M=0$; we use this to establish that $M/\mfr M$ is of nonzero dimension if and only if $M\neq 0$. As $M$ is finitely-generated as an $R$-module, the image of any finite generating set under the quotient map $q:R\to R/\mfr$ is a finite generating set for $M/\mfr M$ as a $R/\mfr$-module (vector space). Hence, $M/\mfr M\cong (R/\mfr)^k$ for some $k$; indeed we shall take this isomorphism as an identification and refer to $M/\mfr M$ as $(R/\mfr)^k$. We let $\psi:M\to (R/\mfr)^k$ and $\phi:R^k\to (R/\mfr)^k$ be the quotient maps and now have the diagram \eqref{di14dp}:
+	\begin{equation}
+		\label{di14dp} \begin{tikzcd}
+		&M\arrow[d,"\psi",twoheadrightarrow]\\
+		R^k\arrow[r,"\phi",twoheadrightarrow,swap]&(R/\mfr)^k
+		\end{tikzcd}
+	\end{equation}
+	We now use that $M$ is projective; this observation induces the map $\alpha$ as in our updated (commuting!) diagram \eqref{di14dp2}:
+		\begin{equation}
+	\label{di14dp2} \begin{tikzcd}
+	&M\arrow[d,"\psi",twoheadrightarrow]\arrow[dl,dashrightarrow,"\alpha",bend right=0,swap]\\
+	R^k\arrow[r,"\phi",twoheadrightarrow,swap]&(R/\mfr)^k
+	\end{tikzcd}
+	\end{equation}
+	We let $\{v_1,\hdots,v_k\}$ be a generating set for $(R/\mfr)^k$, and let $m_1,\hdots, m_k\in M$ be such that $\psi(m_i)=v_i$. Then, the second statement of Nakayama's lemma states that $M=\idl{m_1,\hdots,m_k}$. We let $r_i=\alpha(m_i)$ for each $i$. Then, we have by commutativity of \ref{di14dp2} that $\phi(r_i)=v_i$ for each $i$. The second statement of Nakayama's lemma then yields that $R^k=\idl{r_1,\hdots,r_k}$. Thus, we are able to define $\alpha^{-1}:R^k\to M$ by $r_i\mapsto m_i$, and have that $\alpha$, $\alpha^{-1}$ are indeed mutual inverses as they biject on a choice of generating set for each\textemdash in other words, $M\cong R^k$ and is hence free.
+\end{proof}
+%
+%
+\prob{15}
+\begin{prop*}[Eisenbud, problem 4.24]
+	We let $t=y/x$ in the quotient field of $R$. Then, $R[t]=\CC[t]$ in the case that \begin{enumerate}[label=\emph{(\roman*)}]
+		\item $R=\CC[x,y]/\idl{y^2-x^3}$
+		\item $R=\CC[x,y]/\idl{y^2-(x+1)x^2}$
+	\end{enumerate}
+\end{prop*}
+\begin{proof}
+\begin{enumerate}[label=\emph{(\roman*)}]
+	\item We note that $y^2=x^3$ in $R$. Then, $t^2=\frac{y^2}{x^2}=\frac{x^3}{x^2}=x$, and $t^3=\frac{y^3}{x^3}=\frac{y^3}{y^2}=y$, so both of $x,y$ are elements of $\CC[t]$. 
+	\item We note that $y^2=x^2(x+1)$ in $R$. Then, $t^2-1=\frac{y^2}{x^2}-1=\frac{x^2(x+1)}{x^2}-1=(x+1)-1=x$, and as $y=xt$, we have that $y=t^3-t$. Thus, both of $x,y$ are elements of $\CC[t]$.
+\end{enumerate}
+\end{proof}
+%
+%
+%
+\prob{17}\begin{prompt*}[Eisenbud, problem 1.18]
+	Let $R=k[w,x,y,z]/\left(\idl{x,y}\cap\idl{z,w}\right)$. Compute the hilbert function of $R$ and compare it to that of $k[x,y]$.
+\end{prompt*}
+\begin{proof}
+We note that for $f\in R$, $f\neq 0$ if and only if $f$ has a preimage in $\left(k[x,y]\cup k[w,x]\right)\setminus{\{0\}}\subset R$. Thus, the generators for $R_i$ are precisely the images of the generators for $k[x,y]_i$  and the generators for $k[w,z]_i$; as $k[x,y]_i\cap \left(\idl{x,y}\cap\idl{z,w}\right)=k[w,z]_i\cap \left(\idl{x,y}\cap\idl{z,w}\right)=0$, we have that this is a one-to-one correspondence. We note that $k[x,y]_i$ is generated by degree-$i$ monomials in $x,y$; a simple stars-and-bars argument shows that there are $i+1$ of these. Thus, letting $H(n)$ be the Hilbert function of $R$ and $G(n)$ the Hilbert function for $k[x,y]$, we have that $H(n)=2i+2=2G(n)$ for all $n>0$.
+\end{proof}%JUST THREE MORE U CAN DO IT
+%
+%
+%
+\prob{18}\begin{prop*}[Eisenbud, problem 1.21a]
+	We let $F(n)$ be a function defined for significantly large integers $n$ and\footnote{As Galen pointed out to me, this assumption seems to be necessary and is missing, as one can easily find silly counter-examples (e.g. $F(n)=1+\pi$) without it.} taking on values in $\QQ$, and let $G(n):=F(n+1)-F(n)$. Then, $F(n)\in \QQ[n]$ if and only if $G(n)\in \QQ[n]$. Furthermore, $\deg G=\deg F-1$.
+\end{prop*}
+\begin{proof}
+	($\implies$) Trivial: we assume that $F\in \QQ[n]$. Then, $F(n+1)$ is in $\QQ[n]$ as well, with the same going for their difference $F(n+1)-F(n)$.
+	
+	($\impliedby$) We let $N$ be some integer for which $F(n)$ is defined for all $n\geq N$. Then, for $n>N$, we have that $$F(N)+\sum_{m=N}^{n-1}G(m)=F(N)+(F(N+1)-F(N))+(F(N+2)-F(N+1))+\hdots+(F(n)-F(n-1))=F(n).$$ Thus, showing our desired result is equivalent to showing the following proposition:
+	\begin{proposition}\label{pro:121a}
+		For a polynomial $p(n)\in Q[n]$, we let $P(n):=\sum_{m=1}^{n-1} p(m)$. Then, $P(n)\in \QQ[n]$, with $\deg P=\deg p+1$
+	\end{proposition}
+
+In order to prove this, we shall start with the following lemma: \begin{lemma}\label{lem:121b}For a map $a:\ZZ\to \QQ$, we let $$A(x):=\sum_{n\geq 0} a(n)x^n\in \QQ[[x]].$$ Then, $a(n)\in \QQ[n]$ and $\deg a=k$ if and only if $A(x)$ has a rational expression of the form $$\frac{p(x)}{(1-x)^{k+1}}$$ where $p(x)\in \QQ[x]$, $\deg p\leq k+1$, and $\gcd(p(x),(1-x))=1$.
+\end{lemma}
+\begin{subproof}[Proof of Lemma \ref{lem:121b}]
+	($\implies $) We shall first show our statement for $a(n)=n^k$ for $k\geq 0$. We recall the $(xD)$ operator on $\QQ[[x]]$ of \cite{genfology}, which maps $R(x)\mapsto x(\ddx{x}R(x))$. For $R(x)=\sum_{n\geq 0}a_nx^n$, we now have $(xD)(R(x))=\sum_{n\geq 0}n a_nx^n$. Thus, letting $P_k(x):=\sum_{n\geq 0}n^kx^n$ we have that $P_k(x)=(xD)^n\left(\frac{1}{1-x}\right)$. We claim that $K(x)$ can be written $\frac{p_k(x)}{(1-x)^{k+1}}$ for some $p_k(x)$ with $\gcd (p_k(x),(1-x))=1$ and $\deg p_k\leq k$. We show this by induction. The case $k=0$ is trivial, with $p_0(x)=1$. For the inductive step, we suppose $P_{k-1}(x)=\frac{p_{k-1}(x)}{(1-x)^k}$ with $\deg{p_{k-1}}<k$ and $\gcd(p_{k-1},(1-x))=1$. Then, \begin{align*}P_k(x)&=(xD)(P_{k-1}(x))\\&=\frac{kxp_{k-1}(x)}{(1-x)^{k+1}}+\frac{xp_{k-1}'(x)}{(1-x)^{k}}\\&=\frac{kxp_{k-1}(x)+x(1-x)p_{k-1}'(x)}{(1-x)^{k+1}}\end{align*}
+	Direct inspection coupled with the reminders that (1) $p_{k-1}(x)$ and $(1-x)$ are assumed to be nonzero and coprime and (2) $\deg p_{k-1}<k$ and $\deg p_{k-1}'<k-1$ yields the claim in the case $a(n)=n^k$. To prove this direction in full, we let $a(n)=b_kn^k+b_{k-1}n^{k-1}+\hdots+b_0$. Then, \begin{align*}
+		A(x)&=b_kP_k(x)+b_{k-1}P_{k-1}(x)+\hdots +b_0\\
+		&=b_{k}\frac{p_k(x)}{(1-x)^{k+1}}+b_{k-1}\frac{p_{k-1}(x)}{(1-x)^{k}}+\hdots +b_0\\
+		&=\frac{b_kp_k(x)+(1-x)b_{k-1}p_{k-1}(x)+\hdots+b_0(1-x)^{k+1}}{(1-x)^{k+1}}
+	\end{align*}
+	We note that the numerator is congruent to $b_kp_k(x)\neq 0$ modulo $(1-x)$, and it is clear from what we have established regarding the degrees of $p_j$ that the degree of the numerator is at most $k+1$. This completes this direction of the proof.
+	
+	($\impliedby$) 
+We recall that a standard stars-and-bars argument shows that $$\frac{1}{(1-x)^{k+1}}=\sum_{n\geq 0}{n+k\choose k}x^n=\sum_{n\geq 0}\frac{(n+k)(n+k-1)(n+k-2)\hdots(n+1)}{k!}x^n$$ which indeed has coefficients given by $s_k(n)={n+k\choose k}\in \QQ[n]$. Moreover, this implies that for $0\leq j\leq k$, $\frac{x^j}{(1-x)^{k+1}}$ has coefficients given by $s_k(n-j)$, which is still\footnote{There is one subtlety here which I'm shoving under the rug: for $j>k$, we have that the $x^0$ coefficient of $\frac{x^j}{(1-x)^{k+1}}$ is $0$, which is \emph{not} the value of $s_k(-j)$. Fortunately, as we shall see, our assumptions on the degree of $p(x)$ in the statement of Lemma \ref{lem:121b} as well as a trick we shall introduce shortly will take care of this and we shan't worry about it any further. We reserve the right to talk around this subtlety without explicitly mentioning it throughout the rest of this proof; the grader can check for theirself that it is successfully dodged.} an element of $\QQ[n]$. We shall use this fact to prove this direction of our proposition as follows: we let $\gcd(p(x),(1-x))=1$ with $p(x)\in \QQ[x]$ and $\deg p(x)\leq k+1$ and let $A(x)=\frac{p(x)}{(1-x)^{k+1}}$. We use the euclidean property of $\QQ[x]$ to write $p(x)=a_0(1-x)^{k+1}+q(x)$ where $\deg q(x)\leq k$. Then, $A(x)=a_0+B(x)$, where $B(x)=\frac{q(x)}{(1-x)^{k+1}}$. We let $q(x)=b_{k}x^k+\hdots +b_0$. By our assumptions on $p(x)$, we have that at least some $b_j\neq 0$ and $\gcd{(q(x),(1-x))}=1$. Then, the coefficients of $B(x)$ are given by $\hat{a}(n)=\sum_{j=0}^k b_js_k(n-j)\in \QQ[n]$ with $\deg \hat{a}\leq k$. To show that $\deg \hat{a}=k$, we note that when expanded, each term $s_k(n-j)$ has the same leading coefficient $n^k/k!$. Thus, we have that the $n^k$-coefficient of $\hat{a}(n)$ is $\left(\sum_{j=0}^k b_j\right) \frac{n^k}{k!}n^k=q(1)\frac{n^k}{k!}$. As $\gcd(q(x),(1-x))=1$ by assumption, we have that $q(1)\neq 0$. Thus, $\deg \hat{a}=k$. Letting $a(n)=\hat{a}(n)+a_0$, we now have that $a(n)\in \QQ[n]$ with $\deg a=k$ and $A(x)=\sum_{n\geq 0} a(n)x^n$. This completes our proof.
+%Note the fact that this all works out implies that $p_k(x),(1-x)p_{k-1}(x),\hdots,(1-x)^{k+1}$ forms a basis for $\bigcup_{j=1}^n\QQ[x]_j$...wait that's obvious lmao. or is it? idk this is a total aside, but if you ever need that fact here it is lmao.
+\end{subproof}
+\begin{subproof}[Proof of Proposition \ref{pro:121a}]
+	We state one more lemma, the proof of which is immediate and well-known:
+	\begin{lemma}
+		\label{lem:121c} We let $\{a_n\}$ be a sequence and let $s_n=\sum_{m=0}^{n-1}a_m$. Then, $$\sum_{n\geq 0}s_nx^n=\left(\frac{x}{1-x}\right)\left(\sum_{n\geq 0}a_nx^n\right)$$
+	\end{lemma}
+	
+ We let $k:=\deg p$, $A(x)=\sum_{n\geq 0} p(n)x^n$ and $B(x)=\sum_{n\geq 0}P(n)x^n$. By the result of the forward direction of Lemma \ref{lem:121b}, we have that $A(x)=\frac{q(x)}{(1-x)^{k+1}}$ for some $q(x)\in \QQ[x]$ with $\deg q\leq k+1$ and $\gcd(q,(1-x))=1$. Then, Lemma \ref{lem:121c} implies that $$B(x)=\left(\frac{x}{1-x}\right)A(x)=\frac{xq(x)}{(1-x)^{k+1}}.$$ An application of the result of the converse direction of Lemma \ref{lem:121b} then implies that $P(n)\in \QQ[n]$ with $\deg P=k+1$. 
+\end{subproof}
+As we have already shown Proposition \ref{pro:121a} to imply the reverse direction of our original statement, this completes our proof.
+\end{proof}
+\prob{19}\begin{prop*}\begin{enumerate}[label=\emph{(\roman*)}]
+	\item We let $R$ be a ring, $M$ a module and $\Jcal: M=M_0\supset M_1\supset M_2\supset\hdots$ a filtration by submodules. Then, either $\ins(f+g)=\ins(f)+\ins(g)$ or $\ins(f+g)=\ins(f)$ modulo relabeling of $f$ and $g$.
+\item We let $M=R$ and suppose $\Jcal$ is a multiplicative filtration such that $\gr_\Jcal(R)$ is a ring. Then, either $\ins(f)\ins(g)=\ins(fg)$ or $\ins(f)\ins(g)=0$\end{enumerate}
+\end{prop*}
+\begin{proof}
+	\begin{enumerate}[label=\emph{(\roman*)}]
+		\item We let $m_f=\max\{m\in \NN\;:\; f\in M_m\}$, with a similar definition for $m_g$ and suppose $m_f\leq m_g$ without loss of generality. Then, $\max\{m\in \NN\;:\; f+g\in M_m\}=m_f$, so if $m_f=m_g$, we have that $\ins (f+g)=f+g\mod M_{m_f+1}=\ins(f)+\ins(g)$. On the other hand, if $m_f<m_g$, then $g=0\mod M_{m_f+1}$, so $\ins(f+g)=f+g\mod M_{m_f+1}=f\mod M_{m_f+1}=\ins(f)$.
+		\item We note that $fg\in M_{m_f+m_g}$ and observe there are two cases to consider: either $fg\notin M_{m_f+m_g+1}$ or $fg\in M_{m_f+m_g+1}$. In the first case, then $\ins(f)\ins(g)=fg\mod M_{m_f+m_g+1}=\ins(fg)$. We note that the second is not necessarily vacuous; indeed, we may well have that $f=af'$, $g=bg'$ with $f'\in M_{m_f}$, $g'\in M_{m_g}$, $ab\in M_1$ but $a\notin M_1$, $b\notin M_1$, as it was never assumed that any of the $M_i$'s were prime. Then, $\ins(f)\ins(g)=fg\mod M_{m_f+m_g+1}=0\neq \ins(fg)$ unless $fg=0$.
+	\end{enumerate}
+\end{proof}
+\prob{20}
+\prt{1}\begin{prop*}
+We let $R=k[x,y]/(x^2-y^3)$ and $I=\idl{x,y}$. Then, $R$ is a domain, but $\ins(x)^2=0\in \gr_IR$. 
+\end{prop*}
+\begin{proof}
+	We note that in the polynomial ring $Q[x]$ for $Q$ a PID, $x^2-a$ is reducible in general if and only if $a=b^2$ for some $b\in Q$. As $y^3$ is not a square in $k[y]$, we have that $x^2-y^3$ is irreducible and thus $R$ is a domain. However, as $x^2=y^3$ in $R$, $\ins(x)^2=x^2\mod I^3=y^3\mod I^3=0$. 
+\end{proof}
+\prt{2}
+\begin{prop*}[Eisenbud, problem 5.8]
+	We let $R=k[t^4,t^5,t^{11}]$ with $I$ being the irrelevant ideal $\idl{t^4,t^5,t^{11}}$. Then, $\ins(I)\ins(t^{11})=0$
+\end{prop*}
+\begin{proof}
+	We claim that $\ins(I)=\idl{\ins(t^4),\ins(t^5),\ins(t^{11})}$. By the result of problem 19(i), we need only show that for any monomial $\ins{(m(x))}$, $m(x)\in\idl{\ins(t^4),\ins(t^5),\ins(t^{11})}$. We note that $R$ contains all powers of $t$ besides $t^1,t^2,t^3,t^6$, and $t^7$. We let $m(x)=t^k\in R$ and have that we may represent $t^k$ as $(t^4)^{\floor{k/4}-(k\mod 4)}(t^5)^{(k\mod 4)}$ whenever $k\neq 11$; indeed, it is immediately clear from this representation that $\floor{k/4}$ is the maximal power of $I$ in which $t^k$ resides. Thus, $\ins(t^k)=\ins\left((t^4)^{\floor{k/4}-(k\mod 4)}(t^5)^{k\mod 4}\right)=\ins(t^4)^{\floor{k/4}-(k\mod 4)}\ins(t^5)^{k\mod 4}\in\idl{\ins(t^4),\ins(t^5),\ins(t^{11})}$, so $\idl{\ins(t^4),\ins(t^5),\ins(t^{11})}=\ins(I)$. We write $\ins(I)\ins(t^{11})=\idl{\ins(t^4)\ins(t^{11}),\ins(t^5),\ins(t^{11})\ins(t^{11})^2}$. But, $\ins(t^4)\ins(t^{11})=t^{15}\mod I^3=0$ ,$\ins(t^5)\ins(t^{11})=t^{16}\mod I^3=0$ and $\ins(t^{11})^2=t^{22}\mod I^3=0$, so $\ins(I)\ins(t^{11})=0$. 
+\end{proof}
+\prob{21}\begin{prompt*}[Eisenbud Problem 1.23]
+	Let $R=k[x]/x^n$ and let $M=k[x]/x^m$ for some $m<n$. Compute a free resolution for $M$.
+\end{prompt*}
+\begin{proof}[Response]
+	We claim that $F_\bullet : \hdots\to R\to R$ is a free resolution for $M$ where each $\del_{2i+1}:R_{2i+1}\to R_{2i}$ is $x^m\cdot$, the multiplication by $x^m$ map and each $\del_{2i}:R_{2i}\to R_{2i-1}$ for $i\geq 1$ is the map $x^{n-m}\cdot$. Indeed, we then have that $H_0(F)=R/\im(x^m\cdot)=R/x^m$, while $H_{2i}(F)=\ker(x^{n-m}\cdot)/\im(x^m\cdot)=x^mR/x^mR=0$ and $H_{2i+1}(F)=\ker(x^m\cdot)/\im(x^{n-m}\cdot)=x^{n-m}R/x^{n-m}R=0$.
+\end{proof}
+\begin{prop*}
+	The only $R$-modules with a finite free resolution are the free ones.
+\end{prop*}
+\begin{proof}
+ A free resolution $(F_\bullet,\del_\bullet)$ of $M$ is finite if and only if for some $d\geq 0$, $\del_d$ is an injection. We note that if $\del_d$ is an injection, we must have that $\rank F_d\leq \rank F_{d-1}$. We note as well that $R^k\cong F_{d-1}$ is generated as a module by any element with nonzero constant term in each coordinate, as these constitute the units of $R^k$. Hence, if $\del_d(1)$ has nonzero constant term in each coordinate, $\del_d$ is an isomorphism onto its (free)  and hence an isomorphism, so $d=0$ and $M\cong R/x^n$ and is free. On the other hand, if $\del_d(1)=x^k$ for some $k\geq 2$, then $\ker(\del_d)\ni x^{n-k}$, so $\del_d$ is not an injection. In the general case, we may apply the structure theorem for modules over PIDs as any $k[x]/x^n$-module is in addition a $k[x]$-module, and have that $M=\bigoplus_i k[x]/I_i$. Furthermore, as $M$ is an $R$-module, we must have that $x^n$ annihilates each $k[x]/I_i$, and thus $x^n\in I_i$ for all $n$. Then, we have that any free resolution for $M$ is the direct sum of free resolutions for each $k[x]/I_i$, and hence is only finite if and only if each resolution for $k[x]/I_i$ is finite if and only if each $k[x]/I_i$ is free as an $R$-module.    
+
+\end{proof}
+\prob{24}
+\begin{prop*}
+	We let $R$ be a ring, $x\in R$, $M$ an R-module, and $\{M_i,\phi_{i,j}\}$ the direct system indexed by $\NN$ and given by \eqref{eq24-prop}. Then, $\colim M_i\cong M_x$ uniquely with the map $\psi_i:M_i\to M_x$ mapping $a\mapsto \frac{a}{x^i}$. 
+	\begin{equation}\label{eq24-prop}\begin{tikzcd}
+		M_0=M\arrow[r,"\cdot x"]&M_1=M\arrow[r,"\cdot x"]&M_2=M\arrow[r,"\cdot x"]&\cdots
+	\end{tikzcd}\end{equation}
+\end{prop*}
+\begin{proof}
+We recall the following universal definition of the module $M[U^{-1}]$:\begin{definition}[Eisenbud, problem 2.8\footnote{To the grader: I spoke with Christine and confirmed that it is indeed kosher to assume the result of this problem for the purposes of this problem set.}]\label{defmodloc}
+	We let $U\subset R$ be a multiplicative system. Then, $M[U^{-1}]$ is defined as follows: for any map $M\to N$ such that for all $u\in U$, $uN=N$, there exists a unique extension $M[U^{-1}]\to N$ of the map $M\to N$.
+\end{definition} We let $\{\alpha_i:M_i\to \colim M_i\}$ be the co-cone defining $\colim M_i$. We shall show that the universal property definitions of each of $M_x$ and $\colim M_i$ establish a canonical isomorphism between the two.
+
+We first check that equipping $M_x$ with $\{\psi_i\}$ indeed establishes $M_x$ as a co-cone for $\{M_i,\phi_{i,j}\}$. Indeed, it is immediately clear that each $\psi_i$ is well-defined and $R$-linear, as it may be defined on generators then extended to the rest of $M$ by linearity. We check that \begin{align*}
+(\psi_j\circ\phi_{i,j})(a)&=\psi_j(x^{j-i}a)\\&=\frac{x^{j-i}a}{x^j}\\&=\frac{a}{x^i}=\psi_i(a),\end{align*} showing that the $\psi_i$ do indeed commute with the maps $\phi_{i,j}$. Thus, there exists a unique map $\colim M_i\to M_x$ by the universal property of the direct limit, as we illustrate in \eqref{24cd1}.
+\begin{equation}
+\label{24cd1} \begin{tikzcd}
+M_i\arrow[rr,"\phi_{i,j}"]\arrow[dr,"\alpha_i", near end]\arrow[ddr,"\psi_i",swap]& &M_j\arrow[dl,"\alpha_j",swap,near end]\arrow[ddl,"\psi_j"]\\
+&\colim M_i\arrow[d,dashrightarrow,"\exists!"]&\\
+& M_x &
+\end{tikzcd}
+\end{equation} 
+We now wish to show that $x\colim M_i=\colim M_i$. We recall that the map $\bigoplus_i \alpha_i:\bigoplus_i M_i\to \colim M_i$ is surjective, and in particular $\colim M_i$ is generated by elements of the form $\alpha_i(a)$. We consider the set $S=\{\alpha_i(a)\;:\;a\in M,i\in \NN_0\}$; as $\colim M=\idl{S}$, it follows that if $xS\supset S$, then as $x\colim M_i\subseteq\colim M=\idl{S}$, we must have $xM=M$. Indeed, we consider $\alpha_i(a)\in S$, and note that $x\alpha_{i+1}(a)=\alpha_{i+1}(xa)=\alpha_{i+1}(\phi_{i,i+1}(a))$. Thus, as $\colim M_i$ is a co-cone, we have that $\alpha_{i+1}(\phi_{i,i+1}(a))=\alpha_i(a)$. Thus, $S\subset xS$, and it follows that $\colim M_i=x\colim M_i$. Then, by definition \ref{defmodloc}, we have that there exists a unique map $M_x\to \colim M_i$ extending each $\alpha_j$; as $M_x$ is a co-cone, it follows that $M_x\to \colim M_i$ commutes with the $\phi_{i,j}$. We illustrate this in \eqref{24cd2}.
+\begin{equation}
+\label{24cd2}\begin{tikzcd}
+M_i\arrow[rr,"\phi_{i,j}"]\arrow[dr,"\alpha_i", near end]\arrow[dddr,"\psi_i",swap,bend right]& &M_j\arrow[dl,"\alpha_j",swap,near end]\arrow[dddl,"\psi_j", bend left]\\
+&\colim M_i\arrow[dd,dashrightarrow,"\exists!",bend left]&\\\\
+& M_x \arrow[uu,dashrightarrow,"\exists!",bend left]&
+\end{tikzcd}
+\end{equation} 
+By the universality of the constructions of $\colim M_i$ and $M_x$, the maps $\colim M_i\to M_x$ and $M_x\to \colim M_i$ are mutual isomorphisms commuting uniquely with the co-cone structure of each, as desired.
+\end{proof}
+%\prob{27}
+%\begin{prop*}
+%	Let $R$ be a Noetherian ring. Then $R[[x_1,x_2,\hdots,x_n]]$ is a Noetherian ring. 
+%\end{prop*}
+%	Some preliminary facts we shall use without proof: we let $S=R[x_1,\hdots,x_n]$, $\mfr=\idl{x_1,\hdots,x_n}$, and have immediately from Hilbert's basis theorem that $S$ is Noetherian. We also recall the description of $R[[x_1,\hdots, x_n]]$ of \cite[\S7.1, pp.183]{eis} which states in general \begin{equation}\hat{R}_\mfr=\{(f_1,f_2,\hdots)\in \prod_{i}R/\mfr^i\;:\;f_j\equiv f_i\mod \mfr^i\;\forall \,j\geq i\}.\label{hrmfr}\end{equation} There is also one more standard theorem from elementary ring theory which we shall make use of:
+%	%There are also two more standard theorems from elementary ring theory which we shall make use of:
+%%	\begin{theorem}[The Third Isomorphism Thoerem for Rings {\cite[\S7.3,Theorem 8(2)]{dumfo}}]\label{3iso}
+%	%	Let $R$ be any ring and $I$ and $J$ be any $R$-ideals with $I\subseteq J$. Then, $J/I$ is an ideal of $R/I$, and $(R/I)/(J/I)\cong R/J$. 
+%	%	\end{theorem}
+%	\begin{theorem}[The Fourth or Lattice Isomorphism Thoerem for Rings {\cite[\S7.3,Theorem 8(3)]{dumfo}}]\label{4iso}
+%		Let $R$ be any ring and $I\subset R$ be any ideal. Then, there is an inclusion-preserving bijection between ideals of $R/I$ and ideals of $R$ containing $I$. 		
+%	\end{theorem}
+%\begin{proof}[Proof of main proposition]
+%	Proof by contradiction: we suppose there exists some ideal $J\subset R[[x_1,\hdots,x_n]]=\hat{S}_\mfr$ such that no finite generating set for $J$ exists. We let $J_i$ be the image of $J$ under the map $\hat{S}_\mfr\to S/\mfr^i$. Then, as $ S$ is Noetherian, we have that $S/\mfr^i$ is Noetherian, and hence, $J_i$ is finitely generated. We apply the bijection of theorem \ref{4iso} to yield an (of course finitely-generated) ideal $K_i\subset S$ such that $K_i/\mfr^i=J_i$. We claim that $K_i\subseteq K_{i+1}$. Indeed, as $R[[x_1,\hdots,x_n]]$ is by definition a cone for $1\leftarrow S/\mfr \leftarrow S/\mfr^2\leftarrow \hdots$, we have that the map $\hat{S}_\mfr\to S/\mfr^{i+1}\to S/\mfr^i$ commutes with the map $\hat{S}_\mfr\to S/\mfr^i$, so we may apply theorem \ref{4iso} again to pull back $J_i\subset S/\mfr^i$ to $J_{i+1}\subset S/\mfr^{i+1}$, thus implying $K_i\subseteq K_{i+1}$. We let $\{j_1,j_2,\hdots\}$  
+%\end{proof}
+\prob{29}\begin{prop*}[Eisenbud, problem A3.13: \say{Schanuel's Lemma}]
+	We let $0\to N_F\to F \to M\to 0$ and $0\to N_G\to G \to M\to 0$ be exact sequences of $R$-modules with $F$ and $G$ projective. Then, $N_F\oplus G\cong \ker(F\oplus G\to M)\cong N_G\oplus F$.
+\end{prop*}
+\begin{proof}
+	By symmetry, it is enough to show  $N_F\oplus G\cong \ker(F\oplus G\to M)$. We let $K:=\ker(F\oplus G\to M)$. We note that $F\hookrightarrow F\oplus G$ and as $N_F=\ker (F\to M)$ by exactness, we have that $N_F\hookrightarrow K$. We then have that the following diagram commutes with exact rows and columns wherever those rows/columns are populated with maps:
+$$	\begin{tikzcd}
+	&0\arrow[d]&0\arrow[d]&0\arrow[d]&\\
+	0\arrow[r]& N_F\arrow[r,hookrightarrow]\arrow[d,hookrightarrow] &F \arrow[r,twoheadrightarrow]\arrow[d,hookrightarrow] &M\arrow[r]\arrow{d}[sloped,above,leftrightarrow]{=}& 0\\
+	0\arrow[r]& K\arrow[r,hookrightarrow]\arrow[d,twoheadrightarrow] &F\oplus G \arrow[r,twoheadrightarrow]\arrow[d,twoheadrightarrow] &M\arrow[r]\arrow[d]& 0\\
+	&K/N_F\arrow[d]&G\arrow[d]&0&\\
+	&0&0&&
+	\end{tikzcd}
+	$$
+	The snake lemma then states that there exists an exact sequence $0\to K/N_F\to G\to 0$, so we have that $K/N_f\cong G$. We have that there exists a surjective map $q:K\twoheadrightarrow K/N_F$, so as we now have that $K/N_F$ is projective, we have that there exists a map $r:K/N_F\to K$ such that $q\circ r=\id_{K/N_F}$. Thus, we now have that $K\cong(K/N_F)\oplus N_F\cong G\oplus N_F$ as desired.
+\end{proof}
+\prob{30}\begin{prop*}[Eisenbud, problem A3.14]
+	For a projective resolution $P_\bullet$, we let $\ell(P_\bullet):=\min_{d\geq 1}\{d\;:\;\im(P_d\to P_{d-1})\text{ projective}\}$. Then, for $F_\bullet$, $G_\bullet$ two projective resolutions of $M$, $\ell(F_\bullet)=\ell(G_\bullet)=\pd M$. 
+\end{prop*}
+\begin{proof}
+	A quick sketch of the structure of our proof: we shall show that $\im(F_1\to F_0)$ is projective if and only if $\im(G_1\to G_0)$ is projective. Then, in the case that neither is projective, we will show there exist projective resolutions of a different module $F'_\bullet, G'_\bullet$ such that $\ell(F'_\bullet)=\ell(F_\bullet)-1$ and $\ell(G'_\bullet)=\ell(G_\bullet)-1$. Applying the two steps recursively then eventually reduces our situation to the case of the first claim.
+	\begin{claim}\label{A314case0}
+		$\im(F_1\to F_0)$ is projective if and only if $\im(G_1\to G_0)$ is projective.
+	\end{claim}
+\begin{subproof}[Proof of Claim \ref{A314case0}]
+	We shall show only the forward implication; the converse is then given by symmetry. We suppose $\im(F_1\to F_0)$ is projective. We denote $N_F:=\im(F_1\to F_0)$, and $N_G:=\im(G_1\to G_0)$ and note that $N_F\cong \ker (F_0\to M)$. We now have exact sequences $0\to N_F\to F_0\to M\to 0$ and $0\to N_G\to G_0\to M \to 0$ so by the result of Shanuel's lemma, we have that $N_F\oplus G_0\cong N_G \oplus F_0:=K$. As $N_F$ and $G_0$ are projective, we have that $K$ is projective, and as $N_G$ is a direct summand of $K$, we have that $N_G $ is projective
+\end{subproof}
+\begin{claim}\label{A314case1}
+	If $\im(F_1\to F_0)$ is not projective, there exist projective resolutions $F'_\bullet$ and $G'_\bullet$ of $K$ (as defined above) such that $\ell(F'_\bullet)=\ell(F_\bullet)-1$ and $\ell(G'_\bullet)=\ell(G_\bullet)-1$. 
+\end{claim}
+\begin{subproof}[Proof of claim \ref{A314case1}]
+	We state the following basic fact without proof:\begin{fact}\label{tfactA314}
+		If $Q$ and $S$ are $R$-modules with (respectively) projective resolutions $A_\bullet $ and $B_\bullet$, then $(A\oplus B)_\bullet$ is a projective resolution for $Q\oplus S$ where $(A\oplus B)_n=A_n\oplus B_n$. 
+	\end{fact}
+We note that $0\to G_0$ is a projective resolution of $G_0$ and $0\to F_0$ a projective resolution of $F_0$. We claim $\tilde{F}_\bullet$ is a projective resolution of $N_F$ where $\tilde{F}_n=F_{n+1}$. Indeed, as $\im(F_1\to F_0)=N_F$, our claim is immediate. An identical claim holds for $\tilde{G}_\bullet$ defined analogously with respect to $N_G$. We let $F'_\bullet$ be defined by \begin{equation*}
+F'_n=\begin{cases}
+F_1\oplus G_0& i=0\\
+F_{n+1}&i>0
+\end{cases}
+\end{equation*}
+and $G'_\bullet $ defined by \begin{equation*}
+G'_n=\begin{cases}
+G_1\oplus F_0& i=0\\
+G_{n+1}&i>0
+\end{cases}
+\end{equation*} Then, by Fact \ref{tfactA314} and Schanuel's lemma, we have that $F'_\bullet$ is a projective resolution for $N_F\oplus F_0\cong K$ and $G'_\bullet$ is a projective resolution for $N_G\oplus G_0\cong K$. Further, we have that $\im(F'_d\to F'_{d-1})=\im(F_{d+1}\to F_d)$ for all $d>1$ with a similar statement holding for $G$. This shows indeed that $\ell(F')=\ell(F)-1$ with a similar statement again holding for $G$.
+
+\end{subproof}
+As stated above, these two claims come together to prove the proposition.
+\end{proof}
+%
+%
+%
+\prob{31}
+\begin{prop*}[Eisenbud, problem A3.16]
+	For $R$ a ring, and $x$ a nonzerodivisor, $\tor_1(R/x,M)=\col{0}{M}{x}=\{m\in M\;:\;xm=0\}$.
+\end{prop*}
+\begin{proof}
+	As $\tor$ is symmetric, we consider $\tor_1(M,R/x)=H_1(F_\bullet)$ where $F_\bullet=M\otimes P_\bullet$ for $P_\bullet$ a projective resolution of $R/x$. We have that $P_2=0\to P_1=R\to P_0=R$ is a projective resolution of $R/x$ where $P_1\to P_0$ is $x\cdot$, the multiplication-by-$x$ map. Thus, the complex in question is $F: F_2=0\to F_1=M\otimes R\cong M\to F_0\cong M$, where $F_1\to F_0$ is the map $\id_M\otimes (x\cdot)$, which corresponds to $(x\cdot)$ under the isomorphism $R\otimes M\cong M$. Thus, $$\tor_1(M,R/x)=\frac{\ker(x\cdot:M\to M)}{\im(0\to M)}=\ker(x\cdot:M\to M)=\col{0}{M}{x}$$
+\end{proof}
+%
+%
+\prob{32}\begin{prop*}[Eisenbud, problem A3.18]
+	We let $(R,\mfr)$ be a local ring, and let $(F_\bullet,\phi_\bullet) $ be a minimal free resolution of $M$ in the sense that $\im\phi_i\subset \mfr F_{i-1}$. We suppose $\rank F_i=b_i$. Then, $\tor(R/\mfr,M)=(R/\mfr)^{b_i}$.
+\end{prop*}
+\begin{proof}
+	We note that if $\rank F_i=b_i$, then $F_i\cong R^{b_i}$. Thus, without loss of generality, we assume $F_i=R^{b_i}$ for all $i$. Then, \begin{align}\tor_i(R/\mfr,M)&=H_i(R/\mfr\otimes F)\nonumber\\
+	&=\frac{\ker\left(\id_{R/\mfr}\otimes \phi_i:R/\mfr\otimes R^{b_i}\to R/\mfr \otimes R^{b_{i-1}}\right)}{\im\left(\id_{R/\mfr}\otimes \phi_{i+1}:R/\mfr\otimes R^{b_{i+1}}\to R/\mfr \otimes R^{b_i}\right)}\label{torir/m}\end{align}
+	We denote by $\del_i$ the function $\id_{R/\mfr}\otimes \phi_i$. 
+	\begin{claim}\label{claima318} $\im \del_i=0$ for all $i$.\end{claim}\begin{subproof}[Proof of claim \ref{claima318}] Indeed, we have that $\im \phi_i\subset \mfr F_{i-1}$. Thus, for any $r\otimes p\in F_i=R^{b_i}$, we have that $\phi_i(r\otimes p)=r\otimes m$ where $m\in \mfr F_{i-1}=(\mfr R)^{b_{i-1}}$. As tensors respect products, we may represent this as $(r\otimes m_1,\hdots r\otimes m_{b_{i-1}})=(rm_1\otimes 1,\hdots,rm_{b_{i-1}}\otimes 1)\in \bigoplus_{i=1}^{b_{i-1}}R/\mfr \otimes R$ where each $m_j\in \mfr R=\mfr$. As $r\in R/\mfr$, and $\ann_R(R/\mfr)=\mfr$, we have that $rm_j=0$ for all $j$. Thus, $r\otimes m=0$, and as $r\otimes m$ was an arbitrary element of $\im\phi_i$, we have shown our claim.\end{subproof}
+	With that taken care of, we how have from equation \eqref{torir/m} that $\tor_i(R/\mfr,M)=\ker\del_i$. However, as claim \ref{claima318} demonstrates that each $\del_i$ is the zero map, we have that $ker(\del_i)=F_i=R/\mfr\otimes R^{b_i}$. As tensors respect products and $R/\mfr\otimes R\cong R/\mfr$, we have now shown $\tor_i(R/\mfr,M)=(R/\mfr)^{b_i}$.  
+\end{proof}
+%
+%
+%
+\prob{33}\begin{prop*}[Eisenbud, problem A3.23]
+	If $x$ is a nonzerodivisor in ring $R$, and $M$ is an $R$-module, then $\ext_R^0(R/x,M)\cong\col{0}{M}{x}$ and $\ext_R^1\cong M/xM$. In particular, $\ext^0_\ZZ(\ZZ/n,/ZZ/m)\cong \ZZ/\gcd(n,m)=\ext^1_\ZZ(\ZZ/n,\ZZ/m)$
+\end{prop*}
+\begin{proof}
+	We again let that $P_2=0\to P_1=R\to P_0=R$ be a projective resolution of $R/x$ where $P_1\to P_0$ is $x\cdot$, the multiplication-by-$x$ map. Then, $\ext^i_R(R/x,M)=H_{-i}(F_\bullet)$ where $F_\bullet\colon0\to F_0=\hom(P_0,M)\to F_1=\hom(P_1,M)\to \hom(P_2,M)\to\hdots.$. As $P_2=0$ and $P_0=P_1=R$, we have that this is isomorphic to $F'_\bullet\colon0\to M\to M\to 0$ where $M\to M$ is the map $x\cdot$. Then, \begin{align*}\ext_R^0(R/x,M)&\cong\frac{\ker(x\cdot:M\to M)}{\im(0\to M)}\\&=\ker (x\cdot:M\to M)\\&= \col{0}{M}{x}\end{align*}
+	and \begin{align*}
+	\ext^1_R(R/x,M)&\cong \frac{\ker(M\to 0)}{\im(x\cdot:M\to M)}\\&=M/xM
+	\end{align*}
+	In particular, letting $R=\ZZ$, $x=n$, and $M=\ZZ/m$, we have that \begin{align*}
+\ext_R^0(\ZZ/n,\ZZ/m)&\cong\col{0}{\ZZ/m}{n}\\&=\left(\frac{\lcm(m,n)}{n}\ZZ/m\right)/\left(\ZZ/m\right)\\&=\left(\frac{m}{\gcd(m,n)}\ZZ/m\right)/\left(\ZZ/m\right)\\&\cong \ZZ/\gcd(n,m),	\end{align*} and \begin{align*}
+	\ext_R^1(\ZZ/n,\ZZ/m)&\cong (\ZZ/m)/\left(n\ZZ/m\right)\\&\cong \ZZ/\gcd(m,n)
+\end{align*}
+\end{proof}
+%
+%
+%
+\prob{34}\begin{prop*}[Eisenbud, problem A3.24]
+	We let $A$ be a finitely generated Abelian group. $A$ is free if and only if $\ext_\ZZ^1(A,\ZZ)=0$.
+\end{prop*}
+\begin{proof}
+We recall that an Abelian group $G$ is injective if and only if it is \textit{divisible,} i.e. for any $g\in G$, $m\in \NN$, there exists some $h\in G$ such that $mh=g$. We note that $\QQ$ and $\QQ/\ZZ$ are divisble and hence injective and thus there exists an injective resolution for $\ZZ$ \begin{equation*}
+\begin{tikzcd}
+	I\colon I_0=\QQ\arrow[r,"\del_0"]& I_1=\QQ/\ZZ\arrow[r,"\del_1"]&I_2=0\end{tikzcd}
+\end{equation*}
+Then, \begin{equation}\ext^1_\ZZ(A,\ZZ)=\frac{\ker\left(\del_{1*}:\hom(A,\QQ/\ZZ)\to\hom(A,0)\right)}{\im\left(\del_{0*}:\hom(A,\QQ)\to\hom(A,\QQ/\ZZ)\right)}=\frac{\hom(A,\QQ/\ZZ)}{\im\left(\del_{0*}:\hom(A,\QQ)\to\hom(A,\QQ/\ZZ)\right)}\label{extaz1}\end{equation}
+
+We recall by the structure theorem for Abelian groups that $A$ is the direct product of finitely many $\ZZ$-modules of rank 1. We use this to write $A=A^F\oplus A^T$ where $A^F$ is free and $A^T$ is a torsion group (and hence finite by assumption in our case). As $\hom$ respects coproducts in the first argument, we may then rewrite \eqref{extaz1} as in \eqref{extaz2}
+
+\begin{equation}
+	\ext_\ZZ^1(A,\ZZ)\cong \frac{\hom(A^F,\QQ/\ZZ)}{\im\left(\del_{0*}:\hom(A^F,\QQ)\to\hom(A^F,\QQ/\ZZ)\right)}\oplus\frac{\hom(A^T,\QQ/\ZZ)}{\im\left(\del_{0*}:\hom(A^T,\QQ)\to\hom(A^T,\QQ/\ZZ)\right)}\label{extaz2}
+\end{equation}
+We let $n=\rank_\ZZ(A^F)$, let $x_1,\hdots, x_n$ generate $A^F$ and let $s_1,\hdots,s_n\in \QQ$ be arbitrary. We let $\acl{\phi}:A^F\to \QQ/\ZZ$ be given by $x_i\mapsto s_i\mod \ZZ$ and note that all maps in $\hom(A^F,\QQ/\ZZ)$ are given by a map of this construction. Then, letting $\phi:A^F\to \QQ$ be given by $x_i\mapsto s_i$, we have that $\delta_0\circ \phi=\acl\phi$ and hence, $\im\left(\del_{0*}:\hom(A^T,\QQ)\to\hom(A^T,\QQ/\ZZ)\right)=\hom(A^T,\QQ/\ZZ)$. We summarize this new information in \ref{extaz3}:
+\begin{equation}
+\ext_\ZZ^1(A,\ZZ)\cong \frac{\hom(A^T,\QQ/\ZZ)}{\im\left(\del_{0*}:\hom(A^T,\QQ)\to\hom(A^T,\QQ/\ZZ)\right)}\label{extaz3}
+\end{equation}
+We note that there exist no nontrivial maps $A^T\to \QQ$, as $A^T$ is a torsion group and the only element of $\QQ$ of finite order is the identity. Hence, we may update our running description of $\ext_\ZZ^1(A,\ZZ)$ once more in \ref{extaz4}:
+\begin{equation}
+\ext_\ZZ^1(A,\ZZ)\cong {\hom(A^T,\QQ/\ZZ)}\label{extaz4}
+\end{equation}
+Finally, we note that for any $m\in \NN$, there exists a subgroup $Q_m$ of $\QQ/\ZZ$ given by $Q_m=\idl{1/m}\cong \ZZ/m$. Thus, if $A^T$ has minimal generating set $\{x_1,x_2,\hdots, x_n\}$ with each $x_i$ having order $m_i$, there exists a map $\phi:A^T\to \QQ/\ZZ$ defined by $x_i\to 1/m_i$. It follows that $A$ is free if and only if $A^T=0$ if and only if $0=\hom(A^T,\QQ/\ZZ)=\ext_\ZZ^1$. 
+\end{proof}
+
+\printbibliography
+\end{document}

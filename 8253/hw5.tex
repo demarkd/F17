@@ -1,0 +1,376 @@
+\documentclass[english,letter,doublesided]{article}
+\usepackage{rotating}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath,calligra,mathrsfs,amsfonts}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{relsize}
+
+\usetikzlibrary{arrows, matrix}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\spm}{Spm}
+\DeclareMathOperator{\rad}{rad}
+\newcommand{\mor}{\mathrm{Mor}}
+\newcommand{\obj}{\mathrm{Obj}~}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\FF}{\mathscr{F}}
+\newcommand{\GG}{\mathscr{G}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Gcal}{\mathcal{G}}
+\newcommand{\fsc}{\mathscr{F}}
+\newcommand{\afr}{\mathfrak{a}}
+\newcommand{\bfr}{\mathfrak{b}}
+\newcommand{\cfr}{\mathfrak{c}}
+\newcommand{\dfr}{\mathfrak{d}}
+\newcommand{\efr}{\mathfrak{e}}
+\newcommand{\ffr}{\mathfrak{f}}
+\newcommand{\gfr}{\mathfrak{g}}
+\newcommand{\hfr}{\mathfrak{h}}
+\newcommand{\ifr}{\mathfrak{i}}
+\newcommand{\jfr}{\mathfrak{j}}
+\newcommand{\kfr}{\mathfrak{k}}
+\newcommand{\lfr}{\mathfrak{l}}
+\newcommand{\mfr}{\mathfrak{m}}
+\newcommand{\nfr}{\mathfrak{n}}
+\newcommand{\ofr}{\mathfrak{o}}
+\newcommand{\pfr}{\mathfrak{p}}
+\newcommand{\qfr}{\mathfrak{q}}
+\newcommand{\rfr}{\mathfrak{r}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\tfr}{\mathfrak{t}}
+\newcommand{\ufr}{\mathfrak{u}}
+\newcommand{\vfr}{\mathfrak{v}}
+\newcommand{\wfr}{\mathfrak{w}}
+\newcommand{\xfr}{\mathfrak{x}}
+\newcommand{\yfr}{\mathfrak{y}}
+\newcommand{\zfr}{\mathfrak{z}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ccal}{\mathcal{C}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{remark*}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{15 November 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH 8253 Homework IV}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8253}
+\cfoot{\thepage}
+\renewcommand{\bar}{\overline}
+
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\idl}[1]{\langle #1 \rangle}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id} }
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\cat}[1]{{\mathrm{\bf{#1}}}}
+%\usepackage[backend=biber,style=alphabetic]{biblatex}
+%\addbibresource{algeo.bib}
+\newcommand{\colim}{\varinjlim}
+\newcommand{\clim}{\varprojlim}
+\newcommand{\frp}{\mathop{\large {\mathlarger{\star}}}}
+\newcommand{\restr}[2]{\evat{#1}{#2}{}}
+\newcommand{\imp}[1]{\underline{#1}}
+\newcommand{\ihm}{\imp{\hom}}
+\newcommand{\him}{\ihm(\FF,\GG)}
+\newcommand{\incla}{\hookrightarrow}
+\newcommand{\pre}{\mathrm{pre}}
+%\tikzcdset{column sep/tiny=.1cm}
+\begin{document}
+%\maketitle\emph{To the Grader: I've been sick and overwhelmed this week and this is the best I can do. I'm sorry you have to wade through it.}
+\prob{1}\prt{1} \begin{proposition*}
+	We let $F$ be an Abelian group, with $\fsc$ the skyscraper sheaf supported at $x\in X$ associated to $F$ and $\Fcal$ the constant sheaf $F$ on $\{x\}$. Then, $\fsc=\iota_*\Fcal$ where $\iota_*$ is induced by $\iota: \{x\}\hookrightarrow X$. 
+\end{proposition*}
+\begin{proof}
+	We recall that for $U\subset X$ open, $(\iota_*\Fcal)(U)=\Fcal(\iota^{-1}(U))$. We note that \begin{equation*}
+	\iota^{-1}(U)=\begin{cases}
+	\{x\}&x\in U\\
+	\emptyset &x\notin U
+	\end{cases}\end{equation*}
+
+Thus,
+\begin{equation*}
+(\iota_*\Fcal)(U)=\Fcal(\iota^{-1}(U))=\begin{cases}
+F&x\in U\\
+0 &x\notin U
+\end{cases}=\fsc(U)\end{equation*}
+\end{proof}
+\prt{2}\begin{proposition*}
+	We let $X$ be a scheme, $x\in X$ a closed point, $k(x)=\OO_{X,x}/\mfr_x$ its residue field, and $F$ a $k(x)$-vector space. Then, there exists a skyscraper sheaf $\Fcal$ with stalk $\Fcal_x=F$ which is quasi-coherent.
+\end{proposition*}
+\begin{proof}
+	We note that $(\{x\},\OO_X)$ is a closed subscheme of $X$ as $i^\#:\OO_{X}\to i_*\OO_{\{x\}}=\OO_{X,x}$ is surjective. Thus, as $\Fcal=i_*F$, the direct image of the skyscraper sheaf on $\{x\}$, by part 1, $\Fcal$ is quasi-coherent.   
+\end{proof}
+%
+%%
+%
+%
+\prob{2}
+We begin with a lemma; the proposition will follow as a corollary.
+\begin{lemma*}
+	We let $A=k[t]$ for some field $k$ and $E\subset k[t]$ a multiplicatively closed subset which is finitely generated as a semigroup. We let $A_E:=A[E^{-1}]$. Then, $k(t)$ is not of finite rank as an $A_E$-module (via the natural inclusion $A_E\hookrightarrow k(t)$).
+\end{lemma*}
+\begin{subproof}
+	We note that $k(t)$ is has irredundant generating set as a $k[t]$-algebra consisting of all elements of the form $1/p(t)$ where $p(t)$ is prime. We note that for any field $k$, the set of prime elements of $k[t]$ is an infinite set.\footnote{As $kt]$ is a UFD, this follows from Euclid's argument for the infinitude of the primes.} Thus, $A_E$ is a finitely generated $k[t]$-subalgebra of $k(t)$, which is infinitely generated, so if $k(t)$ is a finitely-generated $A_E$-algebra it must be a finitely generated $k[t]$-algebra, contradicting the infinitude of prime elements.
+\end{subproof}
+\begin{corollary*}
+	The skyscraper sheaf $\fsc$ on $X=\AA_k^1$ supported at the generic point with stalk $k(t)$ is not locally of finite rank and hence not coherent. 
+\end{corollary*}
+\begin{proof}
+	We note that any open set in $X$ is of the form $D(E)$ where $E\subset A$. A priori, $E$ need not be a finite set, but we note that $D(E)=D(\idl{E})$, and as $k[t]$ is Noetherian, we have that $E$ has some finite generating set $F$. Hence, $D(E)=D(F)$, so $\OO_X(D(E))=A[F^{-1}]$ for some finite set $F\subset A$. Thus, by the lemma, we have that for any open set $U=D(E)\subset X$, $k(t)=\fsc(U)$ is an infinite-rank $\OO_X(U)$-module.
+\end{proof}
+%
+%
+%
+%
+\prob{3}
+\begin{proposition*}
+	We let $X$ be a scheme and $\Fcal$, $\Gcal$ quasicoherent $\OO_X$-modules. Then, $\Fcal \otimes \Gcal$ is quasicoherent.
+\end{proposition*}
+\begin{proof}
+	By definition, we have that there exists an affine open cover $\{U_i\}_{i\in I}$ (resp. $\{U'_j\}$) of $X$ such that on each $U_i$ (resp. $U'_j$), $\restr{\Fcal}{U_i}\cong M_i^\sim$ (resp. $\restr{\Gcal}{U_j'}\cong M_j'^{}\sim$) for some $\OO_X(U_i)$-module $M_i$ (resp. $\OO_X(U_j')$-module $M_j'$). We let $W_{ij}$ be the open subscheme $U_i\cap U'_j$, and let $\{V_{ijk}\}_{k\in K_{ij}}$ be an affine open cover of $W_{ij}$ for some indexing set $K_{ij}$. We note that as $V_{ijk}\subset U_i$ is an open subscheme of an affine open set on which $\Fcal$ is associated, we have that $\Fcal$ is associated on $V_{ijk}$ with a similar statement holding for $\Gcal$. Hence, $\Fcal$ and $\Gcal$ are both associated on each $V_{ijk}$, and thus their tensor product is as well. As $\bigcup_{(i,j)\in I\times J} \{V_{ijk}\}_{k\in K_{ij}}$ is an affine open cover of $X$, we have completed our proof.
+\end{proof}
+%
+%
+%
+\prob{4}
+\prt{1}\begin{proposition*}
+	A scheme $X$ is quasi-compact if and only if it is a finite union of affine open subsets.
+\end{proposition*}
+\begin{proof}
+	($\implies$) We assume $X$ is quasi-compact. By definition of scheme, there exists an affine open set $U_x\ni x$ for all $x\in X$. Then, $\{U_x\}_{x\in X}$ is an open cover of $X$ so there exists some finite subcover $\{U_{x_i}\}_{i=1}^n$.
+	
+	($\impliedby$) It is a completely trivial exercise in point-set topology that any topological space which can be written as a finite union of quasi-compact sets is itself quasi-compact. As any affine scheme (and hence any affine open subset) is quasi-compact, the proof follows immediately.   
+\end{proof}
+
+
+\prt{2}
+\begin{definition}
+	\label{def1} A morphism $\pi:X\to Y$ of schemes is quasi-compact if $\pi^{-1}(U)$ is quasi-compact for any quasi-compact $U\subset Y$.
+\end{definition}
+\begin{definition}
+	\label{def2} A morphism $\pi:X\to Y$ of schemes is quasi-compact if $\pi^{-1}(U)$ is quasi-compact for any open affine $U\subset Y$.
+\end{definition}
+\begin{proposition*}
+	Definitions \ref{def1} and \ref{def2} are equivalent.
+\end{proposition*}
+\begin{proof}
+As all open affine sets are quasi-compact, it is immediately clear that definition \ref{def1} implies \ref{def2}. On the other hand, we suppose $\pi$ satisfies definition \ref{def2} and that $U\subset Y$ is quasi-compact. Then, we may cover $U$ by affine open sets $\{W_i\}_{i\in I}$ and have that there exists a finite subcover $\{W_i\}_{i=1}^n$. Then, $\pi^{-1}(U)=\bigcup_{i=1}^n \pi^{-1}(W_i)$, and by assumption each $\pi^{-1}(W_i)$ is quasi-compact. Part a of this question implies the proposition. 
+\end{proof}
+%
+%
+%
+\prob{5}
+%
+%
+%
+\prob{6}
+\begin{proposition*}
+We let $X$ be a topological space, $U\subset X$ with inclusion $j:U\hookrightarrow X$, and $\Fcal$ a sheaf of sets on $X$. Then, $j^{-1}\Fcal$ coincides with $\restr{\Fcal}{U}$.
+\end{proposition*}
+\begin{proof}
+	We recall that $(j^{-1}\Fcal)^{\pre}(U)=\clim_{V\supset U}\Fcal(V)$. We recall as well that sheaves are recoverable from their stalks via sheafification\textemdash in particular if the stalks of presheaf $\Gcal$ coincide with the stalks of sheaf $\Fcal$, then $\Gcal^+=\Fcal.$ We let $p\in X$ and present the following diagram in which the black arrows commute by definition, with explanation of dashed arrows to follow.
+	
+	$$
+	\begin{tikzcd}[row sep=scriptsize, column sep=tiny]
+	&\Fcal(V_\alpha)\arrow[rrrrrr]\arrow[ddddrr]\arrow[dddddrrrrrrrrrr]&&&&&&\Fcal(V_\beta)\arrow[ddddllll,crossing over]\arrow[dddddrrrr]&&&&&&\Fcal(V_\gamma)\arrow[rrrrrr]\arrow[dddddll]&&&&&&\Fcal(V_\delta)\arrow[ddddllll]\arrow[dddddllllllll]&\\%1-2
+	&&&&&&&&&&&&&&&&&&&\\%1-3
+	&&&&&&&&&&&&&&&&&&&\\%2-1
+	&&&&&&&&&&&&&&&&&&&\\%2-2
+	&&&(j^{-1}\Fcal)^{\pre}(U_a)\arrow[dddrrrrrr]\arrow[drrrrrrrr,dashrightarrow,swap,"\exists!g_a"]&&&&&&&&&&&&(j^{-1}\Fcal)^{\pre}(U_b)\arrow[dllll,dashrightarrow,"\exists!g_b"]\arrow[from=uuuull,crossing over]\arrow[dddllllll, bend left =10]&&&&&\\%2-3
+	&&&&&&&&&&&\Fcal_p\arrow[ddll,bend right=15,dashrightarrow, near end, swap, "\exists! f"]&&&&&&&&\\%3-1
+	&&&&&&&&&&&&&&&&&&&\\%3-2
+	&&&&&&&&&(j^{-1}\Fcal)_p\arrow[uurr,bend right=15,dashrightarrow,near end, swap, "\exists! h"]&&&&&&&&&&%3-3
+	\end{tikzcd}$$
+	We note that each $\Fcal(V_\alpha)$ has a map $\Fcal(V_\alpha)\to (j^{-1}\Fcal)^\pre(U_a)\to(j^{-1}\Fcal)_p$ commuting with $\Fcal(V_\alpha \to \Fcal(V_\beta)$ by definition of colimit. Thus, $(j^{-1}\Fcal)_p$ is a co-cone for $\Fcal(V)$ with $V\ni p$, inducing the map $f$. We also note that $\{\Fcal(V)\;:\;U\subset V\}$ is a subco-cone of $\{\Fcal(V)\;:\;p\in V\}$, inducing the maps $g_a,g_b$ in the diagram. Then, the maps $g_a,g_b$ establish $\Fcal_p$ as a co-cone for $(j^{-1}\Fcal)^{\pre}(U)$ for all $U\ni p$, inducing the map $h$. By universality of the colimit construction, we have that $f$ and $h$ are mutual isomorphisms.   
+	
+\end{proof}
+
+\end{document}
